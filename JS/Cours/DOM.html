@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<style>
+
+div div {width:50px;display:inline-block;background : blue;} div{text-align:center;padding:40px;border:3px solid black;margin: 10px;max-width:500px;font-weight: bold;}#clickme { cursor : pointer;background: red !important; }#teleportme { background: green !important; width:80px;}
+div:hover{border-color: red; !important;}
+</style>
+<html>
+<body>
+
+<div style="background:brown"><div></div><div></div></div>
+<div style="background:purple">
+<div id="clickme">CLICK ME !</div>
+
+</div>
+<div style="background:yellow">
+
+</div>
+<div id="teleportme">TELEPORT ME !</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<SCRIPT>
+	 $(function() { 
+	 
+	 $('#clickme').click(function(){
+	
+
+	 $(this).after($('#teleportme'));  // déplace le bloc vert à côté du bloc rouge
+    
+	//$(this).before($('#teleportme'));  // déplace le bloc vert à côté du bloc rouge
+	
+	//$(this).html($('#teleportme'));  // déplace le bloc vert dans le bloc rouge en remplaçant son contenu html (le texte "Click Me" disparaît).
+
+	
+	//$(this).parent().after($('#teleportme')); // déplace le bloc vert entre le bloc violet
+    
+	//$(this).parent().next().after($('#teleportme')); // déplace le bloc vert après le bloc jaune
+	
+	//$(this).parent().next().html($('#teleportme')); // déplace le bloc vert dans le bloc jaune (la methode append() , prepend() en bout de chaîne produisent le même effet)
+    
+	//$(this).parent().before($('#teleportme')); // déplace le bloc vert entre le bloc orange et violet
+	
+	//$(this).parent().prev().prepend($('#teleportme')); // déplace le bloc vert dans le bloc orange avant les deux blocs bleus enfants
+	//$(this).parent().prev().append($('#teleportme')); // déplace le bloc vert dans le bloc orange après les deux blocs bleus enfants
+	
+	//$(this).parent().prev().children(':last').before($('#teleportme').clone()); // clône le bloc vert dans le bloc orange entre lses deux blocs bleus enfants
+	
+	
+	
+	//$(this).parent().prev().before($('#teleportme')); // le bloc vert restera au même endroit :)
+
+
+
+	});
+	 
+	 
+	 });
+
+</SCRIPT>
+</body>
+</html>
+
