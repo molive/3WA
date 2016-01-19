@@ -10,16 +10,21 @@
      
  <!--- bootstrap-->  
 <style>
-textarea {
+.error {
 
+border: red 1px solid;
+
+}
+textarea {
 width : 500px;
 height :100px;
 margin:10px 0 10px 0;
-
 }
-
 .tweet {display : none;}
-
+.avatar { width : 50px ; float:left;margin-right:10px; }
+.wrapper {float : left;}
+.delete {clear:both !important;display:block;}
+#errorsArea{display:none;}
 </style>
 </head>
 <html>
@@ -30,29 +35,34 @@ margin:10px 0 10px 0;
 <form method="post">
 <textarea id="tweet" name="content"></textarea>
 <br>Caractères restants : <span id="charCounter">140</span> / 140
-  <p><input type="submit" class="btn btn-primary btn-lg" value="Tweet" role="button"></p>
-</form>
 
+  <p><input type="submit" class="btn btn-primary btn-large" value="Tweet" role="button"></p>
+</form>
 
 <!-- faire apparaite les tweet juste en dessous du formulaire les un en dessous des autres. Le tweet le plus récent apparait en tête
 
 Structure d'un tweet :
-<div class="tweet"><strong>{firstname} {lastname}</strong> @{username}
+<div class="tweet">
+<img class="avatar" src="{avatar}">
+<div class="wrapper"><strong>{firstname} {lastname}</strong> @{username}
 <p>{contenu du tweet (140 caractères max)}</p>
-<button class="delete btn btn-danger btn-xs">Supprimer X</button>
+</div>
+<button class="delete btn btn-danger btn-small">Supprimer X</button>
 <hr>
 </div>
 
 
 -->
 </div>
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script>
  
  userData = {
  firstname : "Olivier",
  lastname : "Martin",
- username : "Molive"
+ username : "Molive",
+ avatar : "https://abs.twimg.com/sticky/default_profile_images/default_profile_5_400x400.png"
  }
 
 </script>
