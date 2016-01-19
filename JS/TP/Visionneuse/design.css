@@ -11,7 +11,7 @@ margin : 5px;
 .container {
 position:relative;
 }
-.infos {
+#infos {
 padding:10px;
 position: absolute;
 bottom : 0px;

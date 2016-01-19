@@ -1,0 +1,73 @@
+		html {
+		font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+		font-size: 100%;}
+		.loader{display:none;position:absolute;top:0;left:0;width:50%;}
+		label:hover {
+		cursor:pointer;
+		}
+		label {
+		font-weight: bold;
+		}
+		.category {
+		text-decoration : underline;
+		display:block;
+		font-weight: bold;
+		margin-top:10px;
+		margin-bottom:10px;
+		font-size:1.2em;
+		}
+		.price {
+		float:right;
+		}
+		input[type="checkbox"],input[type="radio"] {border: #000 1px solid ; }
+		form{
+		width:50%;
+		float:right;
+		}
+		#viewer{
+		width:50%;
+		float:left;
+		}
+		#viewer img{
+		width:50%;
+		position:absolute;
+		top:0px;
+		left:0px;
+		}
+	.lppr {width:10px;display:inline-block;}
+	#description_area {
+	max-width:70%;
+	padding:10px;
+	border: 1px #000 solid;
+	margin-bottom:10px;
+	display:none;
+	}
+	.total {
+	display:inline-block;
+	float:right;
+	padding:2px;
+	border: #000 2px solid;
+	width:200px;
+
+	}
+	#total_area { 	font-size:1.3em;margin-top:10px; font-weight:bold; }
+	input[type=submit] {
+	background: #4f81bd;
+	border: #3b6292 2px solid;
+	color: #fff;
+	border-radius:5px;
+	padding:10px;
+	margin-top:10px;
+	margin-right:10px;
+font-size:1.2em;
+	text-align:center;
+	}
+		input[type=submit]:hover {
+		background-color : #3b6292;
+		}
+		input[type=submit]:hover{
+		cursor:pointer;
+		}
+		#pro_option div {
+margin-top:10px;margin-bottom:10px;
+		}

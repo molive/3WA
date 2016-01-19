@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!-- 10 -->
+<html>
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Configurer votre fauteuil</title>
+		<link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+    </head>
+
+    <body>
+	
+	<div id="viewer">
+	<img class="loader" src="./images/loading.gif">
+	<div style="position:absolute;bottom:0;left:0px;width:50%;">
+	<div id="description_area"></div>
+	* Ces produits disposent d’une prise en charge par la Sécurité Sociale
+	</div>
+
+	<img class="color" src="./images/fauteuil-rouge-noir.png">
+	</div>
+	
+	<form method="post" action="treatment.php" id="configurator">
+	<h1>Configurateur ErgoConcept</h1>
+	<div class="category">Fauteuil :</div>
+	<div id="form_colors">
+	<div class="element"><input data-price="2700" data-lppr="1" id="color_0" type="radio" name="color" data-layer="fauteuil-silver-noir.jpg" value="0"><label for="color_0">Silver / Noir Ergo 07-L</label> <span class="price">2700€<span class="lppr">*</span></span></div>	
+	</div>
+	
+		<input type="hidden" name="total" value="">
+<input type="hidden" name="total_bis" value="">
+	
+		<div class="category">Accessoires :</div>
+	<div id="form_accessories">
+    <div class="element"><input data-description="" data-price="40" data-lppr="1" id="accessory_0" type="checkbox" name="accessories[]" data-layer="adaptateur.png" value="0"><label for="accessory_0">Adaptateur Chargeur Batterie</label> <span class="price">40€<span class="lppr">*</span></span></div>
+	<div id="total_area">	
+		Total	(sans prise en charge) <span id="total" class="total"><span></span>€ TTC</span>
+
+	<div style="clear:both;padding:2px;"></div>		Total si prise en charge par la sécurité sociale<span id="total_bis" class="total"><span></span>€ TTC</span>
+		
+					
+	</div>
+	<div style="clear:both;padding:2px;"></div>
+		<input type="submit" name="continue" value="Envoyer votre demande"> <input type="submit" name="print" value="Imprimer votre devis">
+		</form>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src = "configurator.js"></script>
+    </body>
+</html>
