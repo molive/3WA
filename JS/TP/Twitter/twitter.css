@@ -1,0 +1,21 @@
+.error {
+
+border: red 1px solid;
+
+}
+
+textarea {
+width : 500px;
+height :100px;
+margin:10px 0 10px 0;
+}
+.tweet {display : none;}
+.avatar { width : 50px ; float:left;margin-right:10px; }
+.wrapper {float : left;}
+.delete {clear:both !important;display:block;}
+#errorsArea{display:none;}
+.jumbotron {
+width:750px;
+margin:auto;
+}
+#tweet {width:100%}

@@ -7,31 +7,17 @@
 <link href="http://www.ustartme.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
 <link href="http://www.ustartme.com/bootstrap/assets/css/docs.css" rel="stylesheet">
 <link href="http://www.ustartme.com/bootstrap/assets/js/google-code-prettify/prettify.css" rel="stylesheet">   
-     
+<link rel="stylesheet" href="twitter.css" type="text/css" media="screen" />    
  <!--- bootstrap-->  
 <style>
-.error {
 
-border: red 1px solid;
-
-}
-textarea {
-width : 500px;
-height :100px;
-margin:10px 0 10px 0;
-}
-.tweet {display : none;}
-.avatar { width : 50px ; float:left;margin-right:10px; }
-.wrapper {float : left;}
-.delete {clear:both !important;display:block;}
-#errorsArea{display:none;}
 </style>
 </head>
 <html>
 <body>
 
 <div class="jumbotron">
-  <h1>Hello, world!</h1>
+  <h1>TWITTER + !</h1>
 <form method="post">
 <textarea id="tweet" name="content"></textarea>
 <br>Caractères restants : <span id="charCounter">140</span> / 140
@@ -39,9 +25,9 @@ margin:10px 0 10px 0;
   <p><input type="submit" class="btn btn-primary btn-large" value="Tweet" role="button"></p>
 </form>
 
-<!-- faire apparaite les tweet juste en dessous du formulaire les un en dessous des autres. Le tweet le plus récent apparait en tête
+<!-- faire apparaitre les tweets juste en dessous du formulaire les un en dessous des autres. Le tweet le plus récent apparaît en tête de liste
 
-Structure d'un tweet :
+Structure html d'un tweet :
 <div class="tweet">
 <img class="avatar" src="{avatar}">
 <div class="wrapper"><strong>{firstname} {lastname}</strong> @{username}
