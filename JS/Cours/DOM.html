@@ -27,7 +27,7 @@ div:hover{border-color: red; !important;}
 	 $('#clickme').click(function(){
 	
 
-	 $(this).after($('#teleportme').clone());  // déplace le bloc vert à côté du bloc rouge
+	 $(this).after($('#teleportme'));  // déplace le bloc vert à côté du bloc rouge
     
 	//$(this).before($('#teleportme'));  // déplace le bloc vert à côté du bloc rouge
 	
@@ -40,12 +40,12 @@ div:hover{border-color: red; !important;}
 	
 	//$(this).parent().next().html($('#teleportme')); // déplace le bloc vert dans le bloc jaune (la methode append() , prepend() en bout de chaîne produisent le même effet)
     
-	//$(this).parent().before($('#teleportme')); // déplace le bloc vert entre le bloc orange et violet
+	//$(this).parent().before($('#teleportme')); // déplace le bloc vert entre le bloc maron et violet
 	
-	//$(this).parent().prev().prepend($('#teleportme')); // déplace le bloc vert dans le bloc orange avant les deux blocs bleus enfants
-	//$(this).parent().prev().append($('#teleportme')); // déplace le bloc vert dans le bloc orange après les deux blocs bleus enfants
+	//$(this).parent().prev().prepend($('#teleportme')); // déplace le bloc vert dans le bloc maron avant les deux blocs bleus enfants
+	//$(this).parent().prev().append($('#teleportme')); // déplace le bloc vert dans le bloc maron après les deux blocs bleus enfants
 	
-	//$(this).parent().prev().children(':last').before($('#teleportme').clone()); // clône le bloc vert dans le bloc orange entre lses deux blocs bleus enfants
+	//$(this).parent().prev().children(':last').before($('#teleportme').clone()); // clône le bloc vert dans le bloc maron entre lses deux blocs bleus enfants
 	
 	
 	
