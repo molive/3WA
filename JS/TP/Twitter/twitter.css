@@ -22,3 +22,12 @@ width:750px;
 margin:auto;
 }
 #tweet {width:100%}
+#thread {
+padding-top : 15px;
+width : 750px;
+margin : auto;
+}
+
+.delete {margin-bottom:5px;float: right;}
+
+hr {clear :both;margin-top:5px;}
