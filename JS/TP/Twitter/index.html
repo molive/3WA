@@ -3,10 +3,8 @@
 <meta charset="UTF-8">
  <!-- bootstrap-->             
    
-<link href="http://www.ustartme.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
-<link href="http://www.ustartme.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
-<link href="http://www.ustartme.com/bootstrap/assets/css/docs.css" rel="stylesheet">
-<link href="http://www.ustartme.com/bootstrap/assets/js/google-code-prettify/prettify.css" rel="stylesheet">   
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" rel="stylesheet">
 <link rel="stylesheet" href="twitter.css" type="text/css" media="screen" />    
  <!--- bootstrap-->  
 <style>
@@ -15,11 +13,11 @@
 </head>
 <html>
 <body>
-
+<div class="container">
 <div class="jumbotron">
   <h1>TWITTER + !</h1>
 <form method="post">
-<textarea id="tweet" name="content"></textarea>
+<textarea id="tweet"  class="form-control" name="content"></textarea>
 <br>Caractères restants : <span id="charCounter">140</span> / 140
 
   <p><input type="submit" class="btn btn-primary btn-large" value="Tweet" role="button"></p>
@@ -39,6 +37,7 @@ Structure html d'un tweet :
 
 
 -->
+</div>
 </div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
