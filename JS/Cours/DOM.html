@@ -7,9 +7,13 @@ div:hover{border-color: red; !important;}
 <html>
 <body>
 
-<div style="background:brown"><div></div><div></div></div>
+<div style="background:brown">
+	<div></div>
+	<div></div>
+</div>
 <div style="background:purple">
-<div id="clickme">CLICK ME !</div>
+	
+	<div id="clickme">CLICK ME !</div>
 
 </div>
 <div style="background:yellow">
@@ -23,7 +27,7 @@ div:hover{border-color: red; !important;}
 	 $('#clickme').click(function(){
 	
 
-	 $(this).after($('#teleportme'));  // déplace le bloc vert à côté du bloc rouge
+	 $(this).after($('#teleportme').clone());  // déplace le bloc vert à côté du bloc rouge
     
 	//$(this).before($('#teleportme'));  // déplace le bloc vert à côté du bloc rouge
 	
