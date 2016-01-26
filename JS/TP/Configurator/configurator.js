@@ -1,11 +1,10 @@
+//jQuery(document).ready(function() {
+$(function(){  // synthaxe simplifiée de la ligne n°1 passé en commentaire
 var defaultColor = "";
 
 
 var colors = [];
-var formColors ='';
 var accessories = [];
-var formAccessories='';
-var LPPR= '';
 
 // Gestion des coloris
 colors = [
@@ -19,7 +18,7 @@ price : 2700
 title : 'Silver / Rouge' , 
 image : 'fauteuil-silver-rouge.png',
 LPPR : true,
-price : 2700
+price : 2800
 },
 {
 title : 'Bleu / Noir' , 
@@ -40,7 +39,7 @@ accessories = [
 {
 title : 'Adaptateur Chargeur Batterie' , 
 image : 'adaptateur.png',
-description : '',
+description : 'Permet d\'adapter le chargeur de la baterrie',
 LPPR : true,
 price : 40
 },
@@ -154,3 +153,6 @@ price : 120
 
 
 ];
+
+
+});
