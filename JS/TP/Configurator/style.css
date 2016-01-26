@@ -1,7 +1,15 @@
 		html {
 		font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
 		font-size: 100%;}
-		.loader{display:none;position:absolute;top:0;left:0;width:50%;}
+		.loader{
+		display:none;
+		position:absolute;
+		top:0;
+		left:0;
+		width:50%;
+		z-index:1;
+		opacity : 0.5;
+		}
 		label:hover {
 		cursor:pointer;
 		}
