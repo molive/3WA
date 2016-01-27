@@ -26,8 +26,8 @@ background-color: rgba(255, 255, 255, 0.5);
 }
 
 #container {
-display: none;
-vertical-align: middle;
+display :none;
+line-height: 800px;  /* cette valeur doit être égal à la hauteur de la fenêtre du navigateur */
 width : 100%; height : 100%;
 position : fixed ;
 top : 0px; left : 0px;
@@ -37,7 +37,7 @@ z-index : 1;
 }
 
 #container img{
-line-height: 800px;
+vertical-align: middle;
 max-width : 90%;
 max-height : 90%;
 
