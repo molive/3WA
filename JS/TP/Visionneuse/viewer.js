@@ -2,13 +2,18 @@
 $(function(){
 
   //alert($(window).height());
-  $('#container').css('line-height' , $(window).height()+'px');   // pemet de centrer l'image verticalement quelque soit la hauteur de la fenètre
   
-  $(window).resize(function(){
+  function resize(){
   
-	$('#container').css('line-height' , $(window).height()+'px');   // pemet de centrer l'image verticalement quelque soit la hauteur de la fenètre dans le cas où on redimensionne la fenètre
-	// exemple du portable qu'on passe en mode portrait ou paysage
-  });
+    $('#container').css('line-height' , $(window).height()+'px');   // pemet de centrer l'image verticalement quelque soit la hauteur de la fenètre
+
+  
+  }
+  
+  
+  resize();
+  
+  $(window).resize(resize);
 
   var thumbsLinks = $('.thumbs a');  // thumbsLinks est un objet jQuery qui va contenir une collection d'objet jQuery ;
   // /!\ thumpbsLinks n'est pas un tableau (array);

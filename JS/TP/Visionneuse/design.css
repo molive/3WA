@@ -1,17 +1,18 @@
 .current {
-border: 5px red solid;
+border: 5px red solid !important;
 }
 
 
 .thumbs {
 float :left;
 width : 350px;
+
 }
 .viewer {
 float : left;
 }
 .thumbs img {
-margin : 5px;
+margin : 5px;border: 5px white solid;
 }
 .container {
 position:relative;
