@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <style>
 
-div div {width:50px;display:inline-block;background : blue;} div{text-align:center;padding:40px;border:3px solid black;margin: 10px;max-width:500px;font-weight: bold;}#clickme { cursor : pointer;background: red !important; }#teleportme { background: green !important; width:80px;}
+div div {width:50px;display:inline-block;background : blue;} div{text-align:center;padding:40px;border:3px solid black;margin: 10px;max-width:700px;font-weight: bold;}#clickme { cursor : pointer;background: red !important; }#teleportme { background: green !important; width:80px;}
 div:hover{border-color: red; !important;}
 </style>
 <html>
@@ -11,7 +11,7 @@ div:hover{border-color: red; !important;}
 	<div></div>
 	<div></div>
 </div>
-<div style="background:purple">
+<div id="purple" style="background:purple">
 	
 	<div id="clickme">CLICK ME !</div>
 
@@ -23,11 +23,14 @@ div:hover{border-color: red; !important;}
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <SCRIPT>
 	 $(function() { 
+	 var purple = $('#purple');
+	 var purple2 = $('#clickme').parent();  
+	 // purple et et purple2 contient le même objet jQuery car le div de couleur verte et l'enfant du div de couleur violette (dont l'id est égal à purple)
 	 
 	 $('#clickme').click(function(){
 	
 
-	 $(this).after($('#teleportme'));  // déplace le bloc vert à côté du bloc rouge
+	// $(this).after($('#teleportme'));  // déplace le bloc vert à côté du bloc rouge
     
 	//$(this).before($('#teleportme'));  // déplace le bloc vert à côté du bloc rouge
 	
@@ -35,13 +38,15 @@ div:hover{border-color: red; !important;}
 
 	
 	//$(this).parent().after($('#teleportme')); // déplace le bloc vert entre le bloc violet et le bloc jaune
-    
-	//$(this).parent().next().after($('#teleportme')); // déplace le bloc vert après le bloc jaune
+    //$(this).parent().before($('#teleportme')); // déplace le bloc vert entre le bloc maron et violet
+
+	
+	//$(this).parent().next().after('test'); // déplace le bloc vert après le bloc jaune
 	
 	//$(this).parent().next().html($('#teleportme')); // déplace le bloc vert dans le bloc jaune (la methode append() , prepend() en bout de chaîne produisent le même effet)
     
-	//$(this).parent().before($('#teleportme')); // déplace le bloc vert entre le bloc maron et violet
-	
+	//$(this).parent().prev().html($('#teleportme')); // déplace le bloc marron en supprimant les 2 enfants
+
 	//$(this).parent().prev().prepend($('#teleportme')); // déplace le bloc vert dans le bloc maron avant les deux blocs bleus enfants
 	//$(this).parent().prev().append($('#teleportme')); // déplace le bloc vert dans le bloc maron après les deux blocs bleus enfants
 	
@@ -49,9 +54,7 @@ div:hover{border-color: red; !important;}
 	
 	
 	
-	//$(this).parent().prev().before($('#teleportme')); // le bloc vert restera au même endroit :)
-
-
+	$(this).parent().prev().before($('#teleportme')); // le bloc vert se déplacera juste avant le div marron
 
 	});
 	 

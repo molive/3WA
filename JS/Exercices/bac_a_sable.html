@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<script>
+var days = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'];
+//afficher les 7 jours de la semaine avec la méthode write de l'objet natif document (exemple document.write(...) )
+
+
+var nom = 'Olivier';
+var nom2 = "Zartinnnnnnnnnnnnnn";
+
+//if(nom > nom2) alert('ok');
+
+var Personnage = {
+    nom: "",
+    sante: 0,
+    force: 0,
+    xp: 0,
+
+    // Renvoie la description du personnage
+    decrire: function () {
+        var description = this.nom + " a " + this.sante + " points de vie, " +
+            this.force + " en force et " + this.xp + " points d'expérience";
+        return description;
+    }
+};
+
+var perso1 = Object.create(Personnage);
+perso1.nom = "Aurora";
+perso1.sante = 150;
+perso1.force = 25;
+
+
+
+function User(name,firstname) {
+
+this.name;
+this.firstname;
+this.birthday;
+
+this.age = function(){
+
+return 18;
+
+}
+
+}
+
+var user1 = new User('Olivier','Martin');
+alert(user1.age);
+
+
+</script>
+</body>
+</html>

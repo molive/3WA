@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+<link rel="stylesheet" href="design.css" type="text/css" media="screen" />
+</head>
+<html>
+<body>
+
+<a id="link1" alt="Aller sur Google" href="http://www.google.com">Google</a> <br>
+<a id="link2" alt="Aller sur Facebook" href="http://www.facebook.com">Facebook</a> <br>
+<a id="link3"  alt="Aller sur wikipedia" href="http://www.wikipedia.org">Wikipedia</a> <br>
+
+Faire les tests sur http://codepen.io/
+
+<script>
+
+var link1 = document.getElementById('link1');
+console.log(link1);  // affiche <a alt="Description 1" href="1.jpg"><img src="images/thumb/1.jpg"></a> (/!\ objet HTML et non une chaine de caractère)
+
+link1.getAttribute("href"); // ou link1.href ;
+link1.setAttribute("href","http://www.facebook.com");
+link1.innerHTML = "Lien renommé dynamiquement";
+
+// Synthaxe :  objet HTML + methode addEventListener "(" + premier paramètre : eventement écouté + , + 2ème paramètre : une fonction anonyme avec un peramètre "e" qui représentatera l'évêment
+
+link1.addEventListener('click', function(e) {
+alert(this.href);
+e.preventDefault();
+});
+
+</script>
+</body>
+
+</html>

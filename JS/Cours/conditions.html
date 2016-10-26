@@ -1,0 +1,130 @@
+<script>
+
+var number1 = 5;
+var number2 = 10;
+
+if(number1 <= number2 && (number1 == 5 || number2 != 0 )) {
+
+console.log('...');
+
+}
+
+var isValid = true;
+
+if(!isValid) {
+
+console.log('Non valide');
+
+}
+else
+{
+
+console.log('Valide');
+
+}
+
+
+
+
+var age = parseInt(prompt('Quel age avez-vous ?'));
+
+
+if(age < 18) {
+
+alert('Mineurs interdits !');
+
+}
+else if (age > 50) 
+{
+
+alert('Seniors interdits !');
+
+}
+else{
+
+alert('Bienvenue !');
+
+}
+
+
+
+/*
+if(number < 18) {
+
+	alert('Cette page est interdite aux mineurs');
+
+}
+else
+{
+
+	alert('Accès autorisé');
+
+}
+
+*/
+
+while(age < 18) {
+
+age = parseInt(prompt('Quel age avez-vous ?'));
+
+}
+
+
+if(age%0 != 1 && age < 200) {
+
+alert("Veuillez entrer un âge correct");
+
+}
+
+// ou  :
+
+
+while(age%0 != 1 && age < 200) {
+
+age = parseInt(prompt('Quel age avez-vous ?'));
+
+}
+
+
+
+
+
+
+console.log('Vous êtes majeurs');
+
+
+
+
+
+if (confirm('Voulez-vous exécuter le code JavaScript de cette page ?')) {
+    alert('Le code a bien été exécuté !');
+}
+
+
+
+var drawer = parseInt(prompt('Choisissez un chiffre entre 1 et 4:'));
+
+switch (drawer) {
+    case 1:
+        alert('Contient divers outils pour dessiner : du papier, des crayons, etc.');
+    break;
+
+    case 2:
+        alert('Contient du matériel informatique : des câbles, des composants, etc.');
+    break;
+
+    case 3:
+        alert('Ah ? Ce tiroir est fermé à clé ! Dommage !');
+    break;
+
+    case 4:
+        alert('Contient des vêtements : des chemises, des pantalons, etc.');
+
+    break;
+
+    default:
+        alert("Chiffre incorrect.");
+}
+
+
+</script>

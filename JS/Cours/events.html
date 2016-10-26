@@ -1,0 +1,71 @@
+ <a target="blank" id="myLink" href="http://google.com">Lien piégé</a>
+ 
+ <ul>
+<li>Categorie #1
+<ul>
+<li>Item 1</li>
+<li>Item 2</li>
+<li>Item 3</li>
+</ul>
+
+</li>
+
+<li>Categorie #2
+<ul>
+<li>Item 4</li>
+<li>Item 5</li>
+<li>Item 6</li>
+</ul>
+
+</li>
+
+
+<li>Categorie #3
+<ul>
+<li>Item 7</li>
+<li>Item 8</li>
+<li>Item 9</li>
+</ul>
+
+</li>
+</ul>
+ 
+ 
+ <div style="border: 1px #000 solid" id="myDiv">
+ 
+ 
+ </div>
+ 
+ <script>
+
+ 
+var number =8;
+var condition = 8 == number;
+ 
+console.log(condition);
+ 
+number = 7;
+
+console.log(condition);
+ 
+ 
+ var link = document.getElementById('myLink');
+        var href = link.getAttribute('href'); // On récupère l'attribut « href »
+var div =  document.getElementById('myDiv');  // objet html
+ 
+
+  
+		
+		link.addEventListener('click', function(e) {
+		
+       // result.innerHTML = "L'élément déclencheur de l'événement \"mouseover\" possède l'ID : " + e.target.id;
+		link.setAttribute('href', 'http://www.facebook.com'); // On édite l'attribut « href »
+		});
+		
+		div.innerHTML = 'test';
+		
+		div.appendChild(document.getElementById('myLink'));  // deplace le lien dans le div #myDiv
+		
+		// Math.round();
+		//.ceil();
+</script>

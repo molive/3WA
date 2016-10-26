@@ -1,0 +1,79 @@
+<html>
+<head>
+<style>
+ .dice {
+ 
+ background-image : url('images/6.jpg');
+ float : left;
+ margin : 10px;
+ height : 50px;
+ width : 50px;
+ 
+ }
+</style>
+</head>
+<body>
+<div  class="dice">
+
+</div>
+
+<div class="dice">
+
+</div>
+
+<div class="dice">
+
+</div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+  function rand(value) {
+  	var random= Math.random();  // random sera un décimal cmpris entre 0 et 1 (exempel 0.1545888)
+		var random = random*value;  // si max = 70 alors random sera u ndecomal compris entre 0 et  70 (exemple 50.256454)
+ 		var random = Math.ceil(random) ;
+  	return random;
+ }
+</script>
+<script src="dice.js"></script>
+
+<script>
+$(function(){
+var test = '{{ name }}';
+var test = test.replace('{{ name }}', 'moi');
+//alert(test);
+/*
+var user = {
+name : "Olivier",
+firstname : "Martin",
+fn : {
+   next : function (){
+   
+   }
+
+
+}
+}
+
+
+user.fullName = function () {
+
+return this.name+' '+this.firstname;
+
+}
+
+
+
+alert(user.fullName());
+
+*/
+  console.log(jQuery);
+  //console.log(jQuery.fn.length);   // affiche 0 ... car il existe une propréiét length : 0;
+
+
+$('.dice').dice();  // On aimerait pouvoir générer un entier entre 1 et 6 dans les éléments html aillant .dice
+
+});
+
+</script>
+</body>
+</html>

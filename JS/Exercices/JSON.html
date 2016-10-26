@@ -1,0 +1,356 @@
+//    EXERCICES SUR LES TABLEAUX ET OBJETS     //
+
+/* 
+
+1) Consultez l'adresse sur suivante :
+https://maps.googleapis.com/maps/api/geocode/json?address=24%20Rue%20Emile%20Decorps,%2069100%20Villeurbanne
+
+La page web ci-dessous foruni par l'API Google Maps renvoit un élément au format JSON qui n'est autre qu'un objet javascript
+contenant plusieurs informations intéressantes relatives à l'adresse du Pôle-pixel :)
+
+2) On place dans un premier temps le contenu du fichier JSON dans une variable "data" : 
+
+Quelques infos sur la structure de cet objet javascript (cf. ligne 446) :
+
+Si on y regarde de plus prèt , on remarque que "data" n'est autre qu'un objet litéral aillant 2 propriétés "results" (ligne 447) et "status"  (ligne 447).
+La valeur de la propriété "results" est un tableau (array) contenant en l'occurence un seul objet litéral aillant 5 propriétés "address_components"  (ligne 449) , "formatted_address"  (ligne 486) , "geometry"  (ligne 487) ,"place_id" (ligne 504) et "types" (ligne 505) 
+La valeur de la propriété "address_components" est un tableau (array) contenant de 7 objets litéraux aillant chacun 3 propriétés "long_name", "short_name" et "types".
+Les valeurs des propriété "long_name" et "short_name" sont des chaines de caractères (string)
+La valeur de la propriété "types" est un tableau (array) contenant une ou plusieur chaines de caractères (string)
+Etc.
+*/
+/*
+var data = {
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "24",
+               "short_name" : "24",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "Rue Emile Decorps",
+               "short_name" : "Rue Emile Decorps",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "Villeurbanne",
+               "short_name" : "Villeurbanne",
+               "types" : [ "locality", "political" ]
+            },
+            {
+              "long_name" : "Rhône",
+               "short_name" : "Rhône",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Rhône-Alpes",
+               "short_name" : "RA",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "France",
+               "short_name" : "FR",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "69100",
+               "short_name" : "69100",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "24 Rue Emile Decorps, 69100 Villeurbanne, France",
+         "geometry" : {
+            "location" : {
+               "lat" : 45.7576536,
+               "lng" : 4.8984459
+            },
+            "location_type" : "ROOFTOP",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 45.75900258029149,
+                  "lng" : 4.899794880291502
+               },
+               "southwest" : {
+                  "lat" : 45.7563046197085,
+                  "lng" : 4.897096919708497
+               }
+            }
+         },
+         "place_id" : "ChIJDck6i7PB9EcRTR1TZBb9M_A",
+         "types" : [ "street_address" ]
+      }
+   ],
+   "status" : "OK"
+}
+
+
+/* 
+3) Votre mission est de venir récupérer uniquement la région où se situe le pôle pixel ("Rhône-Alpes"). 
+Vous allez donc devoir parcourir l'objet "data" ci-dessus pour venir récupérer uniquement la valeur de la propriété "long_name" en ligne 471.  
+/*
+
+var region = data['results'][?][?][?][?];    // remplacer les "?" par les bons numéros d'index de tableaux (array) ou les bons noms de propriétés d'objets litéraux
+
+console.log(region);  // doit afficher "Rhône-Alpes" dans la console
+
+/*
+4) Faire de même pour récupérer les coordonnées GPS de la latitude et la longitude (propriété lat et lon situé à la ligne 489 et 490)
+
+
+var lat = //  A vous de trouver l'intégralité de la syntaxe ;)
+var lng = //  Idem ;)
+
+console.log(lat);  // doit afficher 45.7576536  ligne: 72
+console.log(lng);  // doit afficher 4.8984459   ligne:73
+*/
+/*
+ EXO BONUS
+5) Faire un ensemble de boucles imbriquées permettant d'afficher sur une page l'ensemble des éléments contenu dans la variable "data"
+
+
+Arborescence du contenu de l'objet "data" :
+
+// Structure sous forme d'arboressence de l'objet "data"
+ 
+ 
+ data :
+   └── results :
+   │      └── 0 :
+   │          ├── address_components :
+   │          │        └── 0 : 
+   │          │  	     │   ├── long_name : "24"
+   │          │   	   │   ├── short_name : "24"
+   │          │  	     │   └── types : 
+   │          │        │          └── 0 : "street_number"
+   │          │        └── 1 : 
+   │          │  	     │    ├── long_name : "69100"
+   │          │   	 	 │    ├── short_name : "69100"
+   │          │  		   │    └── types : 
+   │          │        │          └── 0 : "postal_code"
+   │          │        │             
+//////////////////////////////////////.....//////////////////////////
+   │          │        └── 5 : 
+   │          │  	     │   ├── long_name : "France"
+   │          │   	   │   ├── short_name : "Fr"
+   │          │  	     │   └── types : 
+   │          │        │          └── 0 : "country"
+   │          │        │          └── 1 : "political"
+   │          │        │
+   │          │        └── 6 : 
+   │          │  		       ├── long_name : "Rue Emile Decorps,"
+   │          │   		     ├── short_name : "Rue Emile Decorps,"
+   │          │  		       └── types : 
+   │          │                   └── 0 : "route"
+   │          │				  
+   │          ├── formatted_address : "24 Rue Emile Decorps, 69100 Villeurbanne, France"
+   │          ├── geometry :
+   │          │        └── location :
+   │          │        │       └── lat : 45.7576536
+   │          │		     │       └── lng : 4.8984459
+   │          │	       └── location_type : ROOFTOP
+   │          │	
+/////////////////////////.....//////////////////////////	
+   │          │	
+   │          ├──place_id : ChIJDck6i7PB9EcRTR1TZBb9M_A
+   │          │
+   │          └──types : street_address
+   │
+   └──status : OK
+              
+*/
+
+
+/*
+
+var users = [
+{ 
+  name : Olivier, 
+  firstname : Martin
+},
+{ 
+  name : Alphonse, 
+  firstname : Brown
+},
+{ 
+  name : Tony, 
+  firstname : Stark
+}
+]
+
+
+// structure du tableau "users"
+
+ users :
+   └── 0 :
+   │   ├── name : "Olivier"
+   │   └── firstname : "Martin"
+   └── 1:
+   │   ├── name : "Alphonse"
+   │   └── firstname : "Brown"
+   └── 2 :
+       ├── name : "Tony"
+       └── firstname : "Stark"*/
+/*
+var data= ['results' , 'status'];
+for(var index in data){
+
+   var results = data['results'].address_components;
+   for(var index in results){
+
+      var address_components = results[4].long_name;
+      for(var index in address_components){
+
+      document.write(long_name[index]);
+   }
+   }
+}
+*/
+/*
+var region = data['results'][0]["address_components"][4]['long_name'];  
+console.log(region);
+
+var lat = data['results'][0]['geometry']['location']['lat'];
+console.log(lat);
+
+var lng = data['results'][0]['geometry']['location']['lng'];
+console.log(lng);  
+*/
+/*
+var address_components = data["results"][0]["address_components"];
+for(var i in address_components){
+console.log(address_components[i]);
+} 
+*/
+/*
+ var address_components = data["results"][0]["address_components"];  // structure similaire à celle ci var users = [user1,user2,user3]
+
+for(var i in address_components){
+  
+var address = address_components[i];
+  
+for(var index in address) {
+  
+document.write('<br>'adresse[index]) 
+  
+}
+document.write('<hr>');
+}
+*/
+/*
+ var address_components = data["results"][0]["address_components"]; // structure similaire à celle ci var users = [user1,user2,user3]
+
+for(var i in address_components){
+  
+var address = address_components[i];  // addre
+  
+for(var index in address) {
+  
+  
+  if(typeof address[index] == 'string') {
+
+    console.log(index);
+
+    document.write('<br>'+index+': '+address[index]); }
+
+  else {document.write(-address[index].join(' ')); }
+    
+  
+}
+  
+  document.write('<hr>');
+
+}
+
+var address_components = data["results"][0]["address_components"];  // structure similaire à celle ci var users = [user1,user2,user3]
+
+for(var i in address_components){
+  
+var address = address_components[i];  // addre
+  
+for(var index in address) {
+  
+  
+  
+   if( index != 'types') {
+    console.log(index);
+    document.write('<br>'+index+': '+address[index]); }
+  else {document.write('<br>'+address[index].join(' / ')); }
+    
+  
+}
+  
+  document.write('<hr>');
+
+}
+*/
+/*
+var goodValue = 37;  // Valeur que l'utilisateur doit  trouver
+
+var compteur = 0; 
+
+  // créer une condition qui va vérifier que la valeur saisi est égaleme à la valeur à trouver +- 10  
+  // par exemple je tape 30 la condition sera vrai car 27 < 30 < 47
+  
+   compteur ++;
+    
+var userValue = prompt("Veuiller indiquer un nombre entre 0 et 50");
+  
+ while( userValue != goodValue ) {
+ 
+document.write(compteur);
+
+}
+*/
+/*
+var goodValue = 37;  // Valeur que l'utilisateur doit  trouver
+
+var compteur = 0; 
+
+do {
+
+  // créer une condition qui va vérifier que la valeur saisi est égaleme à la valeur à trouver +- 10  
+  // par exemple je tape 30 la condition sera vrai car 27 < 30 < 47
+   compteur ++;
+ 
+  if(userValue >= 27 && userValue <= 47) {
+    alert('Vous êtes proche de la solution');
+  }
+  
+   var userValue = parseInt(prompt("Veuiller indiquer un nombre entre 0 et 50"));  //  var userValue = "50";
+  
+} while( userValue != goodValue );
+ 
+document.write(compteur);
+
+*/
+var goodValue = 17;  // Valeur que l'utilisateur doit  trouver
+
+var compteur = 0; 
+
+
+do {
+
+  // créer une condition qui va vérifier que la valeur saisi est égaleme à la valeur à trouver +- 10  
+  // par exemple je tape 30 la condition sera vrai car 27 < 30 < 47
+   compteur ++;
+ 
+  var valueMin = goodValue - 10;
+  var valueMax = goodValue + 10;
+  
+  var userValue = parseInt(prompt("Veuiller indiquer un nombre entre 0 et 50"));  //  var userValue = "50";
+  
+  var condition = userValue != goodValue;
+  
+  
+  if(userValue >= valueMin && userValue <= valueMax && condition) {
+    alert('Vous êtes proche de la solution');
+  }
+  else{alert('Vous êtes loin  de la solution')}
+
+
+} while(condition);
+ 
+
+document.write(compteur);
