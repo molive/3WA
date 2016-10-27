@@ -1,0 +1,175 @@
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+ <style>
+ 
+ 
+.reverse {
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+}
+ 
+
+ 
+
+
+
+ 
+ 
+ </style>
+ 
+ 
+ 
+
+
+
+<script>
+
+'use strict';   // Mode strict du JavaScript
+
+// Déclaration de trois variables.
+var computer;
+var validResponses = ['pierre','feuille','ciseau'];
+var player;
+var win;  // NEW
+var score; // NEW
+var isOkToPlay;
+var random;
+var images={
+ 
+    pierre: "http://conception.website/3wa/images/pierre.png",
+	feuille: "http://conception.website/3wa/images/feuille.png",
+	ciseau : "http://conception.website/3wa/images/ciseaux.png"
+ 
+ };
+
+
+
+
+// Récupération du choix du joueur.
+
+
+isOkToPlay = confirm("Voulez-vous jouer?");
+
+while(isOkToPlay) {
+
+// On vérifie que la réponse est correcte:
+do {
+
+	player = window.prompt('Que choisissez-vous : pierre, feuille ou ciseau ?');
+
+}
+while(validResponses.indexOf(player) == -1)
+
+console.log(validResponses.indexOf(player));
+
+
+// Conversion du choix du joueur en minuscules.
+player = player.toLowerCase();
+
+
+
+// On affiche la réponse du joueur en image
+document.write('<img src="'+images[player]+'">');
+
+
+// Récupération d'un nombre aléatoire entre 0 et 1 inclus.
+random = Math.random()*3;  // valeur comprise entre 0 et 3
+
+random = random.toFixed();
+console.log(random);
+
+if(random <= 1)
+{
+    computer = 'pierre';
+}
+else if(random <= 2)
+{
+    computer = 'feuille';
+}
+else
+{
+    computer = 'ciseau';
+}
+
+// On affiche la réponse du computer en image
+document.write('<img class="reverse" src="'+images[computer]+'">');
+
+
+document.write("<p>Votre choix : <strong>" + player + '</strong></p>');
+document.write("<p>Choix de l'ordinateur : <strong>" + computer + '</strong></p>');
+
+
+if(computer == player)
+{
+    document.write('<div>Vous avez choisi la même chose : égalité !</div>');
+	
+}
+else
+{
+    // Le joueur et l'ordinateur n'ont pas choisi la même chose, la bataille commence !
+
+    switch(computer)
+    {
+        case 'ciseau':
+        if(player == 'pierre')
+        {
+            document.write('<div class="alert alert-success">La pierre écrase le ciseau : vous gagnez !</div>');
+			win = true;
+        }
+        else // player == 'feuille'
+        {
+            document.write('<div class="alert alert-danger">La feuille est découpée par le ciseau : vous perdez !</div>');
+			win = false;
+        }
+        break;
+
+        case 'feuille':
+        if(player == 'pierre')
+        {
+            document.write('<div class="alert alert-danger">La pierre est enveloppée par la feuille : vous perdez !</div>');
+			win = false;
+        }
+        else // player == 'ciseau'
+        {
+            document.write('<div class="alert alert-success">Le ciseau découpe la feuille : vous gagnez !</div>');
+			win = true;
+        }
+        break;
+
+        case 'pierre':
+        if(player == 'feuille')
+        {
+            document.write('<div class="alert alert-success">La feuille enveloppe la pierre : vous gagnez !</div>');
+			win = true;
+        }
+        else // player == 'ciseau'
+        {
+            document.write('<div class="alert alert-danger">Le ciseau est écrasé par la pierre : vous perdez !</div>');
+			win = false;
+        }
+        break;
+    }
+}
+
+// ON actualise le score
+
+if(win) {
+
+	score ++;
+
+}
+else if(!win)
+{
+
+	score --;
+
+}
+
+document.write('Votre score est de : '+ score+' <hr>');
+isOkToPlay = confirm("Voulez-vous rejouer?");
+}
+
+</script>

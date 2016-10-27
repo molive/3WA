@@ -1,0 +1,67 @@
+ <style>
+ 
+ 
+.reverse {
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+}
+ 
+
+ 
+
+
+
+ 
+ 
+ </style>
+ <div style="display:none;">
+ 
+ <img src="http://conception.website/3wa/images/ciseaux.png">
+ <img class="reverse" src="http://conception.website/3wa/images/ciseaux.png">
+  
+ </div>
+  
+ <script>
+ 
+ var imgs={
+ 
+    pierre: "http://conception.website/3wa/images/pierre.png",
+	papier: "http://conception.website/3wa/images/feuille.png",
+	ciseau : "http://conception.website/3wa/images/ciseaux.png"
+ 
+ };
+ 
+
+ 
+ 
+ switch(computer)
+    {
+        case 'ciseau':
+        
+		document.write('Vous avez jouez ciseau: <img src="'+imgs['ciseau']+'">');
+		
+		break;
+		
+		case 'feuille':
+		
+		document.write('Vous avez jouez feuille: <img src="'+imgs['feuille']+'">');
+		
+		break;
+		
+		
+		case 'pierre':
+		
+		document.write('Vous avez jouez pierre: <img src="'+imgs['pierre']+'">');
+		
+		break;
+			
+	
+	}
+		
+		
+
+</script>
