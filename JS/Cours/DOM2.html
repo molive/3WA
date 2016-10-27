@@ -1,0 +1,933 @@
+//LA doc de jQuery ::: https://api.jquery.com/each/
+// Créer un évênement qui va afficher la valeur de l'attribue href du 2ème lienhttps://github.com/molive/3WA  
+
+///////////////////     TP  VISIONNEUSE    \\\\\\\\\\\\\\\\\\\\\\\\\//
+//\\\\\\\\\\\\\\\\\------------------------///////////////////////////
+
+// SALUT A TOUS ! J'IMAGINE QU'IL Y EN A PARMIS VOUS QUI VOUDRAIT AVANCE 
+// CE WEEK END ET QUI AURAIT PEUT ËTRE PEUR D'ETRE BLOQUE !
+// JE VOUS AI DONC DECRIS LES ETAPES POUR 
+// ARRIVER JUSQUA L'AFFICHAGE DES IMAGES EN TAILLE MEDIUM
+// LORS DU SURVOL DE LA SOURIS SUR LES MINIATURES
+
+K
+
+//==================PREMIERE ETAPE===================//
+
+//DANS CETTE PREMIERE ETAPE, LE BUT EST D'AFFICHER DE BASE
+//(LORS DE L'ARRIVEE DE L'UTILISATEUR SUR LA PAGE), 
+//LA PREMIERE IMAGE EN TAILLE MEDIUM, A DROITE DES IMAGES
+//EN MINIATURES.
+
+// Les trucs à savoir :
+
+[1] -----> document.querySelectorAll('a');
+// PERMET DE RECUPERER TOUT LES LIENS DE LA PAGE DANS UN TABLEAU
+// Vous aurez besoins de mettre le résultat dans
+// une variable (ici 'thumbsLinks')
+//(fonctionne pour tout autre balise que des 'a')
+
+[2] -----> myVariable.getAttribute('attribut');
+// PERMET DE RECUPER LA VALEUR D'UN ATTRIBUT D'UNE BALISE
+// Exemple: <a href="index.html"> => 'href' est l'attribut
+// et 'index.html' est la valeur
+
+[3] -----> document.getElementById('element_id');
+// PERMET DE SELECTIONNER UN ELEMENT DE LA PAGE HTML VIA SON ID 
+// C'est une phase de préparation, on prépare cet élément 
+// à recevoir quelque chose
+// ATTENTION : A précéder d'une variable pour récupérer la requete
+
+[4] -----> element.setAttribute('attribut', variable/string/number);
+// PERMET DE DEFINIR LA VALEUR D'UN ATTRIBUT, D'UN ELEMENT DONNE
+// (L'element aura été récupéré avant grâce à getElementById)
+// le premier paramètre est l'attribut en question 
+// (ex: 'src', 'href', 'alt' etc.), le deuxième est ce que 
+// vous souhaitez donner comme valeur à cet attribut
+// il peut être une variable, une chaine de caractère etc.
+
+// PETIT TRUC BONUS ://///////////////////////
+// Faire :
+ document.getElementById('element_id').setAttribute('attribut', variable/string/number);
+// Reviens au même que de faire :
+var myElement =  document.getElementById('element_id');
+    myElement.setAttribute('attribut', variable/string/number);
+//Placer le getElementById dans une variable est utile est interessant dans le cas
+// ou vous auriez besoins de le réutiliser. 
+// ex concret ou on veut définir le 'src' et le 'alt' d'un élément: 
+// Première façon de faire :
+ document.getElementById('element_id').setAttribute('src', 'trucmuche.html');
+ document.getElementById('element_id').setAttribute('alt', 'bidule.html');
+//deuxième façcon de faire:
+var myElement =  document.getElementById('element_id');
+myElement.setAttribute('src', 'trucmuche.html');
+myElement.setAttribute('alt', 'bidule.html');
+// A vous de voir, mais si vous avez une dizaine de truc comme ça a faire
+// sur un élément, la deuxième méthode sera plus légère.
+//////////////////////////////////////
+// NORMALEMENT AVEC CA, AUCUN SOUCIS POUR REUSSIR LA PREMIERE ETAPE !
+
+
+
+
+
+//==================DEUXIEME ETAPE===================//
+//ICI MET EN PLACE UNE BOUCLE QUI VA PERMETTRE LORS DU 
+//SURVOL DE LA SOURIS SUR N'IMPORTE QUELLES IMAGES,
+//DE L'AFFICHER EN MEDIUM SUR LA DROITE (ELLE DOIT PRENDRE
+//LA PLACE DE L'IMAGE AFFICHER PAR DEFAUT)
+
+// Pour rappel et illustration:
+//Arboresence  du tableau : thumbsLinks -> [0] : '1.jpg'
+//					|
+//					-> [1] : '2.jpg'	
+//					|
+//					-> [2] : '3.jpg'
+//					|
+//                                      -> [3] : '4.jpg'
+
+
+
+//ON COMMENCE PAR ECRIRE UNE BOUCLE DANS LE TABLEAU 'thumbsLinks'
+// RAPPEL: 'id' correspond aux indexs (ex: [0] ou [1] etc..) du tableau 'thumbsLinks' et 'thumbsLinks[id]' correspond
+// aux liens.
+
+[1] ----->	for(var id in thumbsLinks) {
+
+          thumbsLinks[id].
+	}
+
+// Les trucs à savoir :
+
+[2] ----->   .addEventListener('déclencheur' , function(e){
+
+   		/*CODE*/
+
+   });
+//PERMET DE DECLENCHER EN EVENEMENT SOUS CONDITION 
+//le premier paramètre 'déclencheur' peut être :
+// 'click', 'mouseover' etc.
+// 'function(e){}' est une fonction anonyme dans laquelle
+// vous écrirez les actions a effectuer lorsque le déclencheur
+//est activé
+
+[3] ----->   this 
+//FAIT REFERENCE A L'OBJET DANS LEQUEL IL SE TROUVE
+// par exemple :
+
+	objet.EventListener('condition' , function(e){
+		var myVar = this.getAttribute('attribut');
+	});
+// 'this' correspond ici à 'objet'
+
+[4] ----->	 element.setAttribute('attribut', variable/string/number);
+// DEJA EXPLIQUE DANS LA PREMIERE ETAPE
+
+
+// ET VOILA ! VOUS AVEZ CE QU'IL FAUT POUR AFFICHER LES IMAGES AU SURVOL
+
+// VOUS AUREZ BESOINS D'ENVIRON 10-15 LIGNES DE CODE POUR ARRIVER A LA,
+// PEUT ËTRE PLUS SI VOUS DECOMPOSEZ LES ETAPES, HESITEZ PAS A POSER DES QUESTIONS
+// ICI, FAUT S'ENTRAIDER :)
+// A LUNDI !
+
+
+
+//////////    CORRIGER EN JS PUR DU TP VISIONNEUSE   /////////////
+
+var thumbsLinks = document.querySelectorAll('.thumbs a');  // thumbsLinks est un tableau (array) contenant 4 objets html 
+
+console.log(thumbsLinks.length);  // doit afficher 4
+
+
+var urlImg1 = thumbsLinks[0].getAttribute('href')
+console.log(urlImg1); // 1.jpg
+
+var mainImg = document.getElementById('mainImg');  // On récupère un objet html correspondant à l'image principale
+
+mainImg.setAttribute('src','images/medium/'+urlImg1);
+
+
+for (var id in thumbsLinks) {
+  
+  thumbsLinks[id].addEventListener('mouseover', function (){
+    
+    var srcImg = this.getAttribute('href');
+    mainImg.setAttribute('src','images/medium/'+srcImg);
+    
+  });]
+  
+}
+
+
+
+/*
+Etape 1 :
+Créer une variable "thumbsLinks" qui va contenir les 4 objets html faisant référence aux liens des miniatures
+// methode à utiliser : querySelectorAll  , selecteur css à utiliser ".thumbs a"
+Etape 2 :
+On récupère dans une variable "srcImg1" la valeur du lien de notre première miniature (donc du premier objet html stocké dans la variable thumbsLinks)
+
+// utiliser la méthode .getAttribute();
+
+Etape 3 :
+
+mettre à jour l'attribut "src" de l'image principale aillant pour id = "mainImg" 
+
+--> créer une variable mainImg qui va contenir un objet html représentant l'image aillant pour id = mainImg
+// utiliser la méthode .setAttribute('src', 'images/medium/{valeur de la variable srcImg1});
+
+
+// fichier evenements.html
+// fichier evenements.js
+
+<a title="Le celèbre moteur de recherche google" alt="Infos diverse" id="url1" href="http://www.google.com">>Aller sur Google</a>
+<a id="url2" alt="Aller sur Facebook" href="http://www.facebook.com">Facebook</a> <br>
+<a id="url3"  alt="Aller sur wikipedia" href="http://www.wikipedia.org">Wikipedia</a> <br>
+*/
+  
+/*
+var link1 = document.getElementById('url1');  // link1 va contenir  un objet html
+var link2 = document.getElementById('url2');
+*/
+
+var links = document.querySelectorAll('a');  // links = [{objet html}, {objet ht} ,{objet html}]
+alert(links.length);
+
+
+
+for(var id in links) {
+  
+  links[id].addEventListener('click',function(e){
+     alert(this.href);
+  e.preventDefault();
+});
+  
+}
+
+
+
+/*																	
+//link1.remove();
+console.log(link1.getAttribute('href'));  // la méthode getAttribute() permet de récupérer la valeur d'un attribut définit en paramètre
+console.log(link1.getAttribute('title'));
+
+console.log(link1.href);  // cette écriture simplifiée permet également de récupérer la valeur de l'attribue href
+link1.setAttribute('href', 'http://www.facebook.com');
+
+//alert(link1.innerHTML);  // la propriété innerHTML permet de récupérer tout le code html contenu entre les balises <a> et </a> de notre élméent html link
+
+EHOlink1.innerHTML = "Aller sur Facebook";
+*/
+
+// On va a présent développer une application qui va modifier la valeur de l'attribut "href" au moment où l'utilisateur clique sur le lien
+ /*
+ link1.addEventListener('click',function() {
+   
+	 ('href', 'http://www.facebook.com');  // this fait férérence à l'objet "link1" car c'est sur lui qu'on applique la méthode "addEventListener"
+   
+ });
+
+ link2.addEventListener('click',function(e){
+   
+   alert(this.href);
+  e.preventDefault();
+ });
+*/
+
+
+
+// Créer un évênement qui va afficher la valeur de l'attribue href du 2ème lien
+
+
+<a title="Le celèbre moteur de recherche google" id="url1" href="http://www.google.com">Aller sur Google</a>
+<a title="Facebook" id="url2" href="http://www.facebook.com">Aller sur Facebook</a>
+<a title="Wikipedia" id="url1" href="http://www.wikipedia.org">Aller sur Wikipedia</a>
+
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="jQuery.js"></script>
+
+//$(function() { 
+jQuery(function() {  // permet d'exécuter notre code javascript lorsque l'intégralité de la page est chargé (images comprises)
+  
+var link1 = $('#url1');  // equivalent en js pur : var link1 = document.getElementById('url1'); Attention link1 est un objet jQuery
+var links = $('a');  // equivalent en js pur : var links = document.getElementByName('a'); (ou document.questySelectorAll('a');Attention links est une collection d' objet jQuery
+var url1 = link1.attr('href');  // equivalent en JS pur de .getAttribute('href');
+  console.log(url1); // doit afficher dans la console : http://www.google.com
+  
+//link1.remove();
+//  link1.attr('href', 'http://www.facebook.com');  // equivalent en JS pur de .setAttribute('href','http://www.facebook.com');  
+  
+  console.log(links.length); // afficher le nombre d'objects jQuery stoqué dans notre variable (3)
+    link1.click(function() {
+    
+   //  alert($(this).attr('title'));
+  //  $(this).attr('href' , 'http://www.facebook.com');  // on change l'attribut href
+  //  $(this).attr('title' , 'Le celèbre réseau social Facebook');
+
+    // 2ème méthode pour modifier plusieurs attributs en même temps
+    
+    $(this).attr({ href : "http://facebook.com" , title : "Le celèbre réseau social Facebook"}); 
+    
+    return false;
+  });
+  
+  
+  links.click(function() {  // en js .click equivaut à ObjetHtml.addEventListener('click', function() {  });
+    
+    alert($(this).attr('title'));  // $(this) fait référence à l'objet jQuery sur lequel est appliqué la méthode
+    return false; // On stop la redirection vers l'url associé
+  });
+  
+  
+  link1.html('Modification du lien #1');  // équivalent de link1.innerHTML = "Modification du lien #1" dans le cas du JS pur
+
+  
+
+  
+});
+
+$
+
+/////     TP VISIONNEUSE MAIS UNIQUEMENT AVEC jQUERY     ////////
+
+////  contenu de la page index.html   ///
+<!DOCTYPE html>
+<head>
+<link rel="stylesheet" href="design.css" type="text/css" media="screen" />
+</head>
+<html>
+<body>
+<div id="container"><img src="images/1.jpg"></div>
+
+<div class="thumbs">
+<a alt="Description 1" href="1.jpg"><img src="images/thumb/1.jpg"></a> 
+<a alt="Description 2" href="2.jpg"><img src="images/thumb/2.jpg"></a> 
+<a alt="Description 3" href="3.jpg"><img src="images/thumb/3.jpg"></a> 
+<a alt="Description 4" href="4.jpg"><img src="images/thumb/4.jpg"></a>
+</div>
+
+
+<div class="viewer">
+<span class="container">
+<span id="infos"><!-- description première image par défaut --></span>
+<img id="mainImg" src="medium/<!-- source de la première image par défaut -->">
+</span>
+</div>
+<script src = "http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src = "viewer.js"></script>
+</body>
+
+</html>
+
+///////    contenu du fichier viewer.js       /////
+
+
+
+
+
+
+$(function(){   // cette ligne permet d'éxécutrer notre code une fois l'intégralité de la page web chargé
+  
+  // Etape 1  : création de la variable thumbsLinks qui contiendra nos 4 liens contenu dans la div aillant la class .thumbs 
+  // /!\ thumbsLinks est un objet jQuery qui contient une collection de plusieurs autres objets Jquery (ce n'est donc pas un tableau (array))
+  
+  // Etape 2 : On récupére le premier objet jQuery contenu dans thumbsLinks grace à la méthode .eq(0) qu'on stocke dans une varibale "thumbsLink1"
+  
+   
+  // etape 3 : On réculpère la propriété "href" de l'objet jQuery "thumbsLink1" avec la méthode .attr()
+  
+  // Etape 4 : On créé un objet jQuery (qu'on appellera mainImg ) qui va contenir l'image principal dont l'id est "mainImg"
+  
+  // Etape 5 : On modifier l'attribue "src" de l'objet jQuery "imgMediumSize" par le chemin d'accès de l'image version tailler moyen de la première miniature ("images/medium/{url de la 1ère image}")
+  
+  
+  // Etape 6 : on applique la méthode .hover sur notre collection d'objets jQuery contenu dans la variable thumbsLinks 
+  
+  
+  // ETAPES BONUS  //
+  
+
+  
+  var thumbsLinks = $('.thumbs a');  // thumbsLinks est un objet jQuery qui va contenir une collection d'objet jQuery ;
+  // /!\ thumpbsLinks n'est pas un tableau (array);
+ /* var thumbLink1 = thumbsLinks.eq(0);
+  var urlImg1 = thumbLink1.attr('href')*/
+  
+  <i class="fa fa-apple"></i>
+  // facon plus rapide :
+  var urlImg1 = thumbsLinks.eq(0).attr('href');  // equivalent de la ligne 354 + 355  
+  console.log(urlImg1); // Doit afficher 1.jpg
+  
+  var imgMediumSize = $('#mainImg');  // imgMediumSize est un object jQuery qui contient l'image principal aillant pour id="mainImg" (<img id="mainImg" src="/images/medium/">
+  imgMediumSize.attr('src','images/medium/'+urlImg1);
+  
+  // on souhaite créer un objet jQuery qui va contenir l'élement html <span id="infos"></span>
+  
+  var descriptionArea = $('#infos');
+  
+  
+
+  var descriptionImg1 =  thumbsLinks.eq(0).attr('alt');
+  console.log(descriptionImg1);  // doit afficher dans la console] 'Description 1'
+  descriptionArea.html(descriptionImg1);  // en JS il aurait fallut utiliser la  objetHTML.innerHTML = descriptionImg1
+  
+  var container = $("#container");
+  
+  thumbsLinks.click(function(){
+    
+    var urlImg = $(this).attr('href');
+    // <div id="container"> <img src="/images/1.jpg">  </div>
+    container.children().attr('src','images/'+urlImg);
+    
+    container.show();
+    
+    return false;
+    
+  });
+  
+  
+  container.click(function() {
+    
+    $(this).hide(); // la méthode hide va rajouter la propréité
+    
+  });
+  
+  
+  
+  thumbsLinks.hover(function(){
+    
+    var urlImg = $(this).attr('href');
+    var descriptionImg = $(this).attr('alt');
+    
+    imgMediumSize.attr('src','images/medium/'+urlImg);  // On met à jour l'attribut src de l'image principale (id="mainImg")
+    descriptionArea.html(descriptionImg);
+   
+     // On va mettre à jour le bloc de description de l'image principal
+    thumbsLinks.children().removeClass('current');   // je supprime la class current éventuelement présent sur mes 4 liens (objets jQuery) stockés dans thumbsLinks
+    $(this).children().addClass('current');
+  });
+  
+  
+  
+  // ETAPE 7 : Afficher la div ayant pour id="container" lorsque l'on clique sur une des 4 miniatures
+  //>>>  .show();
+  
+});
+  
+</script>
+</body>
+
+/////////////////    TP    ONGLET    ////////////////////////
+
+// Etape 1) faire en sorte que l'encart relatif au profil (dont l'id = "tab_profile" s'affiche lorsque l'on cli sur l'onglet onglet "Profil"
+// Aide   : exploiter le contenu de l'attribut "data-tab" de l'onglet (qui vaut "profile") et le nom de l'id de l'encart ("tab_profile")
+
+/*
+var tabProfile = $('li[data-tab = profile]')   // on vient récupérer l'élément html suivant " <li role="presentation" data-tab="profile"><a href="#">Profile</a></li>"
+
+
+
+
+
+tabProfile.click(function() {
+  
+  $('.tab-content').removeClass('active');  // on supprimer la class active de tout les élément html possédant la class "tab-content
+  $('#tab_profile').addClass('active');
+  
+});
+
+*/
+
+$(function(){
+
+var tabs = $('ul li'); $('.nav li');
+
+tabs.click(function(){
+  
+  $('.tab-content').removeClass('active');   // toutes les divs aillant la class "tab-content" seront masquées
+  // On met jour le statuts des onglets
+  tabs.removeClass('active');  // on suprrimer toutes les class actives de nos onglets
+  $(this).addClass('active');  // On ajoute la classe "active" sur l'onglet cliqué
+  
+  
+  var tabData = $(this).attr('data-tab');  // On récupère la valeur de l'attribut "data-tab" de l'onglet cliqué
+  
+  $('#tab_'+tabData).addClass('active');  // J'ajoute la class "active" sur l'encart que je souhaite afficher (pour le cas de profil il s'agit de l'élement <div class="tab-content" id="tab_profile">...</div>
+  
+  
+  return false;
+  
+});
+  
+console.log(tabs.length); // devra afficher 3
+
+
+
+
+
+});
+
+
+/////////////////    TP  CON FIGURATEUR DE DEVIS    //////////////////
+
+var colors = [
+{
+title : 'Silver / Noir' , 
+image : 'fauteuil-silver-noir.png',
+LPPR : true,
+price : 2700
+},
+{
+title : 'Silver / Rouge' , 
+image : 'fauteuil-silver-rouge.png',
+LPPR : true,
+price : 2800
+},
+{
+title : 'Bleu / Noir' , 
+image : 'fauteuil-bleu.png',
+LPPR : true,
+price : 2900
+},
+{
+title : 'Rouge / Noir' , 
+image : 'fauteuil-rouge-noir.png',
+LPPR : true,
+price : 2900
+},
+];
+
+var formColorsArea = $('#form_colors');
+
+for(var id in colors) {
+  
+  var inputRadio = '<input type="radio" name="color" data-price="'+colors[id]['price']+'" data-image="'+colors[id]['image']+'" value = "'+colors[id]['title']+'"> '+colors[id]['title']+' ('+colors[id]['price']+')<br>';
+
+  formColorsArea.append(inputRadio);  // on va venir rajouter le contenu html dans la variable "inputRadio" après les éléments déjà existant da,s notre div aillant pour id="form_colors"
+
+}
+
+
+
+
+
+
+// Gestion des accessoires
+accessories = [
+{
+title : 'Adaptateur Chargeur Batterie' , 
+image : 'adaptateur.png',
+description : 'Permet d\'adapter le chargeur de la baterrie',
+LPPR : true,
+price : 40
+},
+{
+title : '2 ème Batterie' , 
+image : '2eme-batterie.png',
+description : 'Batterie de rechange longue durée',
+LPPR : false,
+price : 400
+},
+{
+title : 'Commande tiers Personne' , 
+image : 'commande-tiers-personne.png',
+description : '',
+LPPR : false,
+price : 70
+},
+{
+title : 'Commande paramètrable' , 
+image : 'commande-parametrage.png',
+description : '',
+LPPR : false,
+price : 80
+},
+{
+title : 'Kit Batterie All Inclusive' , 
+image : 'kit-batterie-all-inclusive.png',
+description : '',
+LPPR : false,
+price : 100
+},
+{
+title : 'Appui tête' , 
+image : 'appuie-tete.png',
+description : '',
+LPPR : false,
+price : 60
+},
+
+{
+title : 'Pantographe' , 
+image : 'pantographe.png',
+description : '',
+LPPR : false,
+price : 200
+},
+{
+title : 'Repose Pieds XL' , 
+image : 'repose-pieds-xl.png',
+description : '',
+LPPR : false,
+price : 20
+},
+{
+title: 'Roues avant Bandages Larges' , 
+image : 'roues-avant-bandages.png',
+description : '',
+LPPR : false,
+price : 80
+},
+{
+title : 'Assise Réhaussée' , 
+image : 'assise-rehaussee.png',
+description : '',
+LPPR : false,
+price : 90
+},
+{
+title : 'Assise Modulable' , 
+image : 'assise-modulable.png',
+description : '',
+LPPR : false,
+price : 90
+},
+{
+title : 'Joystick Standard' , 
+image : 'joystick-standard.png',
+description : '',
+LPPR : false,
+price : 0
+},
+{
+title : 'Porte Bagages' , 
+image : 'porte-bagage.png',
+description : '',
+LPPR : false,
+price : 300
+},
+{
+title : 'Saccoche' , 
+image : 'sacoche.png',
+description : '',
+LPPR : false,
+price : 70
+},
+{
+title : 'Porte Canne' , 
+image : 'porte-canne.png',
+description : '',
+LPPR : false,
+price : 70
+}
+,
+{
+title : 'Sac de transport' , 
+image : 'sac-transport.png',
+description : '',
+LPPR : false,
+price : 120
+}
+
+
+];
+
+
+
+var formAccessoriesArea = $('#form_accessories');
+
+for (var id in accessories) {
+  
+  var inputCheckbox = '<input type="checkbox" data-price="'+accessories[id]['price']+'" data-image="'+accessories[id]['image']+'" value = "'+accessories[id]['title']+'"> '+accessories[id]['title']+' ('+accessories[id]['price']+'€)<br>';
+  formAccessoriesArea.append(inputCheckbox);
+  
+}
+
+
+// On va générer le total de tous les élément selectionné.
+
+
+
+var boutons = $('input[type = checkbox],input[type= radio]'); // je recupere un objet avec tous les checkbox et boutons radio
+console.log(boutons.length);
+
+boutons.click(function() {
+  
+  // On actualise la couleur du fauteuil si l'utilisateur coche un bouton radio
+  var dataImage = $(this).attr('data-image'); // On récupère la valeur de la attribut "data-image" du bouton radio coché
+  if($(this).is('[type=radio]') == true) {  // On vérifie que l'élément coché est bien un imput de type radio
+    // en savoir plus sur la méthode "is()" >>> https://api.jquery.com/is/
+  $('.color').attr('src', './images/'+dataImage);  // On créée l'objet jQuery relatif à l'image affichant la couleur (dont la class est égale à "color. On lui applique la méthode attr pour venir modifier son attribut source
+  }
+  else
+  {
+    // Si l'élément selectionné n'est pas un bouton radio c'est qu'on a cliqué sur une checkbox
+    // On va donc actualiser les accessoires
+   
+    
+    // utiliser la méthode .is() pour vérifier que la checkbox est cochées ou pas
+    // utiliser la methode .remove() pour supprimer l'image de l'accessoire correspondant à la checkbox décochée
+    // Pour supprimer l'image associé à la deselection on utilisera le selecteur CSS img[src ="/images/test.png"]
+    
+    if($(this).is(':checked') ){  // on vérifie si la checkbox est cochée
+      $('#viewer').append('<img class="accessory" src="images/' + dataImage + '">'); // On ajoute à la fin du conteneur <div id="viewer"></div> l'image correspondant à l'accessoire coché
+    }
+    else
+    {
+     $('img[src ="images/'+dataImage+'"]').remove();
+    }
+    /*
+    <div id="viewer">
+    <!-- Image affichant la couleur du fauteuil -->
+    <img class="color" src="./images/fauteuil-rouge-noir.png">
+    
+    <!-- Actualisation des accessoires -->
+    <img class="accessory" src="./images/repose-pieds-xl.png">
+    <img class="accessory" src="./images/roues-avant-bandages.png">
+    ect...  autant que de checkbox cochées
+    </div>
+    
+    */
+    /*
+    <style>
+    img[src ="/images/test.png"] {
+    	width : 400px;
+        }
+    </style>
+    <img src="/images/test.png">
+      <img src="/images/test2.png">
+        <img src="/images/test3.png">
+    <src>
+    */
+
+  }
+    // fin actualisation de la couleur
+  var total = 0;
+  
+  boutons.each(function() {   // la methode  each permet de parcourir un objet jQuery contenant plusieurs autres ( en savoir plus https://api.jquery.com/each/)
+  var price = parseInt($(this).attr('data-price')); 
+  if($(this).is(':checked')) {
+  total+= price;
+  }
+  
+
+  });
+    
+  console.log(total); 
+    
+  $('#total').html(total);
+  
+  
+  });
+  
+  
+ /*  LA METHODE MOUNIR :
+  var price = parseInt($(this).attr('data-price'));   // En JS pur on aurait du faire : var price = this.getAttribute('data-price')
+ 
+  if($(this).is(':checked')) {
+  total+= price;
+  }
+  else
+  {
+     total-= price;
+  }
+  */
+  
+  console.log(total);
+  
+})
+
+
+
+////////////   TP    TWITTER +   ////////////
+
+
+/*
+
+Affichage souhaité :
+
+Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
+totam rem aperiam, eaque ipsa quae ab illo inventore.
+_____________________________________________________________________
+
+the system, and expound the actual teachings of the great explorer of the truth, the master-builder 
+of human happiness. No one rejects, dislikes, or avoids pleasure itself, because
+
+
+<div id="thread">
+
+<div class="tweet">
+{TEXTE RENTRER DANS LE TEXTAREA}<br>
+<button class="delete">supprimer</button>
+<hr>
+</div>
+
+{TEXTE RENTRER DANS LE TEXTAREA 2}
+<hr>
+ect...
+
+
+</div>
+
+*/
+// fichier twitter.js  //
+
+$(function(){
+
+  // On va créer une condition qui va vérifier que l'utilsiateur tape moins de 140 caractères
+  // si ce n'est pas le cas on empeche l'envois du tweet e on déclenche une alerte 
+  // Bonus : mettre des bordure rouge sur le textarea
+  
+  // Après l'envois, réinitialisé le compteur à 140
+  
+  
+// .submit() en savoir plus http://api.jquery.com/submit/
+
+  var form = $('#twitterForm');  // On créé un objet jQuery qui contient notre formulaire
+  var textareaTweet = $('#tweet');  // On place dans une variable l'objet jQuery contenant notre textaera servant à écrire les tweets
+ 
+  // Actualisé le compteur de caractère restant lorsque l'utilisateur tape du texte dans le textarea
+// On va utiliser la méthode .keydown pour déclencher un évenemeent lorsque l'utilisateur appui sur une touche du clavier
+  
+  var charCounterArea = $('#charCounter');   // doit contenir l'élément html <span id="charCounter">140</span>
+  
+  // synthaxe équivalente (plus longue) : textareaTweet.on('click', function() { ... });
+      // en savoir plus sur la méthode keydown : api.jquery.com/keydown/
+  //textareaTweet.keydown(function(){   
+  
+  /*
+  textareaTweet.keyup(function(){     // on calcule les caractère après relachement de la touche du clavier
+    var tweet = $(this).val();   // je récupère le contenu du textarea (une chaine de caractères);
+    var nbChars = tweet.length;  // on calcule le nombre caractère saisi
+    // var nbChars = $(this).val().length;
+    var charsRemaining = 140 - nbChars; // on calcule le nombre de caractères restants
+    // on veut maintenant actualiser le contenu de l'élement html : <span id="charCounter">140</span>
+    
+    charCounterArea.html(charsRemaining);
+    // charCounterArea.text(charsRemaining);  // la méthode .text permet de remplacer le contenu par du texte (mais pas du code html)
+  });
+
+ textareaTweet.keypress(function () {
+   
+     var tweet = $(this).val();   // je récupère le contenu du textarea (une chaine de caractères);
+    var nbChars = tweet.length;  // on calcule le nombre caractère saisi
+    // var nbChars = $(this).val().length;
+    var charsRemaining = 140 - nbChars; // on calcule le nombre de caractères restants
+    // on veut maintenant actualiser le contenu de l'élement html : <span id="charCounter">140</span>
+    
+    charCounterArea.html(charsRemaining);
+   
+ });
+   */
+  
+  textareaTweet.on('keyup, keypress', function () {  // ATTENTION bien penser à mettre un espace après 
+   
+    var tweet = $(this).val();   // je récupère le contenu du textarea (une chaine de caractères);
+    var nbChars = tweet.length;  // on calcule le nombre caractère saisi
+    
+    
+    // var nbChars = $(this).val().length;
+    var charsRemaining = 140 - nbChars; // on calcule le nombre de caractères restants
+    // on veut maintenant actualiser le contenu de l'élement html : <span id="charCounter">140</span>
+    
+    charCounterArea.html(charsRemaining);
+   
+ });
+  
+  
+  // On va créer une condition qui va vérifier que l'utilisateur tape moins de 140 caractères
+  // si ce n'est pas le cas on empeche l'envois du tweet e on déclenche une alerte 
+  // Bonus : mettre des bordure rouge sur le textarea
+  
+  // Après l'envois, réinitialisé le compteur à 140
+  
+  
+  
+
+  /*
+  $('button.delete').click(function(){
+    
+    $(this).parent().remove();
+    
+  });
+  */
+  
+  // on utilise la délégation d'évênement pour supprimer les élément html  (nos tweet) créés dynamiquement
+  $('#thread').on('click','button.delete',function(){
+    
+    $(this).parent().fadeOut(1500, function() { $(this).remove(); });  // on 
+    //$(this).parent().remove();
+    
+  });
+  
+  
+  
+  form.submit(function(){
+    
+    // On créé un objet jQuery qui contient notre formulaire
+   // var tweet = $('#tweet').attr('value');  //on créé une variable tweet qu iva contenir ce qu'on saisi dans le textarea
+    var tweet = textareaTweet.val();  // synthaxe simplifié  qui permet de récupéré la valeur d'un attribut "value" d'un champs de formulaire
+ // On veut ajouter le tweet posté dans notre div aillant l'id ="thread" en tête de liste
+   
+       // Pour empecher l'envois d'un ou plusieurs espace, il faut utiliser la méthode javascript .trim() qui va supprimer tous les espace au début et à la fin de ma chaine de caractères
+/*
+    var test = "        hgdfgdhf gdhfgd        ";
+    test.trim(); // test va contenir "hgdfgdhf gdhfgd" da
+    */
+    tweet.trim();  // on supprime tous les espaces au début et à la fin
+    
+    if(tweet.length > 140) {
+      alert('Vous avez tapé trop de caractères');
+      textareaTweet.addClass('error');
+      
+    }
+  
+    
+   else if(tweet != '') {
+      
+    
+    $('#thread').prepend('<div class="tweet">'+ tweet + '<br><button class="delete">supprimer</button><hr></div>');
+    //$('.tweet').fadeIn(1000);  // on fait apparaitre le tweet avec un effet de fondu qui va durer 1s (1000 ms);
+    $('#thread .tweet:first-child').slideDown(1000);  // on selectionne le dernier tweet posté et on l'affiche avec la méthide slideDown
+    
+  
+    // On va ensuite réinitiser notre textarea en supprimant ce qui a été écrit
+    //textareaTweet.val('');
+    form.trigger('reset');  // on réintialise notre formulaire après l'envois / en savoir plus sur la méthode trigger : http://api.jquery.com/trigger/
+    // On va réinitialiser le compteur de caractères restant
+
+     ttextareaTweet.removeClass('error');  // on enlève la class error du textarea 
+     
+    }  //  sur notre objet jQuery contenant la zone d'affiche de tweets on applique la méthode prepend pour ajouter le tweet en tête de liste
+  
+    
+    //alert(tweet);
+    
+ 
+
+    
+    return false;
+    
+  });
+
+});
+
+
+
+// dans le fichier index.html
+<div id="thread">
+  
+  
+<div class="tweet">
+{TEXTE RENTRER DANS LE TEXTAREA}<br>
+<button class="delete">supprimer</button>
+<hr>
+</div>
+
+
+
+
+</div>

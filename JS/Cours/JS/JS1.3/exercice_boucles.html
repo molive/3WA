@@ -1,0 +1,106 @@
+<script>
+
+  // for ({initialisation]; {condition}; {incrémentation})
+  
+  /*
+  for(var i = 0; i <= 100; i++)
+  {
+  
+	document.write('Je ne ferai plus de coupé-collé dans le codeshare<br>');
+  
+  
+  }
+  */
+  
+  var days = ['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'];
+  
+  // Méthode 1
+  for(var i = 0; i < days.length; i++)
+  {
+  
+	document.write(days[i]+"<br>");
+  
+  }
+  
+   document.write('<hr>');
+  //Méthode 2
+  for(id in days){
+  
+    document.write(days[id]+"<br>");
+  
+  }
+  
+  document.write('<hr>');
+  //Méthode 3 (ES6) recommandé
+  
+  for(day of days){
+  
+    document.write(day+"<br>");
+  
+  }
+  
+  document.write('<hr>');
+  
+  
+  
+  var user = {
+    
+	name: "Olivier",
+	age: 28
+  
+  }
+  
+
+  for(id in user){
+  
+    document.write(user[id]+"<br>");
+  
+  }
+  
+    document.write('<hr>');
+	
+	// faire moyenne de note
+	
+	var sum = 0;
+	var moy;
+	var notes = [18,2,15,13,17];
+	
+	for(note of notes){
+	
+		sum = sum + note;
+	
+	}
+	
+	moy = sum / notes.length;
+	
+	// valeur arrondie: 
+	moy  = moy.fixedTo(1);  // 1 chiffre ap^rès la virgule 
+	document.write("la moyenne de la classe est égale à "+ moy);
+	// https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Number/toFixed
+	
+	
+	
+	// BOUCLE WHILE pour forcer la saisie
+	var number = 0;
+	while(number < 10){
+	
+		number = parseInt("Veuillez rentrer un nombre inférieur à 10");
+	
+	}
+	
+	var age;
+	
+	while(isNaN(age)){
+	
+		age = parseInt("Quel est votre âge?");
+	
+	}
+	
+	
+	
+	
+	// faire questionnaire
+	
+	// améliorer le chifoumi avec la boucle do while
+
+</script>

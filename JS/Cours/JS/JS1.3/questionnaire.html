@@ -1,0 +1,79 @@
+<script>
+
+var score = 0;
+var playerReponse = '';
+// version DRY (Don't Repeat Yourself)
+var questions = [
+{
+question : 'Quel est le sens de la vie ?',
+reponse : [42,'aucun']
+},
+{ 
+question : 'Combien font 0 + 0?',
+reponse : 0
+} ,
+
+{
+question : 'Quel est la couleur du cheval Blanc d\'henri 4 ?',
+reponse : 'bordeau'
+}
+];
+
+
+
+// ENTRAINEMENT INDEXOF
+
+var reponse = ['42','aucun'];
+
+console.log(reponse.indexOf(42)); // affiche 0
+console.log(reponse.indexOf('dsfs')); // affiche -1 car inexistant dans le tableau
+
+// fin
+
+if(confirm('Voulez-vous jouer ?')) {
+
+	for( var id in questions ) {
+
+
+		while(playerReponse == '') {
+
+			var playerReponse = prompt(questions[id].question).toLowerCase();
+
+		}
+
+		var reponse = questions[id].reponse;
+		console.log(typeof reponse);
+		if(typeof reponse != 'object') { 
+		
+			if(reponse == playerReponse) goodResponse = true; 
+			else goodResponse = false; 
+		
+		}
+		// en savoir plus sur typeOf >>> https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Op%C3%A9rateurs/L_op%C3%A9rateur_typeof
+
+		//if(reponse == questions[id].reponse) {
+		console.log(reponse.indexOf(playerReponse));
+		
+		if(parseInt(reponse.indexOf(playerReponse)) >= 0) {   // dont pas egale à -1
+
+			score++;
+			console.log('Score :'+score);
+		
+		}
+
+		playerReponse = '';
+
+	}
+
+	document.write('Votre score est : '+score+' / '+ questions.length);
+}
+else{
+
+	document.write('Pfffff !');
+
+}
+
+
+
+
+</script>
