@@ -1,0 +1,161 @@
+<script>
+
+var menu = [{ category : "Animaux" ,
+				 items : ["Garde d'animaux", "Promenade d'animaux","Soin d'animaux"]
+			},
+			{ category : "Automobile et 2 roues" ,
+		         items : ["Carrosserie et peinture auto", "Covoiturage","Dépannage et diagnostic auto","Mécanicien et garagiste"]
+			},
+			{ category : "Informatique et web" ,
+			     items : ["Dépannage et réparation informatique", "Montage photo et vidéo", "Webmastering"]	      
+			}];
+
+
+//CORRIGE menu à 2 niveaux			
+			
+document.write('<ul>');
+for(section of menu)
+{
+	var items = section.items;
+	//On affiche la catégorie:
+	document.write('<li><strong>'+section.category+' ('+items.length+')</strong></li><ul>');
+	// on liste les services de la catégories concernée:
+	
+	for(item of items){
+		
+		document.write('<li>'+item+'</li>');
+
+	}
+	document.write('</ul>');
+
+}
+document.write('</ul>');
+		
+
+/* code html final:
+
+<ul>
+	<li>Animaux (3)</li>
+	<li>
+		<ul>
+			<li>Garde d'animaux</li>
+			<li>Promenade d'animaux</li>
+			<li>Soin d'animaux</li>
+		</ul>
+	</li>
+	<li><trong>Automobile et 2 roues (4)</strong></li>
+	<li>
+		<ul>
+			<li>Carrosserie et peinture auto</li>
+			<li>Covoiturage</li>
+			<li>Dépannage et diagnostic auto</li>
+			<li>Mécanicien et garagiste</li>
+		</ul>
+	</li>
+	<li><strong>Informatique et web (3)</strong></li>
+	<li>
+		<ul>
+			<li>Dépannage et réparation informatique</li>
+			<li>Montage photo et vidéo</li>
+			<li>Webmastering</li>
+		</ul>
+	</li>
+</ul>
+
+
+*/
+	
+			
+// CORRIGE menu à 3 niveaux
+document.write('<hr>');
+var menu = [{ category : "Animaux" ,
+				 items : ["Garde d'animaux", "Promenade d'animaux","Soin d'animaux"]
+			},
+			{ category : "Automobile et 2 roues" ,
+		         items : ["Carrosserie et peinture auto", "Covoiturage","Dépannage et diagnostic auto","Mécanicien et garagiste"]
+			},
+			{ category : "Informatique et web" ,
+			     items : ["Dépannage et réparation informatique", 
+					      "Montage photo et vidéo", 
+					      { category : "Webmastering" ,
+						    items : ["Intégrateur web", "Développement web","Référencement","Infographisme"]
+					      }]
+			}];
+
+document.write('<ul>');
+for(section of menu)
+{
+	var items = section.items;
+	//On affiche la catégorie:
+	document.write('<li><strong>'+section.category+' ('+items.length+')</strong></li><ul>');
+	// on liste les services de la catégories concernée:
+	
+	for(item of section.items){
+		
+		if(typeof item == "string"){
+			document.write('<li>'+item+'</li>');
+		}
+		else
+		{
+			var items = item.items;
+			document.write('<li><strong>'+item.category+' ('+items.length+')</strong></li><ul>');
+			for(item of items){
+			
+				document.write('<li>'+item+'</li>');
+			
+			}
+			document.write('</ul>');
+			
+		}
+	
+	}
+	document.write('</ul>');
+
+}
+document.write('</ul>');
+
+
+/* code html final:
+
+<ul>
+	<li>Animaux (3)</li>
+	<li>
+		<ul>
+			<li>Garde d'animaux</li>
+			<li>Promenade d'animaux</li>
+			<li>Soin d'animaux</li>
+		</ul>
+	</li>
+	<li><trong>Automobile et 2 roues (4)</strong></li>
+	<li>
+		<ul>
+			<li>Carrosserie et peinture auto</li>
+			<li>Covoiturage</li>
+			<li>Dépannage et diagnostic auto</li>
+			<li>Mécanicien et garagiste</li>
+		</ul>
+	</li>
+	<li><strong>Informatique et web (3)</strong></li>
+	<li>
+		<ul>
+			<li>Dépannage et réparation informatique</li>
+			<li>Montage photo et vidéo</li>
+			<li>
+				<ul>
+					<li>Intégrateur web</li>
+					<li>Développement web</li>
+					<li>Référencement</li>
+					<li>Infographisme</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+</ul>
+
+
+*/
+
+
+
+
+</script>

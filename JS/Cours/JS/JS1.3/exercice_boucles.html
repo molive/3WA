@@ -67,24 +67,28 @@
 	
 	for(note of notes){
 	
-		sum = sum + note;
+		sum+= note;
+		//sum = sum + note;
 	
 	}
+	// ou:
+	sum2 = eval(notes.join('+'));
+	//alert(sum2);
 	
 	moy = sum / notes.length;
 	
 	// valeur arrondie: 
-	moy  = moy.fixedTo(1);  // 1 chiffre ap^rès la virgule 
+	moy  = moy.toFixed(1);  // 1 chiffre ap^rès la virgule 
 	document.write("la moyenne de la classe est égale à "+ moy);
 	// https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Number/toFixed
 	
 	
 	
 	// BOUCLE WHILE pour forcer la saisie
-	var number = 0;
-	while(number < 10){
+	var number;
+	while(number > 10 || number == undefined){
 	
-		number = parseInt("Veuillez rentrer un nombre inférieur à 10");
+		number = parseInt(prompt("Veuillez rentrer un nombre inférieur à 10"));
 	
 	}
 	
@@ -92,7 +96,7 @@
 	
 	while(isNaN(age)){
 	
-		age = parseInt("Quel est votre âge?");
+		age = parseInt(prompt("Quel est votre âge?"));
 	
 	}
 	
@@ -100,8 +104,8 @@
 	
 	
 	// faire questionnaire
-	
-	// améliorer le chifoumi avec la boucle do while  pour vérifier que l'user rentre bien pierre feuille ou ciseau 
+	// améliorer le chifoumi:
+	//Demander s'il veut jouer (confirm) +	avec la boucle do while  pour vérifier que l'user rentre bien pierre feuille ou ciseau 
 	
 	
 
