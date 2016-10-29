@@ -1,6 +1,8 @@
-// PARTIE 1:
-"use strict";  // utilisation du mode strict (https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Strict_mode)
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
+
+<script>
+"use strict";
 var menu = [{ category : "Animaux" ,
 				 items : ["Garde d'animaux", "Promenade d'animaux","Soin d'animaux"]
 			},
@@ -12,7 +14,29 @@ var menu = [{ category : "Animaux" ,
 			}];
 
 
-/* Générez à partir de la variable menu le code html ci-dessous:
+//CORRIGE menu à 2 niveaux			
+			
+document.write('<ul>');
+for(let section of menu)
+{
+	let items = section.items;
+	//On affiche la catégorie:
+	document.write('<li><strong>'+section.category+' ('+items.length+')</strong></li><ul>');
+	// on liste les services de la catégories concernée:
+	
+	for(let item of items){
+		
+		document.write('<li>'+item+'</li>');
+
+	}
+	document.write('</ul>');
+
+}
+document.write('</ul>');
+		
+
+
+/* code html final:
 
 <ul>
 	<li>Animaux (3)</li>
@@ -44,13 +68,11 @@ var menu = [{ category : "Animaux" ,
 
 
 */
-
-
-
-
-// PARTIE 2:
-
-menu = [{ category : "Animaux" ,
+	
+			
+// CORRIGE menu à 3 niveaux
+document.write('<hr>');
+var menu = [{ category : "Animaux" ,
 				 items : ["Garde d'animaux", "Promenade d'animaux","Soin d'animaux"]
 			},
 			{ category : "Automobile et 2 roues" ,
@@ -64,9 +86,40 @@ menu = [{ category : "Animaux" ,
 					      }]
 			}];
 
+document.write('<ul>');
+for(let section of menu)
+{
+	var items = section.items;
+	//On affiche la catégorie:
+	document.write('<li><strong>'+section.category+' ('+items.length+')</strong></li><ul>');
+	// on liste les services de la catégories concernée:
+	
+	for(let item of section.items){
+		console.log(typeof item);
+		if(typeof item == "string"){
+			document.write('<li>'+item+'</li>');
+		}
+		else
+		{
+			var items = item.items;
+			document.write('<li><strong>'+item.category+' ('+items.length+')</strong></li><ul>');
+			for(let item of items){
+			
+				document.write('<li>'+item+'</li>');
+			
+			}
+			document.write('</ul>');
+			
+		}
+	
+	}
+	document.write('</ul>');
+
+}
+document.write('</ul>');
 
 
-/* Générez à partir de la variable menu le code html ci-dessous:
+/* code html final:
 
 <ul>
 	<li>Animaux (3)</li>
@@ -106,3 +159,7 @@ menu = [{ category : "Animaux" ,
 
 */
 
+
+
+
+</script>
