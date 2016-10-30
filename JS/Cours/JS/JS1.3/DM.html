@@ -1,5 +1,24 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
+<style>
+
+ul li strong + ul {
+
+	display: none;
+
+}
+
+ul li strong {
+
+	cursor: pointer;
+
+}
+
+
+</style>
+
+
+
 PARTIE 1
 <ul>
 	<li>
@@ -65,7 +84,7 @@ PARTIE 2
 </ul>
 <hr>
 
-
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script>
 "use strict";
 var menu = [{ category : "Animaux" ,
@@ -227,21 +246,38 @@ document.write('</ul>');
 
 // VERSION AVEC FONCTION
 
-var menu = [{ category : "Animaux" ,
-				 items : ["Garde d'animaux", "Promenade d'animaux","Soin d'animaux"]
-			},
-			{ category : "Automobile et 2 roues" ,
-		         items : ["Carrosserie et peinture auto", "Covoiturage","Dépannage et diagnostic auto","Mécanicien et garagiste"]
-			},
-			{ category : "Informatique et web" ,
-			     items : ["Dépannage et réparation informatique", 
-					      "Montage photo et vidéo", 
-					      { category : "Webmastering" ,
-						    items : ["Intégrateur web", "Développement web","Référencement", { category : "test" ,
-						    items : ["Intégrateur web1", "Développement web1","Référencement1","Infographisme1"]
-					      }]
-					      }]
-			}];
+// http://jsbeautifier.org/
+
+var menu = [{
+    category: "Animaux",
+    items: ["Garde d'animaux", "Promenade d'animaux", "Soin d'animaux"]
+}, {
+    category: "Automobile et 2 roues",
+    items: ["Carrosserie et peinture auto", "Covoiturage", "Dépannage et diagnostic auto", "Mécanicien et garagiste"]
+}, {
+    category: "Informatique et web",
+    items: ["Dépannage et réparation informatique",
+        "Montage photo et vidéo", {
+            category: "Webmastering",
+            items: ["Intégrateur web",
+                "Développement web", "Référencement", {
+                    category: "test",
+                    items: ["Intégrateur web1",
+                        "Développement web1",
+                        "Référencement1", {
+                            category: "test",
+                            items: ["Intégrateur web1",
+                                "Développement web1",
+                                "Référencement1",
+                                "Infographisme1"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}];
 
 
 
@@ -281,5 +317,12 @@ for(let section of menu)
 html += "</ul>";
 
 document.write(html);
+
+
+$('ul li strong').click(function(){
+
+	$(this).next().toggle();
+
+});
 
 </script>
