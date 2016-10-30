@@ -319,10 +319,39 @@ html += "</ul>";
 document.write(html);
 
 
+/* jQuery
 $('ul li strong').click(function(){
 
 	$(this).next().toggle();
 
 });
+*/
+
+// EN JS PUR:
+
+var categories = document.querySelectorAll("ul li strong");
+
+
+for(let category of categories){
+
+	category.addEventListener('click', function(){
+	
+		let list = this.nextSibling;
+		
+		
+		if (list.style.display == 'block') {
+			list.style.display = 'none';
+		}
+		else {
+			list.style.display = 'block';
+		}
+	
+	});
+
+}
+
+
+
+
 
 </script>

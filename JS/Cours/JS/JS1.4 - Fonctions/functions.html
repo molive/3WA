@@ -1,0 +1,67 @@
+<script>
+
+
+
+
+
+function sayHello(){
+
+	document.write('<h1>Hello World</h1>');
+
+}
+
+document.write(sayHello());
+
+
+// attention éviter de donner à votre focntion le même qu'un variable existante et reciproquement:
+var sayHello= "Coucou";
+
+document.write(sayHello());  // lévera cette erreur : helloWorld is not a function
+
+
+// une fonction peut s'appeler elle même (nous verrons wue c'est très utile sur l'extension du tp sur le menu à plusieurs niveaux)
+
+// Pour communiquer avec l'extérieur une fonction peut aussi avoir des arguments (ou paramètres) en entrée...
+function sayHello(firstName, lastName)
+{
+    document.write('<p>Bonjour ' + firstName + ' ' + lastName + ' !</p>');
+}
+
+
+// Appel de la fonction en indiquant autant de paramètres que la fonction possède.
+sayHello('Marie', 'MAYERS');
+
+// Nouvel appel de la fonction.
+sayHello('Ailton', 'CHRISTIAN');
+
+
+
+// Une fonction peut aussi renvoyer une valeur en sortie.
+function sayHello()
+{
+    return 'Bonjour à toutes et à tous !';
+}
+
+
+
+// (...)
+
+// Déclaration d'une variable.
+var message;
+
+// Appel de la fonction et récupération de la valeur renvoyée dans une variable intermédiaire.
+message = sayHello();
+document.write('<h1>' + message + '</h1>');
+
+// Nouvel appel de la fonction.
+message = sayHello();
+document.write('<h4>' + message + '</h4>');
+
+
+function addition(value1,value2){
+
+	return value1 + value2;
+
+}
+
+</script>
