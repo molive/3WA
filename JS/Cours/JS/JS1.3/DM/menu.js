@@ -15,16 +15,16 @@ var menu = [{ category : "Animaux" ,
 /* Générez à partir de la variable menu le code html ci-dessous:
 
 <ul>
-	<li>Animaux (3)</li>
 	<li>
+		<strong>Animaux (3)</strong>
 		<ul>
 			<li>Garde d'animaux</li>
 			<li>Promenade d'animaux</li>
 			<li>Soin d'animaux</li>
 		</ul>
 	</li>
-	<li><trong>Automobile et 2 roues (4)</strong></li>
 	<li>
+		<strong>Automobile et 2 roues (4)</strong>
 		<ul>
 			<li>Carrosserie et peinture auto</li>
 			<li>Covoiturage</li>
@@ -32,8 +32,7 @@ var menu = [{ category : "Animaux" ,
 			<li>Mécanicien et garagiste</li>
 		</ul>
 	</li>
-	<li><strong>Informatique et web (3)</strong></li>
-	<li>
+	<li><strong>Informatique et web (3)</strong>
 		<ul>
 			<li>Dépannage et réparation informatique</li>
 			<li>Montage photo et vidéo</li>
@@ -69,16 +68,16 @@ menu = [{ category : "Animaux" ,
 /* Générez à partir de la variable menu le code html ci-dessous:
 
 <ul>
-	<li>Animaux (3)</li>
 	<li>
+		<strong>Animaux (3)</strong>
 		<ul>
 			<li>Garde d'animaux</li>
 			<li>Promenade d'animaux</li>
 			<li>Soin d'animaux</li>
 		</ul>
 	</li>
-	<li><trong>Automobile et 2 roues (4)</strong></li>
 	<li>
+		<strong>Automobile et 2 roues (4)</strong>
 		<ul>
 			<li>Carrosserie et peinture auto</li>
 			<li>Covoiturage</li>
@@ -86,18 +85,18 @@ menu = [{ category : "Animaux" ,
 			<li>Mécanicien et garagiste</li>
 		</ul>
 	</li>
-	<li><strong>Informatique et web (3)</strong></li>
 	<li>
+		<strong>Informatique et web (3)</strong>
 		<ul>
 			<li>Dépannage et réparation informatique</li>
 			<li>Montage photo et vidéo</li>
-			<li>
+			<li><strong>Webmastering (4)</strong>
 				<ul>
 					<li>Intégrateur web</li>
 					<li>Développement web</li>
 					<li>Référencement</li>
 					<li>Infographisme</li>
-				</ul>
+				</ul>	
 			</li>
 		</ul>
 	</li>
@@ -105,4 +104,5 @@ menu = [{ category : "Animaux" ,
 
 
 */
+
 

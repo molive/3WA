@@ -1,5 +1,70 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
+PARTIE 1
+<ul>
+	<li>
+		<strong>Animaux (3)</strong>
+		<ul>
+			<li>Garde d'animaux</li>
+			<li>Promenade d'animaux</li>
+			<li>Soin d'animaux</li>
+		</ul>
+	</li>
+	<li>
+		<strong>Automobile et 2 roues (4)</strong>
+		<ul>
+			<li>Carrosserie et peinture auto</li>
+			<li>Covoiturage</li>
+			<li>Dépannage et diagnostic auto</li>
+			<li>Mécanicien et garagiste</li>
+		</ul>
+	</li>
+	<li><strong>Informatique et web (3)</strong>
+		<ul>
+			<li>Dépannage et réparation informatique</li>
+			<li>Montage photo et vidéo</li>
+			<li>Webmastering</li>
+		</ul>
+	</li>
+</ul>
+
+PARTIE 2
+<ul>
+	<li>
+		<strong>Animaux (3)</strong>
+		<ul>
+			<li>Garde d'animaux</li>
+			<li>Promenade d'animaux</li>
+			<li>Soin d'animaux</li>
+		</ul>
+	</li>
+	<li>
+		<strong>Automobile et 2 roues (4)</strong>
+		<ul>
+			<li>Carrosserie et peinture auto</li>
+			<li>Covoiturage</li>
+			<li>Dépannage et diagnostic auto</li>
+			<li>Mécanicien et garagiste</li>
+		</ul>
+	</li>
+	<li>
+		<strong>Informatique et web (3)</strong>
+		<ul>
+			<li>Dépannage et réparation informatique</li>
+			<li>Montage photo et vidéo</li>
+			<li><strong>Webmastering (4)</strong>
+				<ul>
+					<li>Intégrateur web</li>
+					<li>Développement web</li>
+					<li>Référencement</li>
+					<li>Infographisme</li>
+				</ul>	
+			</li>
+		</ul>
+	</li>
+</ul>
+<hr>
+
 
 <script>
 "use strict";
@@ -21,7 +86,7 @@ for(let section of menu)
 {
 	let items = section.items;
 	//On affiche la catégorie:
-	document.write('<li><strong>'+section.category+' ('+items.length+')</strong></li><ul>');
+	document.write('<li><strong>'+section.category+' ('+items.length+')</strong><ul>');
 	// on liste les services de la catégories concernée:
 	
 	for(let item of items){
@@ -29,7 +94,7 @@ for(let section of menu)
 		document.write('<li>'+item+'</li>');
 
 	}
-	document.write('</ul>');
+	document.write('</ul></li>');
 
 }
 document.write('</ul>');
@@ -89,9 +154,9 @@ var menu = [{ category : "Animaux" ,
 document.write('<ul>');
 for(let section of menu)
 {
-	var items = section.items;
+	let items = section.items;
 	//On affiche la catégorie:
-	document.write('<li><strong>'+section.category+' ('+items.length+')</strong></li><ul>');
+	document.write('<li><strong>'+section.category+' ('+items.length+')</strong><ul>');
 	// on liste les services de la catégories concernée:
 	
 	for(let item of section.items){
@@ -101,19 +166,19 @@ for(let section of menu)
 		}
 		else
 		{
-			var items = item.items;
-			document.write('<li><strong>'+item.category+' ('+items.length+')</strong></li><ul>');
+			let items = item.items;
+			document.write('<li><strong>'+item.category+' ('+items.length+')</strong><ul>');
 			for(let item of items){
 			
 				document.write('<li>'+item+'</li>');
 			
 			}
-			document.write('</ul>');
+			document.write('</ul></li>');
 			
 		}
 	
 	}
-	document.write('</ul>');
+	document.write('</ul></li>');
 
 }
 document.write('</ul>');
@@ -144,6 +209,7 @@ document.write('</ul>');
 		<ul>
 			<li>Dépannage et réparation informatique</li>
 			<li>Montage photo et vidéo</li>
+			<li><strong>Webmastering (4)</strong></li>
 			<li>
 				<ul>
 					<li>Intégrateur web</li>
@@ -159,7 +225,61 @@ document.write('</ul>');
 
 */
 
+// VERSION AVEC FONCTION
+
+var menu = [{ category : "Animaux" ,
+				 items : ["Garde d'animaux", "Promenade d'animaux","Soin d'animaux"]
+			},
+			{ category : "Automobile et 2 roues" ,
+		         items : ["Carrosserie et peinture auto", "Covoiturage","Dépannage et diagnostic auto","Mécanicien et garagiste"]
+			},
+			{ category : "Informatique et web" ,
+			     items : ["Dépannage et réparation informatique", 
+					      "Montage photo et vidéo", 
+					      { category : "Webmastering" ,
+						    items : ["Intégrateur web", "Développement web","Référencement", { category : "test" ,
+						    items : ["Intégrateur web1", "Développement web1","Référencement1","Infographisme1"]
+					      }]
+					      }]
+			}];
 
 
+
+
+var html = "<hr><ul>";
+
+function render(item){
+	
+	if(typeof item == "string"){
+	
+		html += '<li>'+item+'</li>';
+	
+	}
+	else
+	{
+		html += '<li><strong>'+item.category+' ('+item.items.length+')</strong><ul>';
+		let items = item.items;
+		for(let item of items){
+		
+			render(item);
+		
+		}
+		html += '</ul></li>';
+	}
+	return;
+	// Pas besoin de return car le but de la fonction est uniquement de modifier la variable globale html
+	
+}
+
+for(let section of menu)
+{
+
+	render(section);
+
+}
+
+html += "</ul>";
+
+document.write(html);
 
 </script>
