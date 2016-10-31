@@ -1,43 +1,52 @@
 <script>
 
-
-
-
-
 function sayHello(){
 
 	document.write('<h1>Hello World</h1>');
 
 }
 
-document.write(sayHello());
+sayHello();
 
 
 // attention éviter de donner à votre focntion le même qu'un variable existante et reciproquement:
-var sayHello= "Coucou";
+var sayHello= "Coucou";  // enf aiasant ça on supprime la fonction défi,i si dessus poru la transformeer en chaine de texte
 
-document.write(sayHello());  // lévera cette erreur : helloWorld is not a function
+//document.write(sayHello());  // lévera cette erreur : helloWorld is not a function
+
+
+// Exemple montrant qu'une fonctio npeut être associée à une variable (en lui assignant une closure (fonction anonyme))
+
+var maFonction = function(){
+
+	document.write('coucou');
+
+}
+
+maFonction();  //afiche coucou
+//maFonction; // erreur
+
 
 
 // une fonction peut s'appeler elle même (nous verrons wue c'est très utile sur l'extension du tp sur le menu à plusieurs niveaux)
 
 // Pour communiquer avec l'extérieur une fonction peut aussi avoir des arguments (ou paramètres) en entrée...
-function sayHello(firstName, lastName)
+function sayHelloTo(firstName, lastName)
 {
     document.write('<p>Bonjour ' + firstName + ' ' + lastName + ' !</p>');
 }
 
 
 // Appel de la fonction en indiquant autant de paramètres que la fonction possède.
-sayHello('Marie', 'MAYERS');
+sayHelloTo('Marie', 'MAYERS');
 
 // Nouvel appel de la fonction.
-sayHello('Ailton', 'CHRISTIAN');
+sayHelloTo('Ailton', 'CHRISTIAN');
 
 
 
 // Une fonction peut aussi renvoyer une valeur en sortie.
-function sayHello()
+function sayHelloToAll()
 {
     return 'Bonjour à toutes et à tous !';
 }
@@ -50,11 +59,11 @@ function sayHello()
 var message;
 
 // Appel de la fonction et récupération de la valeur renvoyée dans une variable intermédiaire.
-message = sayHello();
+message = sayHelloToAll();
 document.write('<h1>' + message + '</h1>');
 
 // Nouvel appel de la fonction.
-message = sayHello();
+message = sayHelloToAll();
 document.write('<h4>' + message + '</h4>');
 
 
@@ -63,5 +72,129 @@ function addition(value1,value2){
 	return value1 + value2;
 
 }
+
+
+// Portée des variables dans les fonctions
+
+
+var globale = "Je suis une variable globale!";
+
+function maSuperFonction(){
+
+	alert(globale); // affiche le contenu de la variable globale
+
+}
+
+maSuperFonction()  // affiche "Je suis une variable globale!"
+
+function maSuperFonction2(){
+
+	globale = "Coucou"; // redéfini le contenu de la variable globale
+
+}
+
+alert(globale); // affiche "Je suis une variable globale!"
+maSuperFonction2();  
+alert(globale); // affiche "Coucou"
+
+
+function maSuperFonction3(){
+
+	var locale;  // on défini une varibale locale avec le mot clé var qui sera uniquement disponible au sein de la fonction
+	locale = "Au revoir"; // redéfini le contenu de la variable globale
+
+}
+
+//alert(locale);  // affiche error 'locale' is undefined
+
+// Utilisation de setTimeout et setInterval (qui sont en fait des méthodes de l'object global window
+
+// exécute une function au bout de 5s
+setTimeout(function(){
+
+	alert('5 secondes se sont écoulées!');
+
+},5000);   // 5000 ms = 5s
+
+
+/* autre façon de faire */
+
+
+
+
+
+var seconds = 0;
+
+
+
+// exécute une function toutes les 1s
+//setInterval(increaseSeconds,1000);   // 1000 ms = 1s
+
+// On va plutôt mettre setinterval dans une variable pour pouvoir l'interompre à tout moment
+/*
+var timer = setInterval(function () {
+
+	seconds++;
+	console.log(seconds);
+},1000);   // 1000 ms = 1s
+
+
+
+// ou setInterval(increaseSeconds,1000);  
+
+function increaseSeconds(){
+
+	seconds++;
+	console.log(seconds);
+}
+
+// Interrompre
+// Au bout de 10s on stop le timer
+setTimeout(function(){
+
+	clearInterval(timer);
+
+},10000); 
+
+// On relance le timer après 15s
+setTimeout(function(){
+
+	timer; 
+
+},15000); 
+*/
+
+// systeme play pause
+
+var timer;
+
+function start () {
+
+	timer = setInterval(function () {
+
+	seconds++;
+	console.log(seconds);
+	},1000);   // 1000 ms = 1s
+}
+
+start();
+
+
+// On stop le timer après 5s
+setTimeout(function(){
+
+	clearInterval(timer);
+
+},5000); 
+
+// On relance le timer après 10s
+setTimeout(function(){
+
+	start();
+
+},10000); 
+
+
+
 
 </script>

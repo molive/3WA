@@ -1,0 +1,54 @@
+<script>
+
+// console.log() // log est une méthode de l'objet console
+//document.write()  // write est une méthode de l'objet document
+
+// les fonctions d'objet globaux
+
+// Cas de la "focntion" alert, prompt qui sont enf ait des méthode de l'objetct natif Window
+
+//window.alert('Hello');  // https://developer.mozilla.org/fr/docs/Web/API/Window + https://developer.mozilla.org/fr/DOM/window.alert
+// alert('Hello')
+
+// parseInt , parseFloat sont en fait des méthodes de l'objet Number
+
+Number.parseInt("1") ; 
+
+
+//Créer ses propres méthodes
+
+var user = {
+
+	firstName : "Olivier",
+	lastName : "Martin",
+	competences: ['HTML','CSS','JS','PHP','MYSQL'],
+	age : 28,
+	fullName : function(){
+	
+		return this.firstName+' '+this.lastName;
+	
+	},
+	isAdult: function(){
+	
+		if(this.age >= 18) return true;
+		else return false;
+	
+	},
+	hasCompetence: function(competence){
+	
+		competence = competence.toUpperCase();
+		let check = this.competences.indexOf(competence);
+		if(check != -1) return true;
+		else return false;
+	
+	}
+
+}
+
+console.log(user.fullName());  // renvoie Olivier Martin
+console.log(user.isAdult());  // renvoie true
+console.log(user.hasCompetence('js'));  // renvoie true
+
+//Finir sur la POO
+
+</script>

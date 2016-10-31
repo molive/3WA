@@ -1,0 +1,43 @@
+
+
+.frame {
+
+	border-radius: 100px;
+	border: 4px #000 solid;
+	position:relative;
+	width:200px;
+	height:200px;
+
+}
+
+.needle {
+
+	position: absolute;
+	z-index: 1;
+	bottom: 50%;
+	left: 50%;
+	width: 4px;
+	margin-left: - 2px;
+    transform: rotate(0deg);
+	background: #000;
+	transform-origin: 2px bottom;
+	
+}
+
+.hour {
+
+	height: 65px;
+
+}
+
+.minute {
+
+	height: 85px;
+
+}
+
+.second{
+
+	height: 95px;
+
+}

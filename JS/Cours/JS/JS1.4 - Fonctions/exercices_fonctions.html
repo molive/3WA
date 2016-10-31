@@ -1,0 +1,117 @@
+<script>// EXERCICE 1 )
+/*
+1) Faire un jeu où l'utilisater renseigne un nombre entre 0 et 50. Si ce nombre est proche de la solution, c'est à dire inférieur à 10 ou supérieur à 10 du bon nombre alors on affiche "Vous êtes proche du résultat !"
+sinon on affiche vous êtes loin du résultat dans les 2 cas avec la fonction alert.
+
+2) A chaque tentative on incrémente un compteur de tentatives qu'on affiche une fois que le visiteur à trouver le bon nombre.
+
+Exemple :
+Le nombre à trouver est égale à 37. 
+Si on tape 30 alors une boite de dialogue "Vous êtes proche du résultat !" doit s'afficher car 30 est compris entre 27 et 47
+
+Compléter le code ci-dessous :
+*/
+
+var goodValue = 37;  // Valeur que l'utilisateur doit  trouver
+var compteur = 0; 
+
+do {
+
+var userValue = prompt("Veuiller indiquer un nombre entre 0 et 50");  // contient un nombre
+  
+// mettre les instruction à répéter si la condition en ligne 692 est vrai (true)
+// NOTA : rappelez-vous que ces instructions s'exécuterons au moins une fois en raison du mot clef "do" en ligne 685
+  
+} while(/* mettre condition */);
+
+
+// EXERCICE sur les fonctions )
+
+/*
+1) Créer une  fonction prenant un paramètre (value) permettant de convertir des francs en euros arrondie à 2 décimale (rappel 1€ = 6.56 fr)
+2) Vérifier que la valeur du paramètre transmi est bien une valeur numrique (exemple 5.68 ou encore 6)
+*/
+
+function francToEuro (value){   // le paramètre value est la valeur a convertir en € 
+  /* coder une condition vérifiant que value est un entier ou un décimal 
+  vous aurez besoin de l'orpérateur typeof qui renvera le type de la variable
+  
+  exemple : 
+  var test = 5;
+  console.log(typeof test); affichera "number" dans la console
+  */
+  
+  /*  coder le script permettant de convertir le paramètre "value" en €   */
+  return result;  // result est la valeur passé en paramètre convertie en €
+  
+}
+
+console.log(francToEuro(100)) ; // affiche 15.24 car 100 fr =  100 / 6.56 = 15.24€
+console.log(francToEuro('fsfsf')) ; // affiche error car le paramètre de la fonction francToEuro doit être uen valeur numérique
+/*
+2)  Améliorer cette fonction pour permettre de convertir une valeur en € en fr et inverssement avec une fonction prenant 3 paramètres : */
+
+function converter(value,deviseInput,deviseOutput){  
+/* le paramètre value est la somme a convertir  , 
+   le paramètre "deviseInput" est la devise de la somme à convertir (valeur possible : € ou fr)
+   le paramètre "deviseOuput" est la devise dans laquel la somme (value) devra être convertie (valeur possible : € ou fr)
+   */
+  
+  return result;
+  /*
+  NOTA : la méthode ".toFixed(2)" permet d'arrondir par exemple un décimal à 2 chiffres après la virgule (le paramètre sert à définir le nombre de chiffre à arrondir après la virgule)
+  exemple :
+  var number = 3.14159:
+  number = number.toFixed(2);  // number vaut maintenant 3.14
+  */
+}
+
+console.log(converter(100,'€','fr')); // affiche 15.24 car 100 fr =  100 / 6.56 = 15.24€ 
+console.log(converter(15,'fr','€')); // affiche 98 car 15 € =  15 * 6.56 = 98 fr
+
+// Exercice facultatif : intégrer une 3ème devises possible : le dollar ($) où 1€ = 1.09$ 
+/*
+
+3) créer une fonction appelée "rand" qui permet de générer un entier aléatoir dont la valeur maximal sera défini par un paramètre appelé "max" 
+*/
+
+function rand(max) {
+  
+  
+}
+
+console.log(rand(100)); // retournera un entier compris entre 0 et 100
+
+
+/* 4) améliorer la fonction ci-dessus de sorte qu'on puisse définir une valeur min et maxi
+vérifier dans cette fonction que le paramètre "min" est bien inférieur au paramètre "max"
+*/
+
+function rand(min,max) {
+  
+  
+}
+
+console.log(rand(10,100)); // retournera un entier compris entre 10 et 100
+console.log(rand(100,10)); // retournera "error" car le paramètre min (100) est supérieur au paramètre max (10)
+
+
+/* 
+5) Créer une fonction qui calcule une moyenne à partir d'un tableau (array) de notes qu'on lui passe en paramètre.
+La valeur de sorti doit être arrondie à 1 chiffre après la virgule
+Evidemment la fonction doit pouvoir calculer la moyenne quelques soit le nombre de notes contenu dans le tableau "notes" ;)
+*/
+
+var notes = [15, 20,16, 18, 7];
+
+function moy(data) {
+  
+  return ...
+}
+
+console.log(moy(notes)); // affichera 15.2  car 15.2 = (15 + 20 + 16 + 18 + 7) / 5
+
+ /* 
+  6)  Crére une fonctio nqui génère une image aléatoire
+  
+  </script>

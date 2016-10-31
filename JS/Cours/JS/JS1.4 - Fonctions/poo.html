@@ -1,0 +1,105 @@
+<script>
+
+/* Objets_globaux (natif) */
+// >>> https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/
+
+// Array
+
+var myTab = [];
+// en faisant celà on fait en fait une instance de la class Array 
+// var myTab = new Array();
+
+// https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array
+
+
+// C'est ainsi qu'on peut utiliser les méthodes push(), indexOf() ainsi que la propriété length
+
+// Object
+var myObject = {};
+// en faisant celà on fait en fait une instance de la class Object
+// var myObject = new Object();
+// >>> https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object
+
+
+
+// Créer notre propre classe User
+/*
+class User {
+
+	this.firstName = "Olivier";
+	this.lastName = "Martin";
+	
+	function fullName(){
+	
+		return this.firstName+' '+this.lastName;
+	
+	}
+
+}
+*/
+
+// Utilisation de la class Date
+
+// Date d'aujourd'hui
+var today = new Date();  // par défaut renvoi la date d'aujourd'hui
+
+// Passer uen date en paramètre
+var birthday = new Date('21-09-1988');
+
+alert(birthday.getYear());  // affiche 88
+alert(birthday.getFullYear());  // affiche 1988
+
+
+// Créer nos propres classes instanciables
+
+// Création classe User
+function User(firstName,lastName,birthday) {
+
+	this.firstName = firstName;
+	this.lastName = lastName;
+	this.bithday = new Date(birthday);	
+	this.competences = [];  // this.competences = new Array(); 
+	this.fullName = function(){
+	
+		return this.firstName+' '+this.lastName;
+	
+	},
+	this.getAge = function(){
+	
+		let today = new Date();
+		let diff =  today.getTime() - this.bithday.getTime();
+		return  diff.getFullYear() - 1970;  // 1970 car getTime renvoi le nimbre de secondes écoulées depuis le 01-01-1970
+		//return today.getFullYear() - this.birthday.getFullYear();  // Ceci est faut car admettons que nosu somme le 01/2/2017 et que l'utilsiateur est né le 01/09/1987 son age serait = à 30ans (2017 - 1987 = 30) alors que son age éel est de 29ans (ceci aurait été vrtai si nosu étions le 31/10/2017 par exemple ;))
+	},
+	this.isAdult = function(){
+	
+		if(this.getAge() >= 18) return true;
+		else return false;
+	
+	},
+	this.hasCompetence = function(competence){
+	
+		competence = competence.toUpperCase();
+		let check = this.competences.indexOf(competence);
+		if(check != -1) return true;
+		else return false;
+	
+	}
+  
+}
+
+
+var user1 = new User('Martin','Olivier','21-09-1988');
+
+user1.competences.push('HTML');
+user1.competences.push('CSS');
+//etc.
+// ou plus rapide:
+//user1.competences = ['HTML','CSS','JS','PHP','MYSQL'];
+
+document.write('Nom complet: '+user1.fullName()+'<br>');
+
+document.write('Age: '+user1.getAge()+'<br>');
+
+
+</script>

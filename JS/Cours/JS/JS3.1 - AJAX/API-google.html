@@ -1,0 +1,18 @@
+<script>
+  function httpGet(theUrl)
+  {
+    var xmlHttp = null;
+    xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false );
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
+  }
+  
+  var url = httpGet("https://maps.googleapis.com/maps/api/geocode/json?address=Lyon%20France");
+  
+  
+  var url = JSON.parse(url);
+  alert(url["results"][0]["address_components"][0]['long_name']);  // Affiche Lyon
+
+
+</script>
