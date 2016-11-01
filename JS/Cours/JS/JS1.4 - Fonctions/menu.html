@@ -14,6 +14,7 @@ ul li strong {
 
 }
 
+.unfold {display: none;}
 
 </style>
 
@@ -71,7 +72,7 @@ function render(item){
 	}
 	else
 	{
-		html += '<li><strong>'+item.category+' ('+item.items.length+')</strong><ul>';
+		html += '<li><strong>'+item.category+' ('+item.items.length+') [<span class="fold">+</span><span class="unfold">-</span>]</strong><ul>';
 		let items = item.items;
 		for(let item of items){
 		
@@ -85,6 +86,31 @@ function render(item){
 	
 }
 
+function render2(item,index,path){
+	path += "['"+index+"']";
+	if(typeof item != "object"){
+		
+		html += '<li><strong>'+index+'</strong>: <span title="'+path+'">'+item+'</span></li>';
+	
+	}
+	else
+	{
+		html += '<li><strong>'+index+' [<span class="fold">+</span><span class="unfold">-</span>]</strong><ul>';
+		
+		for(let id in item){
+		
+			render2(item[id],id,path);
+		
+		}
+		html += '</ul></li>';
+	}
+	return;
+	// Pas besoin de return car le but de la fonction est uniquement de modifier la variable globale html
+	
+}
+
+
+
 for(let section of menu)
 {
 
@@ -97,16 +123,153 @@ html += "</ul>";
 document.write(html);
 
 
-/* jQuery
+html = "<hr><ul>";
+for(let id in menu)
+{
+
+	render2(menu[id],id,'menu');
+
+}
+html += "</ul><hr>";
+document.write(html);
+
+
+
+var data = {
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "Paris",
+               "short_name" : "Paris",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Paris",
+               "short_name" : "Paris",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Île-de-France",
+               "short_name" : "Île-de-France",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "France",
+               "short_name" : "FR",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Paris, France",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 48.9021449,
+                  "lng" : 2.4699209
+               },
+               "southwest" : {
+                  "lat" : 48.815573,
+                  "lng" : 2.225193
+               }
+            },
+            "location" : {
+               "lat" : 48.856614,
+               "lng" : 2.3522219
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 48.9021449,
+                  "lng" : 2.4699209
+               },
+               "southwest" : {
+                  "lat" : 48.815573,
+                  "lng" : 2.225193
+               }
+            }
+         },
+         "place_id" : "ChIJD7fiBh9u5kcRYJSMaMOCCwQ",
+         "types" : [ "locality", "political" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Paris",
+               "short_name" : "Paris",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Comté de Lamar",
+               "short_name" : "Comté de Lamar",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Texas",
+               "short_name" : "TX",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "États-Unis",
+               "short_name" : "US",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Paris, Texas, États-Unis",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 33.7383781,
+                  "lng" : -95.435455
+               },
+               "southwest" : {
+                  "lat" : 33.6118529,
+                  "lng" : -95.627928
+               }
+            },
+            "location" : {
+               "lat" : 33.6609389,
+               "lng" : -95.55551299999999
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 33.7383781,
+                  "lng" : -95.435455
+               },
+               "southwest" : {
+                  "lat" : 33.6118529,
+                  "lng" : -95.627928
+               }
+            }
+         },
+         "place_id" : "ChIJmysnFgZYSoYRSfPTL2YJuck",
+         "types" : [ "locality", "political" ]
+      }
+   ],
+   "status" : "OK"
+}
+
+
+html = "<hr><ul>";
+for(let id in data)
+{
+
+	render2(data[id],id,'data');
+
+}
+html += "</ul><hr>";
+document.write(html);
+
+// jQuery
 $('ul li strong').click(function(){
 
 	$(this).next().toggle();
-
+	$(this).find('.fold,.unfold').toggle();
 });
-*/
+
 
 // EN JS PUR:
-
+/*
 var categories = document.querySelectorAll("ul li strong");
 
 
@@ -127,7 +290,7 @@ for(let category of categories){
 	});
 
 }
-
+*/
 
 
 
