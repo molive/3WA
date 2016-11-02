@@ -1,83 +1,3 @@
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<style>
- 
-.reverse {
-
-        -moz-transform: scaleX(-1);
-        -o-transform: scaleX(-1);
-        -webkit-transform: scaleX(-1);
-        transform: scaleX(-1);
-        filter: FlipH;
-        -ms-filter: "FlipH";
-		
-}
-
-#choices {
-
-	margin-top: 15px;
-
-}
-
-#choices img {
-
-	height : 100px;
-	cursor : pointer;
-
-}
-
-#scores {
-
-	float:right;
-
-
-}
-
-body{
-
-	padding:15px;
-
-}
-
-#message {
-
-	margin-top: 15px;
-
-}
- </style>
- 
- <h1>Chifoumi Deluxe:</h1>
- <div id="scores">
- 
-	<div class="alert alert-success">Victoires: <span id="victories">0</span></div>
-	<div class="alert alert-danger">Défaites: <span id="looses">0</span></div>
- 	<div class="alert alert-info">Egalités <span id="equalities">0</span></div>
-	
- </div>
-
- <img id="player" src="http://conception.website/3wa/images/pierre.png">
- <img class="reverse" id="computer" src="http://conception.website/3wa/images/pierre.png">
- 
- <div id="choices">
- 
-	 <img id="pierre" src="http://conception.website/3wa/images/pierre.png">
-	 <img id="feuille" src="http://conception.website/3wa/images/feuille.png">
-	 <img id="ciseaux" src="http://conception.website/3wa/images/ciseaux.png">
- 
- </div>
- <div id="message"></div>
- <h2>Historique des parties:</h2>
- <div id="historic">
- 
- 
- </div>
- 
- 
- 
-
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="utilities.js"></script>
-<script>
-
 'use strict';   // Mode strict du JavaScript
 
 
@@ -242,8 +162,6 @@ function updateHistoric(){
 	
 }
 
-
-
 $choices.click(function(){
 
 	// On met à jour le choix du joueur
@@ -267,42 +185,3 @@ $choices.click(function(){
 	updateHistoric()
 
 });
-
-
-// Récupération du choix du joueur.
-
-
-
-
-
-
-// On vérifie que la réponse est correcte:
-/*
-do {
-
-	player = window.prompt('Que choisissez-vous : pierre, feuille ou ciseau ?');
-
-}
-while(choices.indexOf(player) == -1)
-
-console.log(choices.indexOf(player));
-
-
-// Conversion du choix du joueur en minuscules.
-player = player.toLowerCase();
-
-
-
-// On affiche la réponse du joueur en image
-document.write('<img src="'+images[player]+'">');
-*/
-
-
-
-
-
-
-
-
-
-</script>

@@ -21,6 +21,11 @@ var myObject = {};
 // >>> https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Object
 
 
+var myString = "Je suis une chaine de caractère!";  // Chaine de caractère primitive
+
+// https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String
+console.log(myString.toLowerCase());  // On applique la méthode toLowerCase sur l'objet myString qui est de type string
+console.log(myString.length);  // On récupère la propriété length de l'objet myString qui est de type string et qui renvoit le nombre de caractères
 
 // Créer notre propre classe User
 /*
@@ -65,12 +70,12 @@ function User(firstName,lastName,birthday) {
 	
 	},
 	this.getAge = function(){
-	
+	/*
 		let today = new Date();
 		let diff =  today.getTime() - this.bithday.getTime();
 		return  diff.getFullYear() - 1970;  // 1970 car getTime renvoi le nimbre de secondes écoulées depuis le 01-01-1970
 		//return today.getFullYear() - this.birthday.getFullYear();  // Ceci est faut car admettons que nosu somme le 01/2/2017 et que l'utilsiateur est né le 01/09/1987 son age serait = à 30ans (2017 - 1987 = 30) alors que son age éel est de 29ans (ceci aurait été vrtai si nosu étions le 31/10/2017 par exemple ;))
-	},
+*/	},
 	this.isAdult = function(){
 	
 		if(this.getAge() >= 18) return true;
@@ -87,7 +92,6 @@ function User(firstName,lastName,birthday) {
 	}
   
 }
-
 
 var user1 = new User('Martin','Olivier','21-09-1988');
 
