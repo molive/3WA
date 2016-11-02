@@ -1,0 +1,48 @@
+.current {
+border: 5px red solid !important;
+}
+
+
+.thumbs {
+float :left;
+width : 350px;
+
+}
+.viewer {
+	position:relative;
+	float : left;
+	margin-top:10px;
+	margin-left:5px;
+}
+
+.thumbs img {
+margin : 5px;border: 5px white solid;
+}
+
+#infos {
+padding:10px;
+position: absolute;
+bottom : 0px;
+width : 100%;
+display:inline-block;  
+background-color: rgba(255, 255, 255, 0.5);
+}
+
+#container {
+display :none;
+line-height: 800px;  /* Cette valeur doit être égale à la hauteur de la fenêtre du navigateur */
+width : 100%; height : 100%;
+position : fixed ;
+top : 0px; left : 0px;
+background-color: rgba(0, 0, 0, 0.5);
+text-align:center;
+z-index : 1;
+}
+
+#container img{
+vertical-align: middle;
+max-width : 90%;
+max-height : 90%;
+
+}
+
