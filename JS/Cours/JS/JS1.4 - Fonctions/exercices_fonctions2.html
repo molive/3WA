@@ -49,7 +49,48 @@ function rand(min, max){
 	
 }
 
+
+
+
 console.log(rand(5,10));
+
+/*** POPUP ***/
+
+	// https://developer.mozilla.org/fr/docs/Web/API/Window/open
+
+	// window.open("http://www.google.fr","Google",'top=500, left=500, width=500, height=400');  // déclenche l'ouverture d'une popup de 500 * 400px avec le site de google
+	
+    function popup(page,name = "Untitle",width = 700,height = 300) {
+	
+       window.open(page,name,'top=500, left=500, width='+width+', height='+height+'');
+	   
+    }
+	
+	popup("http://www.google.fr");
+	
+
+// Calcule moyenne
+
+
+
+function moyenne(values){  // values est un tableau contenant des valeur numériques
+	
+	var sum = 0;  
+	for(value of values) 
+	{
+	
+		sum += value;
+		// sum = sum + value;
+	
+	}
+	
+	return sum / values.length;
+
+}
+
+
+console.log(moyenne([15,4,5,7]));
+	
 
 // Basculer sur le menu dynamique pour générer uen infinité de niveau grace à une focntion qui s'auto-appelle
 

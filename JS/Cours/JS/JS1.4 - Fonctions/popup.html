@@ -1,0 +1,15 @@
+<SCRIPT>
+	// https://developer.mozilla.org/fr/docs/Web/API/Window/open
+
+	// window.open("http://www.google.fr","Google",'top=500, left=500, width=500, height=400');  // déclenche l'ouverture d'une popup de 500 * 400px avec le site de google
+	
+    function popup(page,name = "Untitle",width = 700,height = 300) {
+	
+       window.open(page,name,'top=500, left=500, width='+width+', height='+height+'');
+	   
+    }
+	
+	popup("http://www.google.fr");
+	
+	
+</SCRIPT>
