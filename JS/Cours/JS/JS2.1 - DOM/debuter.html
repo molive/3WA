@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+	<style>
+	
+	.category { font-size: 1.4em; text-decoration: underline;}
+	
+	.awfull {
+	
+		border: #ff0000 6px solid !important;
+	
+	}
+	
+	.container {
+	
+		border: #000 1px solid;
+		padding: 10px;
+	
+	}
+	
+	</style>
+    <title>Manipulation le HTML avec Javascript</title>
+</head>
+<body>
+  
+	 <h1>Manipulation du HTML et gestion des évênements avec Javascript</h1>
+	 <ul>
+		<li id="searchEngine"><span class="category">Moteurs de recherche: </span>
+			<ul>
+				<li><a alt="Le plus célèbre des moteurs de recherche!" href="http://www.google.com">Google</a></li>
+				<li><a alt="Un peu moins connu que google mais tout aussi efficace." href="http://www.bing.com">Bing</a></li>
+			</ul>
+		</li>
+		<li id="tutorial"><span class="category">Tutoriels: </span>
+			<ul>
+				<li><a alt="Anciennement le Site du Zéro, Open Class Room propose de nombreux tutoriels en ligne pour apprendre la programmation mais pas que!" href="http://www.codecademy.com">OpenClassRoom</a></li>
+				<li><a alt="Pleins de tutoriels vidéo pour  apprendre à coder." href="http://www.grafikart.fr">Grafikart</a></li>
+			</ul>
+		</li>
+		<li id="medias"><span class="category">Informations: </span>
+			<ul>
+				<li><a  alt="Site parodique du Figaro." href="http://www.gorafi.com">Le Gorafi</a></li>
+				<li><a alt="Site du journal Le Monde" href="http://www.lemonde.fr">Le Monde</a></li>
+				<li><a alt="Site du journal Les Echos" href="http://www.lemonde.fr">Les Echos</a></li>
+				<li><a alt="Site d'information indépendant" href="http://www.presscitron.net">Press Citron</a></li>
+			</ul>
+		</li>
+	 </ul>
+
+	 <div alt="Infos relatives aux liens" class="container" id="infos">
+		Informations sur le site:
+		<span><!-- Les infos contenues dans les attributs "alt" de chaque lien apparaitrons ici -->
+		
+		<i>(Survoler un lien pour en afficher les infos)</i>
+		
+		</span>
+	 
+	 </div>
+	 
+	 <script>
+		// 1) Manipulation d'un seul élément HTML identifiable par son id:
+		
+		// On selectionne l'élément html où doit s'afficher les infos de chaque lien
+		
+		var infos = document.getElementById('infos');  //Prend en paramètre la valeur de l'attribut id de l'élément html que l'on souhaite capturer
+		
+		// Autres manières de faire moins recommandées:
+		// var infos = document.getElementByClassName('container');
+		// var infos = document.querySelector('.container');		
+		// var infos = document.querySelector('div');	
+		// NOTA: la methode querySelector prend en paramtre un selecteur css
+		// la variable info contient un objet HTML
+		
+		// Sur cet objet html il est possible d'effectuer des opérations comme:
+		
+		// Le supprimer:
+		
+		//infos.remove();  // Supprimer de la page cet élément html (ceci est irréversible)
+		
+		// Le masquer en modifiant sa propriété css "display" par none :
+		
+		infos.style.display = "none";
+		
+		// Ou le faire réapparaitre:
+		
+		infos.style.display = "block";
+		
+		
+		
+		// Mais ce n'est pas tout, on peut aussi remplacer son contenu html:
+		
+		infos.innerHTML = "Nouveau contenu!";   // on supprimer le contenu html existant dans la balise (<div id="infos">{{ Contenu remplacé }}</div>)
+	 
+		
+		// Ou en afficher le contenu:
+		
+		alert(infos.innerHTML);
+	 
+	 
+		// Je peux également lui affecter dynamiquement une nouvelle classe:
+		
+		//infos.className += " awfull";
+		
+		infos.classList.add('awfull');
+		
+		// Ou la supprimer si elle ne me plait pas
+		
+		//infos.className = "";  // /!\ supprimera aussi la class "container"
+		
+		// Pour ne supprimer que la class "awfull" il faut utiliser la methode remove:
+		
+		//infos.className += infos.className.replace('awfull',''); 
+		
+		infos.classList.remove('awfull');
+		
+		
+		// Il est également possible de rajouter ou modifier dynamiquement des attribiuts:
+		
+		// är exemple nous allons rajouter un titre qui n'existait pas avant:
+		
+		infos.setAttribute('title','Hello World!');  // Survoler l'élement html ailant pour id infos pour voir apparaitre "Hello World"
+		
+		// la méthode setAttribute prend 2 paramètres: le premier est le nom de l'attribut, le second est la valeur qu'on souhaite lui affecter
+		
+		// On peu bioen évidement récupérer la valeur d'un attribut en particulier avec la méthode getAttribute:
+		
+		var alt = infos.getAttribute('alt'); 
+		// getAttribute ne prend qu'un paramètre: le nom de l'attribut qu'on souhaite récupérer
+		
+		alert(alt) // affichera Infos relatives aux liens
+		
+		
+		// Nous allons maintenant créer notre première collection d'objet HTML:
+		
+		
+		var links = document.querySelectorAll('a');  // On capture tous les urls présents sur la page donc tous les éléments ailant une balise <a></a>
+		// La varibale links est un tableau contenant 8 éléments
+		var categories = document.querySelectorAll('.category'); // On capture tous les éléments html aillant une classe "category"
+		
+	
+		console.log(links.length);  // 8
+		console.log(categories.length);  // 3
+		console.log(links);  // On va bone que nos 8 liens sont présents
+		
+		
+		// Pour traiter un élément HTML en particulier il suffit de le cibler par son index
+		
+		var google = links[0];  // car le lien de google est en première position sur la page et donc correspond à l'index 0
+		var bing = links[1];  // car le lien de bing est en deuxième position sur la page et donc correspond à l'index 10px
+		// Etc...
+	
+	
+		
+		
+	 
+	 </script>
+	
+</body>
+</html>
