@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="styles.css">
+    <title>Moteur de recherche</title>
+</head>
+<body>
+  
+	<h1>Moteur de recherche</h1>
+	
+	<input style="display:block;margin-bottom:15px;" placeholder="Rechercher un service" class="form-control" id="searchCategory" type="text" />
+	
+	<div style="font-size: 2em;overflow-y:auto;max-height:500px;width:100%;" id="chooseCategory">
+	<ul>
+	   <li>
+		  <span data-value="6" class="parent">Administration et gestion</span>
+		  <ul>
+			 <li data-value="8" class="selectable"  data-category="6">Assistance administrative et écrivain public</li>
+			 <li data-value="10" class="selectable"  data-category="6">Comptabilité</li>
+			 <li data-value="14" class="selectable"  data-category="6">Conciergerie</li>
+			 <li data-value="15" class="selectable"  data-category="6">Conseil aux entreprises / dirigeants</li>
+			 <li data-value="18" class="selectable"  data-category="6">Conseil fiscal et impôts</li>
+			 <li data-value="17" class="selectable"  data-category="6">Conseil juridique</li>
+			 <li data-value="11" class="selectable"  data-category="6">Courtier en assurance</li>
+			 <li data-value="16" class="selectable"  data-category="6">Courtier en crédit</li>
+			 <li data-value="12" class="selectable"  data-category="6">Ressources humaines</li>
+			 <li data-value="13" class="selectable"  data-category="6">Secrétariat</li>
+		  </ul>
+	   </li>
+	   <li>
+		  <span data-value="19" class="parent">Animaux</span>
+		  <ul>
+			 <li data-value="21" class="selectable"  data-category="19">Garde d&#39;animaux</li>
+			 <li data-value="20" class="selectable"  data-category="19">Promenade d&#39;animaux</li>
+			 <li data-value="22" class="selectable"  data-category="19">Soin d&#39;animaux</li>
+			 <li data-value="23" class="selectable"  data-category="19">Toilettage</li>
+		  </ul>
+	   </li>
+	   <li>
+		  <span data-value="24" class="parent">Automobile et 2 roues</span>
+		  <ul>
+			 <li data-value="26" class="selectable"  data-category="24">Carrosserie et peinture auto</li>
+			 <li data-value="25" class="selectable"  data-category="24">Chasseur de voiture</li>
+			 <li data-value="31" class="selectable"  data-category="24">Covoiturage</li>
+			 <li data-value="28" class="selectable"  data-category="24">Dépannage et diagnostic auto</li>
+			 <li data-value="30" class="selectable"  data-category="24">Lavage et entretien auto</li>
+			 <li data-value="27" class="selectable"  data-category="24">Mécanicien et garagiste</li>
+			 <li data-value="29" class="selectable"  data-category="24">Réparation de vélo</li>
+		  </ul>
+	   </li>
+	   <li>
+		  <span data-value="32" class="parent">Beauté, santé et bien-être</span>
+		  <ul>
+			 <li data-value="33" class="selectable"  data-category="32">Coaching et développement personnel</li>
+			 <li data-value="34" class="selectable"  data-category="32">Coiffure (coupe, lissage, couleur, extension)</li>
+			 <li data-value="38" class="selectable"  data-category="32">Epilation</li>
+			 <li data-value="44" class="selectable"  data-category="32">Guérisseur et magnétiseur</li>
+			 <li data-value="43" class="selectable"  data-category="32">Infirmier(e) et aide-soignant(e)</li>
+			 <li data-value="41" class="selectable"  data-category="32">Kinésithérapeute et ostéopathe</li>
+			 <li data-value="39" class="selectable"  data-category="32">Maquillage</li>
+			 <li data-value="36" class="selectable"  data-category="32">Massage</li>
+			 <li data-value="37" class="selectable"  data-category="32">Pose de faux cils et extension</li>
+			 <li data-value="35" class="selectable"  data-category="32">Pose et soin des ongles, manucure et pédicure </li>
+			 <li data-value="45" class="selectable"  data-category="32">Rebouteux et conjureur de feu</li>
+			 <li data-value="42" class="selectable"  data-category="32">Sophrologie</li>
+			 <li data-value="40" class="selectable"  data-category="32">Tatouage</li>
+		  </ul>
+	   </li>
+	   <li>
+		  <span data-value="46" class="parent">Culture et loisirs</span>
+		  <ul>
+			 <li data-value="55" class="selectable"  data-category="46">Accordage d&#39;instruments</li>
+			 <li data-value="164" class="selectable"  data-category="46">Association</li>
+			 <li data-value="52" class="selectable"  data-category="46">Cameraman et photographe</li>
+			 <li data-value="59" class="selectable"  data-category="46">Carrelage et pose de parquet</li>
+			 <li data-value="50" class="selectable"  data-category="46">Compositeur et beatmaker</li>
+			 <li data-value="53" class="selectable"  data-category="46">Cours de musique et de chant</li>
+			 <li data-value="51" class="selectable"  data-category="46">Cours divers</li>
+			 <li data-value="47" class="selectable"  data-category="46">Dessin, peinture, portraitiste et illustrateur</li>
+			 <li data-value="54" class="selectable"  data-category="46">DJ</li>
+			 <li data-value="49" class="selectable"  data-category="46">Ecriture</li>
+			 <li data-value="48" class="selectable"  data-category="46">Lecture</li>
+			 <li data-value="60" class="selectable"  data-category="46">Pose et agencement de cuisine</li>
+		  </ul>
+	   </li>
+	   <li>
+		  <span data-value="7" class="parent">Déménagement</span>
+		  <ul>
+			 <li data-value="84" class="selectable"  data-category="7">Déménagement</li>
+			 <li data-value="86" class="selectable"  data-category="7">Montage / démontage de meubles</li>
+			 <li data-value="85" class="selectable"  data-category="7">Transport de meubles et d&#39;objets</li>
+		  </ul>
+	   </li>
+	   <li>
+		  <span data-value="2" class="parent">Enfance</span>
+		  <ul>
+			 <li data-value="103" class="selectable"  data-category="2">Animation pour enfant</li>
+			 <li data-value="104" class="selectable"  data-category="2">Assistance maternelle</li>
+			 <li data-value="3" class="selectable"  data-category="2">Babysitting, garde d&#39;enfants, nounou et sortie d&#39;école</li>
+		  </ul>
+	   </li>
+	   <li>
+		  <span data-value="87" class="parent">Entretien de la maison</span>
+		  <ul>
+			 <li data-value="5" class="selectable"  data-category="87">Bricolage</li>
+			 <li data-value="88" class="selectable"  data-category="87">Gardiennage</li>
+			 <li data-value="4" class="selectable"  data-category="87">Jardinage</li>
+			 <li data-value="89" class="selectable"  data-category="87">Lavage de vitres</li>
+			 <li data-value="90" class="selectable"  data-category="87">Ménage</li>
+			 <li data-value="92" class="selectable"  data-category="87">Ramonage</li>
+			 <li data-value="91" class="selectable"  data-category="87">Repassage</li>
+		  </ul>
+	   </li>
+	   <li>
+		  <span data-value="157" class="parent">Ésotérisme </span>
+		  <ul>
+			 <li data-value="158" class="selectable"  data-category="157">Voyant(e) et medium </li>
+		  </ul>
+	   </li>
+	   <li>
+		  <span data-value="123" class="parent">Événementiel et arts du spectacle </span>
+		  <ul>
+			 <li data-value="124" class="selectable"  data-category="123">Acteur et comédien</li>
+			 <li data-value="125" class="selectable"  data-category="123">Agent de sécurité</li>
+			 <li data-value="126" class="selectable"  data-category="123">Animateur de soirée</li>
+			 <li data-value="129" class="selectable"  data-category="123">Chanteur, musicien et groupe de musique</li>
+			 <li data-value="130" class="selectable"  data-category="123">Ingénieur du son</li>
+			 <li data-value="131" class="selectable"  data-category="123">Location de salle</li>
+			 <li data-value="132" class="selectable"  data-category="123">Régisseur</li>
+			 <li data-value="133" class="selectable"  data-category="123">Street marketing</li>
+			 <li data-value="128" class="selectable"  data-category="123">Traiteur</li>
+			 <li data-value="127" class="selectable"  data-category="123">Wedding planner</li>
+		  </ul>
+	   </li>
+	   <li>
+		  <span data-value="134" class="parent">Hébergement et immobilier</span>
+		  <ul>
+			 <li data-value="136" class="selectable"  data-category="134">Chasseur d&#39;appartement</li>
+			 <li data-value="138" class="selectable"  data-category="134">Colocation</li>
+			 <li data-value="163" class="selectable"  data-category="134">Garde meuble</li>
+			 <li data-value="137" class="selectable"  data-category="134">Location d&#39;appartement et maison</li>
+			 <li data-value="139" class="selectable"  data-category="134">Location de bureaux et espaces de coworking</li>
+			 <li data-value="135" class="selectable"  data-category="134">Location de chambre</li>
+			 <li data-value="140" class="selectable"  data-category="134">Location de parking</li>
+			 <li data-value="141" class="selectable"  data-category="134">Location de vacances</li>
+		  </ul>
+	   </li>
+	   <li>
+		  <span data-value="143" class="parent">Hôtellerie et restauration</span>
+		  <ul>
+			 <li data-value="144" class="selectable"  data-category="143">Barman et serveur/se</li>
+			 <li data-value="145" class="selectable"  data-category="143">Cuisine (hôtellerie et restauration)</li>
+			 <li data-value="146" class="selectable"  data-category="143">Femme de chambre et gouvernante</li>
+			 <li data-value="142" class="selectable"  data-category="143">Location de cave et d&#39;entrepôt</li>
+			 <li data-value="147" class="selectable"  data-category="143">Maître d&#39;hôtel et réceptionniste</li>
+			 <li data-value="148" class="selectable"  data-category="143">Sommelier</li>
+		  </ul>
+	   </li>
+	   <li>
+		  <span data-value="149" class="parent">Industrie</span>
+		  <ul>
+			 <li data-value="150" class="selectable"  data-category="149">Dessinateur industriel</li>
+			 <li data-value="151" class="selectable"  data-category="149">Ingénieur</li>
+			 <li data-value="152" class="selectable"  data-category="149">Manutentionnaire</li>
+			 <li data-value="153" class="selectable"  data-category="149">Nettoyage industriel</li>
+			 <li data-value="154" class="selectable"  data-category="149">Opérateur en industrie</li>
+			 <li data-value="156" class="selectable"  data-category="149">Ouvrier du bâtiment</li>
+			 <li data-value="155" class="selectable"  data-category="149">Technicien d&#39;industrie</li>
+		  </ul>
+	   </li>
+	   <li>
+		  <span data-value="76" class="parent">Informatique et web</span>
+		  <ul>
+			 <li data-value="78" class="selectable"  data-category="76">Dépannage et réparation informatique</li>
+			 <li data-value="77" class="selectable"  data-category="76">Formation et cours d&#39;informatique</li>
+			 <li data-value="81" class="selectable"  data-category="76">Graphisme et création de logo</li>
+			 <li data-value="79" class="selectable"  data-category="76">Montage photo et vidéo</li>
+			 <li data-value="82" class="selectable"  data-category="76">Réparation d&#39;ordinateur, smartphone et console</li>
+			 <li data-value="83" class="selectable"  data-category="76">Web marketing et communication</li>
+			 <li data-value="80" class="selectable"  data-category="76">Webdesign, création et développement de site web</li>
+		  </ul>
+	   </li>
+	   <li>
+		  <span data-value="111" class="parent">Langues</span>
+		  <ul>
+			 <li data-value="112" class="selectable"  data-category="111">Cours de langue</li>
+			 <li data-value="113" class="selectable"  data-category="111">Cours de langue rare</li>
+			 <li data-value="114" class="selectable"  data-category="111">Traduction</li>
+		  </ul>
+	   </li>
+	   <li>
+		  <span data-value="115" class="parent">Locations</span>
+		  <ul>
+			 <li data-value="120" class="selectable"  data-category="115">Location d’œuvre d&#39;art</li>
+			 <li data-value="116" class="selectable"  data-category="115">Location d&#39;électroménager</li>
+			 <li data-value="119" class="selectable"  data-category="115">Location d&#39;outils</li>
+			 <li data-value="117" class="selectable"  data-category="115">Location de meuble</li>
+			 <li data-value="122" class="selectable"  data-category="115">Location de sono, éclairages et platines</li>
+			 <li data-value="118" class="selectable"  data-category="115">Location de vêtement</li>
+			 <li data-value="121" class="selectable"  data-category="115">Location de voiture</li>
+		  </ul>
+	   </li>
+	   <li>
+		  <span data-value="159" class="parent">Rencontres</span>
+		  <ul>
+			 <li data-value="161" class="selectable"  data-category="159">Coaching amoureux</li>
+			 <li data-value="162" class="selectable"  data-category="159">Discussion, sortie et amitié</li>
+			 <li data-value="160" class="selectable"  data-category="159">Rencontre amoureuse</li>
+		  </ul>
+	   </li>
+	   <li>
+		  <span data-value="93" class="parent">Services à la personne</span>
+		  <ul>
+			 <li data-value="95" class="selectable"  data-category="93">Aide aux personnes âgées</li>
+			 <li data-value="101" class="selectable"  data-category="93">Aide aux personnes en situation de handicap</li>
+			 <li data-value="94" class="selectable"  data-category="93">Auxiliaire de vie</li>
+			 <li data-value="100" class="selectable"  data-category="93">Cuisine à domicile</li>
+			 <li data-value="96" class="selectable"  data-category="93">Famille d&#39;accueil</li>
+			 <li data-value="99" class="selectable"  data-category="93">Livraison de courses</li>
+			 <li data-value="98" class="selectable"  data-category="93">Livraison de repas</li>
+			 <li data-value="97" class="selectable"  data-category="93">Transport de personne</li>
+			 <li data-value="102" class="selectable"  data-category="93">Transport de personne en situation de handicap</li>
+		  </ul>
+	   </li>
+	   <li>
+		  <span data-value="108" class="parent">Soutien scolaire</span>
+		  <ul>
+			 <li data-value="109" class="selectable"  data-category="108">Aide aux devoirs</li>
+			 <li data-value="110" class="selectable"  data-category="108">Soutien scolaire</li>
+		  </ul>
+	   </li>
+	   <li>
+		  <span data-value="105" class="parent">Sport et danse</span>
+		  <ul>
+			 <li data-value="106" class="selectable"  data-category="105">Coaching sportif, cours et fitness</li>
+			 <li data-value="107" class="selectable"  data-category="105">Cours de danse</li>
+		  </ul>
+	   </li>
+	   <li>
+		  <span data-value="1" class="parent">Travaux / Gros travaux</span>
+		  <ul>
+			 <li data-value="56" class="selectable"  data-category="1">Architecture</li>
+			 <li data-value="57" class="selectable"  data-category="1">Architecture d&#39;intérieur</li>
+			 <li data-value="75" class="selectable"  data-category="1">Couture et reprisage </li>
+			 <li data-value="62" class="selectable"  data-category="1">Débroussaillage et démaquisage</li>
+			 <li data-value="9" class="selectable"  data-category="1">Décoration et agencement</li>
+			 <li data-value="64" class="selectable"  data-category="1">Électricien </li>
+			 <li data-value="70" class="selectable"  data-category="1">Fabrication de meubles</li>
+			 <li data-value="73" class="selectable"  data-category="1">Installation</li>
+			 <li data-value="71" class="selectable"  data-category="1">Luthier</li>
+			 <li data-value="65" class="selectable"  data-category="1">Maçon</li>
+			 <li data-value="67" class="selectable"  data-category="1">Menuisier</li>
+			 <li data-value="72" class="selectable"  data-category="1">Nettoyage après travaux</li>
+			 <li data-value="58" class="selectable"  data-category="1">Paysagiste</li>
+			 <li data-value="68" class="selectable"  data-category="1">Peintre</li>
+			 <li data-value="66" class="selectable"  data-category="1">Plaquiste</li>
+			 <li data-value="63" class="selectable"  data-category="1">Plomberie</li>
+			 <li data-value="74" class="selectable"  data-category="1">Rénovation</li>
+			 <li data-value="69" class="selectable"  data-category="1">Serrurier et métallier</li>
+			 <li data-value="61" class="selectable"  data-category="1">Terrassement</li>
+		  </ul>
+	   </li>
+	</ul>
+
+		
+	</div>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="search.js"></script>
+</body>	
+	
+</html>
+

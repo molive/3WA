@@ -62,12 +62,16 @@ function gotoNextSlide() {
 
 	var $nextImage = $activeImage.next();
 	
+	console.log($images.index($nextImage));
+	
+	
 	if(onProcess == false){
 		
 		onProcess = true;
 		$activeImage.fadeOut();
 		
 		if($nextImage.length != 1) {
+		// if($images.index($nextImage) != -1)
 		
 			console.log($images.first().length);
 			$activeImage = $images.first();
@@ -75,7 +79,7 @@ function gotoNextSlide() {
 		}
 		else
 		{
-			console.log(5);
+		
 			$activeImage = $nextImage;
 		
 		}

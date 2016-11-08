@@ -1,0 +1,153 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<style>
+
+ul li strong + ul {
+
+	display: none;
+
+}
+
+ul li strong {
+
+	cursor: pointer;
+
+}
+
+
+.unfold {
+
+	display:none;
+
+}
+
+</style>
+
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+"use strict";
+
+// VERSION AVEC FONCTION
+
+// http://jsbeautifier.org/
+
+var menu = [{
+    category: "Animaux",
+    items: ["Garde d'animaux", "Promenade d'animaux", "Soin d'animaux"]
+}, {
+    category: "Automobile et 2 roues",
+    items: ["Carrosserie et peinture auto", "Covoiturage", "Dépannage et diagnostic auto", "Mécanicien et garagiste"]
+}, {
+    category: "Informatique et web",
+    items: ["Dépannage et réparation informatique",
+        "Montage photo et vidéo", {
+            category: "Webmastering",
+            items: ["Intégrateur web",
+                "Développement web", "Référencement", {
+                    category: "test",
+                    items: ["Intégrateur web1",
+                        "Développement web1",
+                        "Référencement1", {
+                            category: "test",
+                            items: ["Intégrateur web1",
+                                "Développement web1",
+                                "Référencement1",
+                                "Infographisme1"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}];
+
+
+
+
+var html = "<hr><ul>";
+
+function render(item){
+	
+	if(typeof item == "string"){
+	
+		html += '<li>'+item+'</li>';
+	
+	}
+	else
+	{
+		html += '<li><strong>'+item.category+' ('+item.items.length+')[ <span class="fold">+</span><span class="unfold">-</span>]</strong><ul>';
+		let items = item.items;
+		for(let item of items){
+		
+			render(item);
+		
+		}
+		html += '</ul></li>';
+	}
+	return;
+	// Pas besoin de return car le but de la fonction est uniquement de modifier la variable globale html
+	
+}
+
+for(let section of menu)
+{
+
+	render(section);
+
+}
+
+html += "</ul>";
+
+document.write(html);
+
+
+// jQuery
+$('ul li strong').click(function(){
+	
+	let $status = $(this).find('span');
+	//$(this).next().slideToggle();  // effet de slide
+	$(this).next().toggle();
+	
+	$(this).find('.unfold,.fold').toggle();
+	/* Syntaxe longue:
+	
+	$(this).find('.unfold').toggle();
+	$(this).find('.fold').toggle();
+	
+	*/
+	
+
+
+});
+
+
+// EN JS PUR:
+/*
+var categories = document.querySelectorAll("ul li strong");
+
+
+for(let category of categories){
+
+	category.addEventListener('click', function(){
+	
+		let list = this.nextSibling;
+		
+		
+		if (list.style.display == 'block') {
+			list.style.display = 'none';
+		}
+		else {
+			list.style.display = 'block';
+		}
+	
+	});
+
+}
+*/
+
+
+
+
+</script>
