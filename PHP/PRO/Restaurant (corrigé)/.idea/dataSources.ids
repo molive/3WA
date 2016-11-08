@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - restaurant@localhost" uuid="94414962-3115-4528-a3a9-4a3f8e2100be">
+    <database-info product="MySQL" version="5.5.46-0ubuntu0.14.04.2" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <schema name="" catalog="restaurant"/>
+    <table name="Booking" schema="" catalog="restaurant" type="TABLE">
+      <column name="Id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="User_Id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="BookingDate" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="BookingTime" sqlType="TIME" precision="8" scale="0" nullable="false" jdbcType="92"/>
+      <column name="NumberOfSeats" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="CreationTimestamp" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="Id"/>
+      <foreign-key name="Booking_ibfk_1" columns="User_Id" ref-table="User" ref-schema="" ref-catalog="restaurant" ref-columns="Id" update-rule="0" delete-rule="0" deferrability="2"/>
+    </table>
+    <table name="Meal" schema="" catalog="restaurant" type="TABLE">
+      <column name="Id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Name" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Description" sqlType="VARCHAR" precision="250" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Photo" sqlType="VARCHAR" precision="30" scale="0" nullable="false" jdbcType="12"/>
+      <column name="QuantityInStock" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="BuyPrice" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
+      <column name="SalePrice" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
+      <primary-key name="PRIMARY" columns="Id"/>
+      <exported-key name="OrderLine_ibfk_2" table="OrderLine" schema="" catalog="restaurant" columns="Meal_Id"/>
+    </table>
+    <table name="Order" schema="" catalog="restaurant" type="TABLE">
+      <column name="Id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="User_Id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="TotalAmount" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
+      <column name="TaxRate" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
+      <column name="TaxAmount" sqlType="FLOAT" precision="12" scale="0" nullable="true" jdbcType="7"/>
+      <column name="CreationTimestamp" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="CompleteTimestamp" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="Id"/>
+      <foreign-key name="Order_ibfk_1" columns="User_Id" ref-table="User" ref-schema="" ref-catalog="restaurant" ref-columns="Id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <exported-key name="OrderLine_ibfk_1" table="OrderLine" schema="" catalog="restaurant" columns="Order_Id"/>
+    </table>
+    <table name="OrderLine" schema="" catalog="restaurant" type="TABLE">
+      <column name="Id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="Order_Id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="Meal_Id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="QuantityOrdered" sqlType="TINYINT" precision="3" scale="0" nullable="false" jdbcType="-6"/>
+      <column name="PriceEach" sqlType="FLOAT" precision="12" scale="0" nullable="false" jdbcType="7"/>
+      <primary-key name="PRIMARY" columns="Id"/>
+      <foreign-key name="OrderLine_ibfk_1" columns="Order_Id" ref-table="Order" ref-schema="" ref-catalog="restaurant" ref-columns="Id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="OrderLine_ibfk_2" columns="Meal_Id" ref-table="Meal" ref-schema="" ref-catalog="restaurant" ref-columns="Id" update-rule="0" delete-rule="0" deferrability="2"/>
+    </table>
+    <table name="User" schema="" catalog="restaurant" type="TABLE">
+      <column name="Id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="FirstName" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="LastName" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Email" sqlType="VARCHAR" precision="50" scale="0" nullable="false" jdbcType="12"/>
+      <column name="Password" sqlType="VARCHAR" precision="64" scale="0" nullable="false" jdbcType="12"/>
+      <column name="BirthDate" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="Address" sqlType="VARCHAR" precision="250" scale="0" nullable="false" jdbcType="12"/>
+      <column name="City" sqlType="VARCHAR" precision="40" scale="0" nullable="false" jdbcType="12"/>
+      <column name="ZipCode" sqlType="CHAR" precision="5" scale="0" nullable="false" jdbcType="1"/>
+      <column name="Phone" sqlType="CHAR" precision="10" scale="0" nullable="false" jdbcType="1"/>
+      <column name="CreationTimestamp" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="LastLoginTimestamp" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <primary-key name="PRIMARY" columns="Id"/>
+      <exported-key name="Booking_ibfk_1" table="Booking" schema="" catalog="restaurant" columns="User_Id"/>
+      <exported-key name="Order_ibfk_1" table="Order" schema="" catalog="restaurant" columns="User_Id"/>
+      <index name="Email" unique="true" columns="Email"/>
+    </table>
+  </data-source>
+</component>

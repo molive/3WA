@@ -1,0 +1,27 @@
+<script>
+
+var user = {
+
+	name : "Olivier",
+	description: function(){
+	
+		return "Je m'appelle "+this.name;
+	
+	}
+
+}
+
+
+var user1 = Object.create(user);
+var user2 = Object.create(user);
+
+
+user1.name = "Florent";
+user2.name = "Nicolas";
+
+
+document.write(user.description());
+document.write(user1.name);
+document.write(user2.name);
+
+</script>

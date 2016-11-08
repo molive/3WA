@@ -51,8 +51,8 @@ var today = new Date();  // par défaut renvoi la date d'aujourd'hui
 // Passer uen date en paramètre
 var birthday = new Date('21-09-1988');
 
-alert(birthday.getYear());  // affiche 88
-alert(birthday.getFullYear());  // affiche 1988
+//alert(birthday.getYear());  // affiche 88
+//alert(birthday.getFullYear());  // affiche 1988
 
 
 // Créer nos propres classes instanciables
@@ -104,6 +104,21 @@ user1.competences.push('CSS');
 document.write('Nom complet: '+user1.fullName()+'<br>');
 
 document.write('Age: '+user1.getAge()+'<br>');
+
+
+function test(){
+
+	var test = function(){
+	
+		alert(5);
+	
+	}
+
+}
+
+var testing = new test();
+
+testing.test();
 
 
 </script>

@@ -1,0 +1,66 @@
+<h2><i class="fa fa-cutlery"></i> Réservation d'une table</h2>
+
+<form class="generic-form" action="<?= $requestUrl ?>/booking" method="POST">
+	<fieldset>
+		<legend>Informations</legend>
+		<ul>
+			<li>
+				<label for="bookingDay">Date de réservation :</label>
+				<select id="bookingDay" name="bookingDay">
+					<?php for($bookingDay = 1; $bookingDay <= 31; $bookingDay++): ?>
+						<option value="<?= $bookingDay ?>"><?= $bookingDay ?></option>
+					<?php endfor; ?>
+				</select>
+				<span> / </span>
+				<select name="bookingMonth">
+					<option value="1">Janvier</option>
+					<option value="2">Février</option>
+					<option value="3">Mars</option>
+					<option value="4">Avril</option>
+					<option value="5">Mai</option>
+					<option value="6">Juin</option>
+					<option value="7">Juillet</option>
+					<option value="8">Août</option>
+					<option value="9">Septembre</option>
+					<option value="10">Octobre</option>
+					<option value="11">Novembre</option>
+					<option value="12">Décembre</option>
+				</select>
+				<span> / </span>
+				<select name="bookingYear">
+                    <!-- Construction d'une liste déroulante avec l'année en cours et l'année suivante -->
+                    <option value="<?= date('Y')     ?>"><?= date('Y')     ?></option>
+                    <option value="<?= date('Y') + 1 ?>"><?= date('Y') + 1 ?></option>
+				</select>
+				<span> à </span>
+				<select name="bookingHour">
+					<?php for($bookingHour = 12; $bookingHour <= 23; $bookingHour++): ?>
+						<option value="<?= $bookingHour ?>"><?= $bookingHour ?></option>
+					<?php endfor; ?>
+				</select>
+				<span> : </span>
+				<select name="bookingMinute">
+					<option value="0">00</option>
+					<option value="15">15</option>
+					<option value="30">30</option>
+					<option value="45">45</option>
+				</select>
+			</li>
+			<li>
+				<label for="numberOfSeats">Nombre de couverts :</label>
+				<select id="numberOfSeats" name="numberOfSeats">
+					<?php for($numberOfSeats = 1; $numberOfSeats <= 8; $numberOfSeats++): ?>
+						<option value="<?= $numberOfSeats ?>"><?= $numberOfSeats ?></option>
+					<?php endfor; ?>
+				</select>
+			</li>
+		</ul>
+	</fieldset>
+
+	<ul>
+		<li>
+			<input class="button button-primary" type="submit" value="Réserver">
+			<a class="button button-cancel small" href="<?= $requestUrl ?>">Annuler</a>
+		</li>
+	</ul>
+</form>
