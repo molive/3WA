@@ -350,7 +350,7 @@ jQuery('.pagination span').click(function(){
 	
 	var currentIndex = slides.index($('.slide.active'));
 	
-	var diff = (index - currentIndex) * slideWidth;
+	var diff = (currentIndex - index) * slideWidth ;
 	
 	container.animate({'left':'+='+diff},1000,function(){   
 			
