@@ -24,7 +24,7 @@
 </head>
 <body>
   
-	 <h1>Manipulation du HTML et gestion des évênements avec Javascript</h1>
+	 <h1>Manipulation du HTML et gestion des événements avec Javascript</h1>
 	 <ul>
 		<li id="searchEngine"><span class="category">Moteurs de recherche: </span>
 			<ul>
@@ -34,7 +34,9 @@
 		</li>
 		<li id="tutorial"><span class="category">Tutoriels: </span>
 			<ul>
+				<li><a alt="Apprendre les langages de programamtion en ligne." href="http://www.codecademy.com">Code Cademy</a></li>
 				<li><a alt="Anciennement le Site du Zéro, Open Class Room propose de nombreux tutoriels en ligne pour apprendre la programmation mais pas que!" href="http://www.codecademy.com">OpenClassRoom</a></li>
+
 				<li><a alt="Pleins de tutoriels vidéo pour  apprendre à coder." href="http://www.grafikart.fr">Grafikart</a></li>
 			</ul>
 		</li>
@@ -63,7 +65,7 @@
 		
 		// On selectionne l'élément html où doit s'afficher les infos de chaque lien
 		
-		var infos = document.getElementById('infos');  //Prend en paramètre la valeur de l'attribut id de l'élément html que l'on souhaite capturer
+		var infosArea = document.getElementById('infos');  //Prend en paramètre la valeur de l'attribut id de l'élément html que l'on souhaite capturer
 		
 		// Autres manières de faire moins recommandées:
 		// var infos = document.getElementByClassName('container');
@@ -71,6 +73,9 @@
 		// var infos = document.querySelector('div');	
 		// NOTA: la methode querySelector prend en paramtre un selecteur css
 		// la variable info contient un objet HTML
+		
+		console.log(infosArea);
+		
 		
 		// Sur cet objet html il est possible d'effectuer des opérations comme:
 		
@@ -80,39 +85,39 @@
 		
 		// Le masquer en modifiant sa propriété css "display" par none :
 		
-		infos.style.display = "none";
+		infosArea.style.display = "none";
 		
 		// Ou le faire réapparaitre:
 		
-		infos.style.display = "block";
+		infosArea.style.display = "block";
 		
 		
 		
 		// Mais ce n'est pas tout, on peut aussi remplacer son contenu html:
 		
-		infos.innerHTML = "Nouveau contenu!";   // on supprimer le contenu html existant dans la balise (<div id="infos">{{ Contenu remplacé }}</div>)
+		infosArea.innerHTML = "Nouveau contenu!";   // on supprimer le contenu html existant dans la balise (<div id="infos">{{ Contenu remplacé }}</div>)
 	 
 		
 		// Ou en afficher le contenu:
 		
-		alert(infos.innerHTML);
+		console.log(infosArea.innerHTML);
 	 
 	 
 		// Je peux également lui affecter dynamiquement une nouvelle classe:
 		
-		//infos.className += " awfull";
+		//infosArea.className += " awfull";
 		
-		infos.classList.add('awfull');
+		infosArea.classList.add('awfull');
 		
 		// Ou la supprimer si elle ne me plait pas
 		
-		//infos.className = "";  // /!\ supprimera aussi la class "container"
+		//infosArea.className = "";  // /!\ supprimera aussi la class "container"
 		
 		// Pour ne supprimer que la class "awfull" il faut utiliser la methode remove:
 		
-		//infos.className += infos.className.replace('awfull',''); 
+		//infosArea.className += infos.className.replace('awfull',''); 
 		
-		infos.classList.remove('awfull');
+		infosArea.classList.remove('awfull');
 		
 		
 		// Il est également possible de rajouter ou modifier dynamiquement des attribiuts:
@@ -128,7 +133,7 @@
 		var alt = infos.getAttribute('alt'); 
 		// getAttribute ne prend qu'un paramètre: le nom de l'attribut qu'on souhaite récupérer
 		
-		alert(alt) // affichera Infos relatives aux liens
+		console.log(alt) // affichera Infos relatives aux liens
 		
 		
 		// Nous allons maintenant créer notre première collection d'objet HTML:
@@ -150,7 +155,38 @@
 		var bing = links[1];  // car le lien de bing est en deuxième position sur la page et donc correspond à l'index 10px
 		// Etc...
 	
-	
+		// Exercice: 
+		// Capturer le lien contenant le site Press Citron
+		
+		infoArea = document.querySelector('#infos');
+		
+		links[0].addEventListener('click',function(event){
+				
+			alert('Vous avez cliquez sur Google');
+			event.preventDefault();
+			
+		});
+		
+		for(let link of links){
+		
+			link.addEventListener('mouseover',function(){
+				console.log(8);
+				var dataAlt = this.getAttribute('alt');
+				infoArea.innerHTML = dataAlt;
+			
+			});
+			
+			
+			
+			link.addEventListener('click',function(event){
+			
+				if(!confirm('Voulez-vous quitter le site?'))
+				event.preventDefault(); // Empêche d'aller sur le site	
+			
+			});	
+		
+		}
+		
 		
 		
 	 
