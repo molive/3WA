@@ -9,7 +9,7 @@
  * /!\ Tout le DSN doit être écrit en minuscules et sans espaces.
  *
  */
-$pdo = new PDO('mysql:host=localhost;dbname=classicmodels', 'root', 'troiswa');
+$pdo = new PDO('mysql:host=localhost;dbname=classicmodels', 'root', '');
 
 // Paramétrage de la liaison PHP <-> MySQL, les données sont encodées en UTF-8.
 $pdo->exec('SET NAMES UTF8');

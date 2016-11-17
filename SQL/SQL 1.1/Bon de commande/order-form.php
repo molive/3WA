@@ -1,6 +1,6 @@
 <?php
 
-$pdo = new PDO('mysql:host=localhost;dbname=classicmodels', 'root', 'troiswa');
+$pdo = new PDO('mysql:host=localhost;dbname=classicmodels', 'root', '');
 
 // Paramétrage de la liaison PHP <-> MySQL, les données sont encodées en UTF-8.
 $pdo->exec('SET NAMES UTF8');
@@ -59,10 +59,10 @@ $query = $pdo->prepare
 (
     'SELECT SUM(priceEach * quantityOrdered) AS totalAmount
      FROM orderdetails
-     WHERE orderNumber = ?'
+     WHERE orderNumber = :id'
 );
 
-$query->execute(array($_GET['orderNumber']));
+$query->execute(['id' => $_GET['orderNumber']]);
 
 $result = $query->fetch(PDO::FETCH_ASSOC);
 

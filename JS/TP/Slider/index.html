@@ -215,7 +215,7 @@ const TOUCHE_DROITE = 39;
 
 function play(){
 	
-	interval = setInterval(gotoNextSlide, 2000);
+	//interval = setInterval(gotoNextSlide, 2000);
 
 }
 
@@ -306,6 +306,8 @@ function loop(){
 	{
 		currentSlide.after(slides);	
 		container.css("left",0);
+		$('.container .slide').removeClass('active');
+		$('.container .slide:first').addClass('active');
 	}
 	else
 	{
@@ -345,6 +347,7 @@ jQuery('.next').click(gotoNextSlide);
 generatePagination();
 jQuery('.pagination span').click(function(){
 
+	
 	onProcess = true; 
 	var index = $('.pagination span').index($(this));
 	
@@ -359,6 +362,7 @@ jQuery('.pagination span').click(function(){
 			$('.slide:nth-child('+index+')').addClass('active');
 			
 			onProcess = false; 
+			
 			updatePagination();
 		
 		});	

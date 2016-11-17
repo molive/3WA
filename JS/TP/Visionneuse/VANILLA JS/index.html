@@ -1,27 +1,49 @@
 <!DOCTYPE html>
 <head>
-<link rel="stylesheet" href="design.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="design.css" type="text/css" media="screen" />
+	<title>Visionneuse</title>
 </head>
 <html>
 <body>
-
-	<div id="container"><img src="1.jpg"></div>
+	<div id="container">
+		<!-- DIV qui s'affiche en recouvrant l'itégralité de la page lorsque l'utilisateur clique sur une des 4 miniatures pour aggrandir l'image -->
 	
-	<div class="thumbs">
-		<a  alt="Description 1" href="1.jpg"><img  src="thumb/1.jpg"></a> 
-		<a alt="Description 2" href="2.jpg"><img src="thumb/2.jpg"></a> 
-		<a alt="Description 3" href="3.jpg"><img src="thumb/3.jpg"></a> 
-		<a alt="Description 4" href="4.jpg"><img src="thumb/4.jpg"></a>
-	</div>
-
-	<div class="viewer">
-
-		<span id="infos"></span>
-		<img id="mainImg" src="medium/1.jpg">
+		<img  src="chaton.jpg"><!-- image dont l'attribut src est celle de l'image grand format -->
 	
 	</div>
-	<script src = "http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script src = "viewer.js"></script>
+	
+	
+	<div id="thumbs">
+	
+		<!-- DIV contenant les 4 miniatures sur lesquelles l'utilisateur va interagir en les survolant ou en cliquant dessus: -->
+		<a alt="Un chaton" href="chaton.jpg"><img src="thumb/chaton.jpg"></a> 
+		<a alt="Iron Man" href="iron-man.jpg"><img src="thumb/iron-man.jpg"></a> 
+		<a alt="Grand Canyon" href="grand-canyon.jpg"><img src="thumb/grand-canyon.jpg"></a> 
+		<a alt="Parachutisme" href="parachutisme.jpg"><img src="thumb/parachutisme.jpg"></a>
+		<!--  Interactions possibles:
+		
+		Au survol: on modifie l'attribut src de l'image aillant pour id="mainImg" pour que son visuel corresponde à l'image survolé.
+
+		Exemple: si je survole la deuxième miniature alors l'attribut src de l'image aillant pour id "mainImg" sera égal à "medium/iron-man.jpg" car l'attribut href du lien de la miniature survolée est égal à "iron-man.jpg"
+		
+		Au clic: On affiche la div aillant pour id="container" et on met à jour l'attribut src de l'image qu'il contient.
+		
+		
+		Pour infos:
+		- Les images en taille maximale sont enregistrées à la racine.
+		- Les images en taille moyenne sont enregistrées dans le dossier "medium".
+		
+		-->
+	</div>
+
+	<div id="viewer">
+
+		<span id="infos"></span><!-- Dans cette span aillant pour id="infos" on affiche le contenu de l'attribut "alt" des miniatures survolées -->
+		<img id="mainImg" src="medium/chaton.jpg"><!-- L'attribut src de cette image doit se mettre à jour en fonction de l'attribut href du lien de la miniature survolée -->
+	
+	</div>
+	<script src = "http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script><!-- On charge la librairie jQuery -->
+	<script src = "viewer.js"></script><!-- Codes source de notre vionneuse -->
 </body>
 
 </html>

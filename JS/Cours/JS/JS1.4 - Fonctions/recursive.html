@@ -1,140 +1,79 @@
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-<style>
-
-ul li strong + ul {
-
-	display: none;
-
-}
-
-ul li strong {
-
-	cursor: pointer;
-
-}
-
-.unfold {display: none;}
-
-</style>
-
-
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script>
-"use strict";
-
-// VERSION AVEC FONCTION
-
-// http://jsbeautifier.org/
-
-var menu = [{
-    category: "Animaux",
-    items: ["Garde d'animaux", "Promenade d'animaux", "Soin d'animaux"]
-}, {
-    category: "Automobile et 2 roues",
-    items: ["Carrosserie et peinture auto", "Covoiturage", "Dépannage et diagnostic auto", "Mécanicien et garagiste"]
-}, {
-    category: "Informatique et web",
-    items: ["Dépannage et réparation informatique",
-        "Montage photo et vidéo", {
-            category: "Webmastering",
-            items: ["Intégrateur web",
-                "Développement web", "Référencement", {
-                    category: "test",
-                    items: ["Intégrateur web1",
-                        "Développement web1",
-                        "Référencement1", {
-                            category: "test",
-                            items: ["Intégrateur web1",
-                                "Développement web1",
-                                "Référencement1",
-                                "Infographisme1"
-                            ]
-                        }
-                    ]
-                }
-            ]
-        }
-    ]
-}];
-
-
-
-
-var html = "<hr><ul>";
 
 function render(item){
 	
-	if(typeof item == "string"){
+	for(let id in item){
 	
-		html += '<li>'+item+'</li>';
-	
-	}
-	else
-	{
-		html += '<li><strong>'+item.category+' ('+item.items.length+') [<span class="fold">+</span><span class="unfold">-</span>]</strong><ul>';
-		let items = item.items;
-		for(let item of items){
-		
-			render(item);
+		if(typeof item[id] != "object")
+		{
+			
+			html += '<li><strong>'+id+'</strong>: '+item[id]+'</li>';
 		
 		}
-		html += '</ul></li>';
-	}
-	return;
-	// Pas besoin de return car le but de la fonction est uniquement de modifier la variable globale html
-	
-}
-
-function render2(item,index,path){
-	path += "['"+index+"']";
-	
-	if(typeof item != "object"){
+		else
+		{
+			html += '<li><strong>'+id+':</strong><ul>';
 		
-		html += '<li><strong>'+index+'</strong>: <span title="'+path+'">'+item+'</span></li>';
-	
-	}
-	else
-	{
-		html += '<li><strong>'+index+' [<span class="fold">+</span><span class="unfold">-</span>]</strong><ul>';
+			render(item[id]);
 		
-		for(let id in item){
-		
-			render2(item[id],id,path);
+			html += '</ul></li>';
 		
 		}
-		html += '</ul></li>';
-	}
-	return;
-	// Pas besoin de return car le but de la fonction est uniquement de modifier la variable globale html
 	
+	}
+
+}
+
+
+/* 
+
+data['result']  
+data['result'][0]  
+data['result'][0]['address_components'] 
+data['result'][0]['address_components'][0]  
+data['result'][0]['address_components'][0]['long_name']
+data['result'][0]['address_components'][0]['short_name']
+data['result'][0]['address_components'][0]['types']
+data['result'][0]['address_components'][0]['types'][0]
+data['result'][0]['address_components'][0]['types'][1]
+data['result'][0]['address_components'][1]  
+....
+data['result'][0]['formatted_address'] 
+
+*/
+
+
+
+function renderWithPath(item,path){
+	
+	
+	for(let id in item)
+	{
+		
+		if(typeof item[id] != "object")
+		{
+			
+			html += '<li><strong>'+id+'</strong>: <span title="'+path+'">'+item[id]+'</span></li>';  
+		
+		}
+		else
+		{
+		    path += '['+id+']';
+			html += '<li><strong>'+id+':</strong><ul>';
+			
+			renderWithPath(item[id],path,id);
+		
+			html += '</ul></li>';
+		
+		}
+	
+	}
+
 }
 
 
 
-for(let section of menu)
-{
-
-	render(section);
-
-}
-
-html += "</ul>";
-
-document.write(html);
-
-
-html = "<hr><ul>";
-for(let id in menu)
-{
-
-	render2(menu[id],id,'menu');
-
-}
-html += "</ul><hr>";
-document.write(html);
-
-
+var html = "";
 
 var data = {
    "results" : [
@@ -251,49 +190,12 @@ var data = {
 }
 
 
-html = "<hr><ul>";
-for(let id in data)
-{
+html+= "<ul>";
 
-	render2(data[id],id,'data');
+renderWithPath(data,'','data');
 
-}
-html += "</ul><hr>";
+html+= "</ul>";
+
 document.write(html);
-
-// jQuery
-$('ul li strong').click(function(){
-
-	$(this).next().toggle();
-	$(this).find('.fold,.unfold').toggle();
-});
-
-
-// EN JS PUR:
-/*
-var categories = document.querySelectorAll("ul li strong");
-
-
-for(let category of categories){
-
-	category.addEventListener('click', function(){
-	
-		let list = this.nextSibling;
-		
-		
-		if (list.style.display == 'block') {
-			list.style.display = 'none';
-		}
-		else {
-			list.style.display = 'block';
-		}
-	
-	});
-
-}
-*/
-
-
-
 
 </script>

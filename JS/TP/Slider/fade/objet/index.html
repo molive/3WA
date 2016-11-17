@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="styles.css">
+    <title>Diaporama fade in / fade out</title>
+</head>
+<body>
+  
+	<h1>Diaporama avec effet Fade in / Fade out</h1>
+	<!-- Diaporama -->
+	<div id="slider">
+		<!-- Images du diaporama: -->
+		<img style="display:block;" src="images/1.jpg">
+		<img  src="images/2.jpg">
+		<img src="images/3.jpg">
+		<img src="images/4.jpg">
+
+	</div>
+
+	<div class="control">
+
+		<!-- Pagination qui permet de connaitre le nombe d'image total et de voir le numéro de celle qui est active -->
+		<!-- En cliquant sur le numéro de pagination on affiche l'image associé 
+		
+			Exemple: si je clique sur 2 je dois afficher l'image en 2ème position (dont la source est 2.jpg).
+		
+		-->
+		<div class="pagination"><!-- générer la pagination dynamiquement en fonction du nombre d'images: <span class="active">1</span><span>2</span><span>3</span><span>4</span> --></div>
+		
+		<!-- Affiche l'image précédente -->
+		<button class="prev"><i class="fa fa-backward"></i></button>		
+		<!-- Lance ou stop la lecture automatique -->
+				
+		<button class="play"><i class="fa fa-play"></i></button>
+		<!-- Affiche l'image suivante -->
+		<button class="next"><i class="fa fa-forward"></i></button>
+		<!-- Affiche une image aléatoire -->
+		<button class="random" title="Sélectionner une image aléatoire"><i class="fa fa-random"></i></button>
+
+	</div>
+
+</body>	
+	
+</html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="utilities.js"></script>  <!-- contient la fonction rand() -->
+<script src="slider.js"></script>
