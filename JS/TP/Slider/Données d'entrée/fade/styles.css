@@ -5,7 +5,7 @@ h1 {
 }
 
 
-#control {
+.control {
 
 	width:960px;
 	margin:auto;
@@ -32,13 +32,13 @@ h1 {
 	
 }
 
-#pagination {
+.pagination {
 
 	float:right;
 
 }
 
-#pagination span {
+.pagination span {
 	
 	cursor: pointer;
 	border-radius: 10px;
@@ -53,7 +53,7 @@ h1 {
 
 }
 
-#pagination span.active {
+.pagination span.active {
 
 	background : #000;
 	color: #fff;

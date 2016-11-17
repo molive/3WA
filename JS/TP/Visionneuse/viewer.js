@@ -57,16 +57,26 @@ $(function(){
   });
   
 
+    
     container.click(function(e) {  // le paramètre e représente l'évènement
 		
 		// alert(e.target.getAttribute('src'));   // e.target correspondant à l'élément html cliqué dans la div du conténaire d'image grand format
 		//alert($(e.target).attr('src'));
 		// créer une condition qui va empêcher le masquage du conténaire d'image grand format si on clique sur l'image 
-		if($(e.target).is('#container'))
+		//if($(e.target).is('#container'))
 		$(this).fadeOut();
     
     });
+    
+     
+	container.find('img').click(function(event){
+	
+		event.stopPropagation();
+
+	});
+	
   
+    
 
   
   
