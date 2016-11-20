@@ -1,0 +1,106 @@
+<canvas id="canvas" width="800px" height="612px"></canvas>
+<a id="remove" href="">erere</a>
+
+<script>
+window.onload = function(){
+    imagehtml5canvas = document.getElementById('canvas');
+    imagecanvasarea = imagehtml5canvas.getContext("2d");
+	
+var imageURLs=[];
+var imagesOK=0;
+var imgs=[
+"fauteuil-bleu.png",
+"commande-parametrage.png",
+"kit-batterie-all-inclusive.png",
+"porte-bagage.png",
+"appuie-tete.png",
+"assise-modulable.png",
+"assise-rehaussee.png"
+];
+
+
+imgsObj = [
+
+
+]
+
+for(var id in imgs){
+	//var name = 'CanevasImg'+id;
+	//eval(name +" = "+new Image());
+//	window[name] = new Image();
+	//window[name].src = imgs[id]; 		
+	
+	imgsObj.push(new Image());
+	
+	imgsObj[id].src =  imgs[id];
+	
+				}
+
+			console.log(imgsObj[0]);
+				
+				
+	function addImg(id) {
+
+    imgsObj[id].onload = function() {
+ 
+				imagecanvasarea.drawImage(imgsObj[id],0,0);
+				}
+
+
+}	
+
+
+for(var id in imgs){
+addImg(id);
+}
+
+
+document.getElementById('remove').addEventListener('click',function(e){
+
+removeImg();
+e.preventDefault(); 
+
+});
+			
+		/*
+	var CanvasImage = new Image();
+	CanvasImage.src = "fauteuil-bleu.png"; 		
+    CanvasImage.onload = function() {
+ 
+				imagecanvasarea.drawImage(CanvasImage,0,0);
+				}
+
+
+	var CanvasImage2 = new Image();
+	CanvasImage2.src = "commande-parametrage.png"; 		
+    CanvasImage2.onload = function() {
+ 
+				imagecanvasarea.drawImage(imgsObj[1],0,0);
+				}
+				
+	var CanvasImage3 = new Image();
+	CanvasImage3.src = "kit-batterie-all-inclusive.png"; 		
+    CanvasImage3.onload = function() {
+ 
+				imagecanvasarea.drawImage(CanvasImage3,0,0);
+				}				
+						
+				
+*/
+function start(){
+
+    // the imgs[] array holds your fully loaded images
+    // the imgs[] are in the same order as imageURLs[]
+
+}
+
+
+/*
+var imgs    = ctx.toDataURL("image/png");
+document.write('<img src="'+imgs+'"/>');
+*/
+}
+
+
+
+</script>

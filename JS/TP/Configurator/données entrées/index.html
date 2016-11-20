@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Configurer votre fauteuil</title>
+		<link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+    </head>
+
+    <body>
+	
+		<div id="viewer">
+		<img class="loader" src="./images/loading.gif">
+		<!-- Etape Bonus : faire apparaitre le gif ci-dessus au moment où l'on ajoute dynamiquement un nouveau calque relatif à un accessoire
+		Le masquer une fois que le calque a été ajouté.
+		-->
+		
+		<div style="position:absolute;bottom:0;left:0px;width:50%;">
+		<div id="description_area"><!-- Afficher la valeur de l'attribut "data-description" de la dernière checkbox cochée d'un accessoire   --></div>
+		* Ces produits disposent d’une prise en charge par la Sécurité Sociale
+		</div>
+
+		<img class="color" src="./images/fauteuil-rouge-noir.png">
+		<!-- Modifier l'attribut src de l'image ci-dessus à chaque fois que l'utilisateur coche un bouton radio dans la section "Fauteuil" où l'on choisi la couleur.
+		la source de l'image est contenue dans la propriété "data-layer" du bouton radio.
+		-->
+		
+		<!--
+		A chaque fois que l'utilisateur coche une checkbox dans la section "Accessoires", on fait ci-dessous apparaire une nouvelle image
+		dont la source est contenu dans l'attribut "data-layer" :
+		
+		Exemple si je clique sur la checkbox relatif à l'accessoire "Repose Pieds XL" je fait apparaitre l'image ci-dessous :
+		<img class="accessory" src="./images/repose-pieds-xl.png">
+		
+		A chaque fois que l'on décoche une checkbox d'un accessoire, on supprimer l'image associée.
+		Pour identifier la bonne image à supprimer, faire la concordance entre la propriété "src" de l'image et la propriété "data-layer" de la checkbox fraichement décochée
+		-->
+		
+		<!-- Element de démonstration à supprimer --><img class="accessory" src="./images/repose-pieds-xl.png"><!-- fin suppression -->
+
+		</div>
+		
+		<form method="post" action="treatment.php" id="configurator">
+			<h1>Configurateur ErgoConcept</h1>
+			<div class="category">Fauteuil :</div>
+			<div id="form_colors">
+			<!-- Elements du formulaire à générer dynamiquement à partir du tableau JS contenu dans la variable "colors" (ligne 10) -->
+
+			<!--  Fin des élément à répéter via le tableau "colors"  -->
+			
+			<!--
+			Etape intermédiaire :
+			Dans un premier temps juste générer dynamiquement le code HTML suivant :
+			<input type="radio" data-price="2700" value = "Silver / Noir"> Silver / Noir <br>
+			<input type="radio" data-price="2800"  value = "Silver / Rouge"> Silver / Rouge <br>
+			etc...
+			-->
+			
+			</div>
+			
+			<input type="hidden" name="total" value="">
+			<input type="hidden" name="total_bis" value="">
+			
+			<div class="category">Accessoires :</div>
+			<div id="form_accessories">
+			<!-- Elements du formulaire à générer dynamiquement à partir du tableau JS contenu dans la variable "accessories" (ligne 38) -->
+			<!--	<div class="element"><input data-description="Permet d'adapter le chargeur de la baterrie" data-price="40" data-lppr="1" id="accessory_0" type="checkbox" name="accessories[]" data-layer="adaptateur.png" value="0"><label for="accessory_0">Adaptateur Chargeur Batterie</label> <span class="price">40€<span class="lppr">*</span></span></div>-->
+			<!--  Fin des élément à répéter via le tableau "accessories"  -->
+			
+			<!--
+			Etape intermédiaire :
+			Dans un premier temps juste générer dynamiquemet le code HTML suivant :
+			<imput type="checkbox" data-price="40" value = "Adaptateur Chargeur Batterie"> Adaptateur Chargeur Batterie <br>
+			<imput type="checkbox" data-price="400" value = "2 ème Batterie"> 2 ème Batterie <br>
+			etc...
+			-->
+			
+			</div>
+			<div id="total_area">	
+			Total	(sans prise en charge) <span  class="total"><span id="total"><!-- Mettre le total ICI--></span>€ TTC</span>
+			<!-- une fois le formulaire généré dynamiquement mettre à jour le total dans <span id="total"></span>en faisant la somme 
+			de toutes les valeurs contenues dans les attributs "data-price" des boutons radio et checkbox cochées .
+			
+			Ce total doit être mis à jours à chaque fois que l'utilisateur coche ou décoche une checkbox ou change la couleur du fauteuil.
+			-->
+			<div style="clear:both;padding:2px;"></div>		
+			Total si prise en charge par la sécurité sociale<span  class="total"><span id="total_bis"><!-- Mettre le total bis ICI--></span>€ TTC</span>
+			<!-- une fois le formulaire généré dynamiquement mettre à jour le total bis dans <span id="total_bis"></span>en faisant la somme 
+			de toutes les valeurs contenues dans les attributs "data-price" des boutons radio et checkbox cochées SAUF ceux aillant l'attribut "data-lppr" égale à 1.
+			
+			Ce total doit être mis à jours à chaque fois que l'utilisateur coche ou décoche une checkbox ou change la couleur du fauteuil.
+			-->		
+							
+			</div>
+			<div style="clear:both;padding:2px;"></div>
+			<input type="submit" name="continue" value="Envoyer votre demande"> <input type="submit" name="print" value="Imprimer votre devis">
+		</form>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src = "configurator.js"></script>
+    </body>
+</html>

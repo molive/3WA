@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<body>
+
+	<h1>La méthode each</h1>
+
+	<ul id="list">
+		<li>Item #1</li>
+		<li>Item #2</li>
+		<li>Item #3</li>
+		<li>Item #4</li>
+		<li>Item #5</li>
+	</ul>
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script>
+	
+	// En savoir plus sur la documentation officielle: http://api.jquery.com/each/
+	
+	var $items = $('#list li');
+	
+	// La méthode each permet de parcourir le contenu d'une collection d'objet jQuery et de traiter individuellement chacun de ses éléments.
+	
+	// Sans le recours à cette méthode nous devrions utiliser l'instruction for pour parcourir le contenu de $items:
+	
+	for(let i = 0; i < $items.length ; i++){
+	
+		let item = $items.eq(i);
+		console.log('Affichage via la boucle for: '+item.html());
+	
+	}
+	
+	// Avec la méthode jQuery each la sythaxe s'en trouve grandement simplifiée:
+	
+	$items.each(function(){
+	
+		let item = $(this);  // Ici this fait référence à l'objet HTML en cours de traitement dans la collection d'$items. $(this) permet de le convertir en object jQuery.
+		console.log('Affichage via la méthode jQuery each: '+item.html());
+	
+	});
+	
+	
+	</script>
+	</body>
+</html>
+
+
+

@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<style>
 
-div div {width:50px;display:inline-block;background : blue;} div{text-align:center;padding:40px;border:3px solid black;margin: 10px;max-width:700px;font-weight: bold;}#clickme { cursor : pointer;background: red !important; }#teleportme { background: green !important; width:80px;}
-div:hover{border-color: red; !important;}
-</style>
 <html>
+	<style>
+
+	div div {width:50px;display:inline-block;background : blue;} div{text-align:center;padding:40px;border:3px solid black;margin: 10px;max-width:700px;font-weight: bold;}#clickme { cursor : pointer;background: red !important; }#teleportme { background: green !important; width:80px;}
+	div:hover{border-color: red; !important;}
+	</style>
 <body>
 
 <div style="background:brown">
@@ -22,15 +23,36 @@ div:hover{border-color: red; !important;}
 <div id="teleportme">TELEPORT ME !</div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <SCRIPT>
-	 $(function() { 
-	 var purple = $('#purple');
-	 var purple2 = $('#clickme').parent();  
+$(function() { 
+	 var $purple = $('#purple');
+	 var $purple2 = $('#clickme').parent();  
 	 // purple et et purple2 contient le même objet jQuery car le div de couleur verte et l'enfant du div de couleur violette (dont l'id est égal à purple)
+	 
+	var $divs = $('div');
+	
+	
+	for(var i = 0; i < $divs.length ; i++){
+	
+		let item = $divs.eq(i);
+		console.log(item.attr('id'));
+	
+	}
+	
+	
+	 
+	 function reset(){
+	 
+		$purple.html($('#teleportme'));
+	 
+	 }
+	 
+	 
+	 
 	 
 	 $('#clickme').click(function(){
 	
 
-	// $(this).after($('#teleportme'));  // déplace le bloc vert à côté du bloc rouge
+		$(this).after($('#teleportme'));  // déplace le bloc vert à côté du bloc rouge
     
 	//$(this).before($('#teleportme'));  // déplace le bloc vert à côté du bloc rouge
 	
@@ -54,12 +76,11 @@ div:hover{border-color: red; !important;}
 	
 	
 	
-	$(this).parent().prev().before($('#teleportme')); // le bloc vert se déplacera juste avant le div marron
+	// $(this).parent().prev().before($('#teleportme')); // le bloc vert se déplacera juste avant le div marron
 
 	});
 	 
-	 
-	 });
+});
 
 </SCRIPT>
 </body>
