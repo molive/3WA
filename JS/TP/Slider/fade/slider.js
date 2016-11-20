@@ -1,106 +1,201 @@
 "use strict";
-$(function(){
 
-/**** ETAPE 1 ****/
-// Créer une variable $images qui contiendra une collection d'objet jQuery relative aux images du slider contenues dans la div "slider"
+var preventFromPlay;
+var autoPlay = false;
+var $slider = $('#slider');
+var $slides = $('#slider img');
+// var $slides = $('#slide').find('img');
+var $activeSlide = $('#slider img:first');
+var $pages;
+//var currentSlide = $('#slider .slide:first');
 
+var interval;
 
-/****  ETAPE 2 ****/
-// Créer une variable $activeImage qui contiendra un objet jQuery relatif à l'image visible du slider (au début ça sera la toute première image actuellement visible grace à la propriété style="display:block")
-
-/**** ETAPE 3 ****/
-// 1) Créer une fonction generatePagination dont le rôle sera de générer dynamiquement la pagnation en fonction du nombre de slide.
-// Le code html à générer est celui-ci: <span class="active">1</span><span>2</span><span>3</span><span>4</span>
-// Il devra ensuite être insérer dans la div "pagination"
-// 2) Appeler cette fonction pour générer la pagination
-
-/**** ETAPE 4 ****/
-
-// Créer une variable $pages qui contiendra une collection d'objet jQuery relative aux  éléments span situés dans la div "pagination" 
+// Codes des touches du clavier.
+const TOUCHE_ESPACE = 32;
+const TOUCHE_GAUCHE = 37;
+const TOUCHE_DROITE = 39;
 
 
-/**** ETAPE 5 ****/
-/* Créer une fonction gotoSlide qui prend en paramètre le numéro de la slide a afficher (0 étant la slide n°1)
- Exemple d'utilisation:
- gotoSlide(0)  // devra afficher la slide n°1 (la-haut.jpg) et masquer celle actuelement visible
- gotoSlide(2)  // devra afficher la slide n°3 (ville.jpg) et masquer celle actuelement visible 
- // Caractéristiques:
- // La slide visible devra disparaitre avec un effet de fondu en même temps que l'apparition de la slide voulu
- // Astuce: Utiliser respectivement les méthodes fadeOut et fadeIn
- // Il faudra aussi mettre à jour la pagination en appliquant la classe "active" sur la bonne span de la div "pagination"
- // Exemple: si c'est la deuxième slide qui est visible alors l'état de la pagination sera ainsi:
- // <div id="pagination"><span>1</span><span class="active">2</span><span>3</span><span>4</span></div>
- 
- */
- 
-/**** ETAPE 6 ****/
-// Créer une fonction gotoNextSlide() qui aura pour but d'afficher la slide suivante
+function play(){
+	
+	autoPlay = true;
+	interval = setInterval(gotoNextSlide, 2000);
 
-// Astuce: il faudra invoquer la fonction gotoSlide dans cette fonction
-// Astuce2: il faudra récupérer la position de la slide active grace à la méthode index() http://api.jquery.com/index/ (qui est l'équivalent de indexof en JS pur)
-// console.log($slides.index($activeSlide))  // affichera 0, 1 , 2 ou 3
+}
 
-// Si c'est la dernière slide qui est visible (montagnes.jpg) alors il faudra afficher la première slide (la-haut.jpg)
+function stop(){
 
+	autoPlay = false;
+	clearInterval(interval);
 
-/**** ETAPE 7 ****/
-// Créer une fonction gotoPrevSlide() qui aura pour but d'afficher la slide précédente
+}
 
-// Si c'est la première slide qui est visible (la-haut.jpg) alors il faudra afficher la dernière slide (montagnes.jpg)
+function generatePagination(){
 
-/**** ETAPE 8 ****/
+	var nbSlides = $slides.length;
+	var html = '';
+	
+	for(var i = 1; i <= nbSlides; i++) {
+	
+		html += '<span>'+i+'</span>';	
+	
+	}
+	
+	$('#pagination').html(html);
+	$pages = $('#pagination span');
+	
+}
 
-// 1) Faire en sorte que lorsque l'on clique sur le bouton suivant (#prev) la fonction gotoNextSlide se déclenche
-// 2) Faire en sorte que lorsque l'on clique sur le bouton précédent (#prev) la fonction gotoPrevSlide se déclenche
+function updatePagination() {
+	
+	$pages.removeClass('active');
+	var index = $slides.index($activeSlide);
+	$pages.eq(index).addClass('active');
 
-/**** ETAPE 9 ****/
-// 1) Faire en sorte que lorsque l'on clique sur un numéro de la pagination cela affiche la slide correspondante
-
-
-/**** ETAPE 10 ****/
-
-// 1) Faire en sorte que lorsque l'on clique sur la flèche droite du clavier la fonction gotoNextSlide se déclenche
-// 2) Faire en sorte que lorsque l'on clique sur le flèche gauche du clavier la fonction gotoPrevSlide se déclenche
-// Astuce: utiliser la méthode keyup sur l'objet jQuery $(document) : http://api.jquery.com/keyup/
-// Dans le paramètre event de la fonction qui s'exécutera, il est possible de récupérer le code de la touche tapée  via event.keyCode
-// La touche gauche renvera 37 et la touche droite 39
-
-
-/**** ETAPE 11 ****/
-// Faire en sorte que lorsque l'on clique sur le bouton random (#random), une slide s'affiche aléatoirement.
-// Astuce: utiliser la fonction rand() contenu de le fichier utilities.js
-// /!\ Veuiller à ce que l'entier aléatoire ne soit pas égale  celui de la slide actuellement visible ;)
-
-
-/**** ETAPE 12 ****/
-// Créer une fonction play() qui une fois appelée déclenchera un affichage automatique des slides suivante toutes les 3s
-// Déclarer une variable globale autoPlay qui sera initialement vide.
-// Astuce: utiliser la méthode setInterval de l'objet window: https://developer.mozilla.org/fr/docs/Web/API/WindowTimers/setInterval
-// Lorsque la fonction play() sera appelé la varibale autoPlay devra prendre comme valeur setInterval(gotoNextSlide, 2000); ce qui aura pour effet de déclencher la lecture automatique du slider
-
-
-/**** ETAPE 13 ****/
-// Créer une fonction stop() qui stopera la lecture automatique du slider
-// Astuce: utiliser https://developer.mozilla.org/fr/docs/Web/API/WindowTimers/clearInterval
-
-
-/**** ETAPE 14 ****/
-// 1) Faire en sorte que la focntion play se déclenche lorsqu'on clique sur le bouton play (#play)
-// l'élement html <i> contenu dans ce bouton devra prendre la classe "fa fa-stop" pour indiquer que la lecture automatique est en cours
-
-// 2) Faire en sorte que la fonction stop se déclenche lorsqu'on clique à nouveau sur le bouton play (#play)
-// l'élement html <i> contenu dans ce bouton devra prendre la classe "fa fa-play" pour indiquer que la lecture automatique est sur pause
-
-/**** ETAPE 15  ****/
-// Faire sorte que le slider se met sur PLAY ou PAUSE si on tape sur la touche ESPACE du clavier
-
-/**** ETAPE 16 ****/
-// Faire en sorte que le slide se mette sur pause quand on survole le slider
-
-/**** ETAPE 17 ****/
-// Faire en sorte que la lecture automatique du slider reprenne quand on désurvol le slider UNIQUEMENT si la lecture automatique du slider est active
+}
 
 
 
+function gotoNextSlide() {
+	
+	var currentActiveSlidePosition = $slides.index($activeSlide) + 1;
+	var slideToDisplay = currentActiveSlidePosition + 1;
+	
+	if(currentActiveSlidePosition == $slides.length){
+	
+		slideToDisplay = 1;
+	
+	}
+	
+	gotoSlide(slideToDisplay);
+	
+}
+
+
+function gotoPrevSlide(){
+
+	var currentActiveSlidePosition = $slides.index($activeSlide) + 1;
+	var slideToDisplay = currentActiveSlidePosition - 1;
+	
+	if(currentActiveSlidePosition == 1){
+	
+		slideToDisplay = $slides.length;
+	
+	}
+	
+	gotoSlide(slideToDisplay);
+
+}
+
+
+function gotoSlide(slideToDisplay){
+
+	var index = slideToDisplay - 1;
+	$activeSlide.fadeOut(1000);
+	$slides.eq(index).fadeIn(1000);
+	$activeSlide = $slides.eq(index);
+	updatePagination();
+	
+}
+
+jQuery('#slider').mouseover(function(){
+
+	if(autoPlay){
+		preventFromPlay = false;
+		stop();
+	}
+	else
+	{
+	
+		preventFromPlay = true;
+	
+	}
 
 });
+
+
+$slider.mouseleave(function(){
+
+	if(!preventFromPlay){
+		play();
+	}
+
+});
+
+$('#prev').click(gotoPrevSlide);
+
+$('#next').click(gotoNextSlide);
+
+
+generatePagination();
+
+$pages.click(function(){
+
+	onProcess = true; 
+	var index = $('.pagination span').index($(this));
+	gotoSlide(index);
+	
+});
+
+
+$('#play').click(function(){
+
+	var $status = $(this).find('i');
+	if(!autoPlay) {
+
+		play();
+		$status.removeClass().addClass('fa fa-stop');
+	}
+	else
+	{
+	
+		stop();
+		$status.removeClass().addClass('fa fa-play');
+	}
+
+});
+   
+
+$('#random').click(function(){
+
+	var currentActiveSlidePosition = $slides.index($activeSlide) + 1;
+
+	do  // Cette boucle sert à vérifier que l'image générer aléatorement n'est pas égale à celle déjà visible
+	{
+		var max = $slides.length;
+		var random = rand(1,max);
+		
+	} while (random == currentActiveSlidePosition)
+	
+	
+	gotoSlide(random);
+
+});
+   
+   
+$(document).keyup(function(event){
+
+	switch(event.keyCode)
+    {
+        case TOUCHE_DROITE:
+        // On passe à la slide suivante.
+        gotoNextSlide();
+        break;
+
+        case TOUCHE_GAUCHE:
+        // On passe à la slide précédente.
+        gotoPrevSlide();
+        break;
+		
+        case TOUCHE_ESPACE:
+        // On passe à la slide précédente.
+        $('#play').trigger('click');
+        break;	
+		
+	}
+
+});    
+       
+
+updatePagination();
