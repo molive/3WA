@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<style>
+	
+	#spoiler {
+	
+		border:#000 5px solid;
+		padding:15px;
+		margin-top:15px;
+		display:none;
+		font-size: 1.5em;
+	
+	}
+	
+	</style>
+	<body>
+
+	<button id="unfold">Afficher / Masquer le spoiler</button>
+
+	<div id="spoiler">
+	
+		Tous les personnages finissent par mourrir dans Game Of Thrones.
+	
+	</div>
+	
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script>
+	
+	// En savoir plus sur la documentation officielle: http://api.jquery.com/toggle/
+	// 1)
+	var $unfold = $('#unfold');
+	var $spoiler = $('#spoiler');
+	
+	// Sans la méthode toggle:
+	/*
+	$('#unfold').click(function(){
+	
+		if($spoiler.css('display') == 'block'){   // Si la propriété CSS "display" de la div "spoiler" est égal à "block" alors on la masque.
+		
+			$spoiler.hide();
+		
+		}
+		else  // Sinon on l'affiche:
+		{
+		
+			$spoiler.show();
+		
+		}
+		
+	});
+	*/
+	// Avec la méthode toggle:
+	
+	
+	$('#unfold').click(function(){
+	
+		$spoiler.toggle();  // Si la div "spoiler" est cachée alors elle s'affiche. Et inversement si elle est affichée on la cache
+
+	});
+	
+	
+	// Autre utilisation de toogle.
+	
+	// 2) http://api.jquery.com/toggle/#toggle-display
+	
+	// La méthode toggle prend un paramètre optionnel qui est un booléen (true ou false).
+	
+	//$spoiler.toggle(true); // affichera la div "spoiler"
+	//$spoiler.toggle(false); // cachera la div "spoiler"
+	
+	// Cet usage peut être pratique si on souhaite masqué ou cacher un élément sous certaines condition. Nous en verrons d'ailleurs un usage pratique au cours du TP sur le moteur de recherche ;)
+	
+
+	
+	/* Il existe d'autres méthodes similaires en jQuery telles que:
+
+	- fadeToggle: http://api.jquery.com/fadeToggle/  (pareil que toggle mais avec l'effet fadeIn fadeOut)
+	- ToggleClass: http://api.jquery.com/toggleClass/ (supprime ou ajoute une classe selo nsi l'élément la possède où non
+	
+	*/
+	
+	
+	</script>
+	</body>
+</html>
+
+
+

@@ -9,10 +9,10 @@
 		<li>Item #2</li>
 		<li>Item #3</li>
 		<li>Item #4</li>
-		<li>Item #5</li>
+		<li>Item <strong style="color:red">#5</strong></li>
 	</ul>
 	
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script>
 	
 	// En savoir plus sur la documentation officielle: http://api.jquery.com/each/
@@ -26,7 +26,8 @@
 	for(let i = 0; i < $items.length ; i++){
 	
 		let item = $items.eq(i);
-		console.log('Affichage via la boucle for: '+item.html());
+		console.log('Affichage via la boucle for: '+item.text());  
+		// NB: La méthode .text() http://api.jquery.com/text/ permet de récupérer le text SANS le contenu html (donc sans les balises <strong> dans le cas de l'item #5
 	
 	}
 	
@@ -35,8 +36,8 @@
 	$items.each(function(){
 	
 		let item = $(this);  // Ici this fait référence à l'objet HTML en cours de traitement dans la collection d'$items. $(this) permet de le convertir en object jQuery.
-		console.log('Affichage via la méthode jQuery each: '+item.html());
-	
+		console.log('Affichage via la méthode jQuery each: '+item.text());
+
 	});
 	
 	

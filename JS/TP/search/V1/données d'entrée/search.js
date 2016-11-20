@@ -3,6 +3,7 @@
 http://api.jquery.com/val/    >>> Pour récupérer la valeur d'un champs de formulaire
 http://api.jquery.com/keyup/  >>> Pour déclencher une fonction lorsqu'on tapera des caractère dans le champs de recherche
 http://api.jquery.com/each/   >>> Pour parcours l'ensemble des catégories
+http://api.jquery.com/text/   >>> Pour récupérer le contenu textuel de chaque catégorie
 http://api.jquery.com/toggle/ >>> Pour afficher ou masquer une catégories au cours de la recherche
 
 https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/String/toLowerCase   >>> Pour formater en minuscule la recherche tapé ainsi que le nom des catégories
