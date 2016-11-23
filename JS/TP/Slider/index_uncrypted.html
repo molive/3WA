@@ -1,0 +1,397 @@
+<style>
+
+.control {
+
+	width:960px;
+	margin:auto;
+	margin-top:15px;
+}
+
+#slider {
+
+	height: 420px;
+	width:960px;
+	max-width: 100%;
+	margin:auto;
+	border: 1px solid #000;
+	position:relative;
+	overflow: hidden;
+}
+
+.container {
+
+
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:1000000px;
+
+}
+
+.slide{
+	
+	float:left;
+
+}
+
+.slide img {
+
+height : auto !important;
+
+}
+
+.pagination {
+
+	float:right;
+
+}
+
+.pagination span {
+
+	border-radius: 10px;
+	width:20px;
+	height:20px;
+	border : #000 1px solid;
+	display: inline-block;
+	text-align:center;
+	margin-left:5px;
+	background : #fff;
+	color: #000;
+
+}
+
+.pagination span.active {
+
+	background : #000;
+	color: #fff;
+
+}
+
+
+</style>
+
+
+<body>
+
+
+
+
+
+<div id="slider">
+	<div class="slider-prev"></div>
+	<div class="slider-next"></div>
+
+	<div class="container">
+
+		<div class="slide active">
+			<img  src="images/1.jpg">
+		</div>
+
+		<div class="slide">
+			<img  src="images/2.jpg">
+		</div>
+
+		<div class="slide">
+			<img src="images/3.jpg">
+		</div>
+		
+		<div class="slide">
+			<img src="images/4.jpg">
+		</div>
+
+	</div>
+</div>
+
+<div style="clear:both;"></div>
+
+<div class="control">
+	
+	<div class="pagination">
+	
+	</div>
+	
+	<button class="prev">PREV</button>
+	<button class="next">NEXT</button>
+	
+
+</div>
+
+
+</body>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+"use strict";
+/*
+var slider = {
+
+	slider : "",
+	container : "",
+	slides : "",
+	timer : "",
+	currentSlide : "",
+	onProcess : false,
+	init: function(slider){
+	
+		this.slides = slider.find('.slide');
+		this.container = slider.find('.slider-group').eq(0);
+		this.slideWidth = slider.width();
+		this.slider = slider;
+		this.timer = setInterval(this.gotoNextSlide.bind(this),1000);
+		this.currentSlide = this.slides.first();
+	
+	},
+	gotoPrevSlide: function(){
+		
+		
+		if(this.currentSlide.prev().length != 1) return false;
+		
+		if(this.onProcess == false){
+			
+			this.onProcess = true;
+			this.container.animate({'left':'+='+this.slideWidth},1000,function(){   
+				
+				this.currentSlide = this.currentSlide.prev(); 
+				this.onProcess = false; 
+				
+			}.bind(this));
+		
+		}
+	
+	},
+	gotoNextSlide: function(){
+		
+		
+		if(this.currentSlide.next().length != 1) this.rewind();
+		
+		if(this.onProcess == false){
+			
+			this.onProcess = true;
+			this.container.animate({'left':'-='+this.slideWidth},1000,function(){   
+				
+				this.currentSlide = this.currentSlide.next(); 
+				this.onProcess = false; 
+				
+			}.bind(this));
+		
+		}
+	
+	},
+	rewind : function(){
+	
+		var slides = this.slides.not(this.currentSlide);
+		
+		if(this.currentSlide.next().length != 1)
+		{
+			this.currentSlide.after(slides);	
+		}
+		else
+		{
+			this.currentSlide.before(slides);
+		}
+		this.container.css("left",0);
+	}
+	
+}
+
+
+slider.init($('.slider').eq(0));
+*/
+
+var autoPlay = false;
+var hoverSlide = false;
+var onProcess = false;
+var slides = $('#slider .slide');
+//var currentSlide = $('#slider .slide:first');
+var container = $('#slider .container').eq(0);
+var slideWidth = jQuery('#slider').width();
+var interval;
+
+// Codes des touches du clavier.
+const TOUCHE_ESPACE = 32;
+const TOUCHE_GAUCHE = 37;
+const TOUCHE_DROITE = 39;
+
+
+function play(){
+	
+	//interval = setInterval(gotoNextSlide, 2000);
+
+}
+
+function stop(){
+
+	clearInterval(interval);
+
+}
+
+function generatePagination(){
+
+	var nbSlides = slides.length;
+	var html = '';
+	
+	for(var i = 1; i <= nbSlides; i++) {
+	
+		html += '<span>'+i+'</span>';
+		
+	
+	}
+
+	
+	$('.pagination').html(html);
+	
+	
+}
+
+function updatePagination() {
+	
+	$('.pagination span').removeClass('active');
+	var index = slides.index($('.slide.active')) + 1;
+	console.log(index);
+	$('.pagination span:nth-child('+index+')').addClass('active');
+
+}
+
+
+
+function gotoNextSlide() {
+
+
+	
+	if(onProcess == false){
+		if(jQuery('.slide.active').next().length != 1) loop();
+		onProcess = true;
+		container.animate({'left':'-='+slideWidth},1000,function(){   
+		
+			jQuery('.slide.active').removeClass('active').next().addClass('active'); 
+			onProcess = false;
+			updatePagination();
+		
+		
+		});
+		
+	}
+
+}
+
+
+function gotoPrevSlide(){
+
+
+
+	if(onProcess == false){
+	
+		if(jQuery('.slide.active').prev().length != 1) loop();
+		console.log(5);
+		onProcess = true;
+		container.animate({'left':'+='+slideWidth},1000,function(){   
+			
+			jQuery('.slide.active').removeClass('active').prev().addClass('active'); 
+			onProcess = false; 
+			updatePagination();
+		
+		});
+	
+	}
+
+}
+
+function loop(){
+
+	//stop();
+	var slides = $('.container .slide:not(.active)');
+	var currentSlide = $('.container .slide.active');
+		
+	if(currentSlide.next().length != 1)
+	{
+		currentSlide.after(slides);	
+		container.css("left",0);
+		$('.container .slide').removeClass('active');
+		$('.container .slide:first').addClass('active');
+	}
+	else
+	{
+		currentSlide.before(slides);
+		
+		let positionLeft =  $('#slider .slide').length * slideWidth - slideWidth;
+		
+		container.css({"left": '-='+positionLeft});
+	}
+	//play();
+
+
+}
+
+
+jQuery('#slider').mouseover(function(){
+
+	//hoverSlide = true;
+	stop();
+
+});
+
+
+jQuery('#slider').mouseleave(function(){
+
+	//hoverSlide = false;
+	play();
+
+});
+
+
+jQuery('.prev').click(gotoPrevSlide);
+
+jQuery('.next').click(gotoNextSlide);
+
+
+generatePagination();
+jQuery('.pagination span').click(function(){
+
+	
+	onProcess = true; 
+	var index = $('.pagination span').index($(this));
+	
+	var currentIndex = slides.index($('.slide.active'));
+	
+	var diff = (currentIndex - index) * slideWidth ;
+	
+	container.animate({'left':'+='+diff},1000,function(){   
+			
+			jQuery('.slide.active').removeClass('active'); 
+			index++;
+			$('.slide:nth-child('+index+')').addClass('active');
+			
+			onProcess = false; 
+			
+			updatePagination();
+		
+		});	
+	
+});
+   
+$(document).keyup(function(event){
+
+	switch(event.keyCode)
+    {
+        case TOUCHE_DROITE:
+        // On passe à la slide suivante.
+        gotoNextSlide();
+        break;
+
+        case TOUCHE_GAUCHE:
+        // On passe à la slide précédente.
+        gotoPrevSlide();
+        break;
+	}
+
+});    
+       
+
+
+
+
+
+updatePagination();
+play();
+
+</script>

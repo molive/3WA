@@ -1,0 +1,17 @@
+.parent + ul {
+
+	display: none;
+
+}
+
+ul li strong {
+
+	cursor: pointer;
+
+}
+
+.parent {
+
+	font-weight:bold;
+
+}

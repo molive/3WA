@@ -1,0 +1,38 @@
+body {
+	margin: 15px;
+	width:750px;
+	margin:auto;
+}
+
+.error {
+
+	border: red 1px solid;
+
+}
+
+textarea {
+	width : 500px;
+	height :100px;
+	margin:10px 0 10px 0;
+}
+
+.tweet {display : none; padding-bottom: 15px; border-bottom: #e5e5e5 1px solid;}
+.avatar { width : 50px ; float:left;margin-right:10px; }
+.wrapper {float : left;}
+.delete {clear:both !important;display:block;}
+
+#errorsArea{display:none;}
+
+.jumbotron {
+	padding:15px;
+}
+#tweet {width:100%}
+#thread {
+padding-top : 15px;
+width : 750px;
+margin : auto;
+}
+
+.delete {margin-bottom:5px;float: right; display: block !important; width:auto;}
+
+hr {clear :both;margin-top:5px;}

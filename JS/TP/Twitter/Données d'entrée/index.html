@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+			
+		<link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="twitter.css" type="text/css" media="screen" />    
+
+	</head>
+
+	<body>
+	<h1>TWITTER + !</h1>
+	<div class="jumbotron">
+
+
+		<form id="twitterForm" method="post">
+		  <textarea id="tweet"  class="form-control" name="content"></textarea>
+		  <br>Caractères restants : <span id="charCounter">140</span> / 140
+
+		  <p><input type="submit" class="btn btn-primary btn-lg" value="Tweet" role="button"></p>
+		</form>
+
+
+	</div>
+
+	<div id="thread">
+	<div style="display:block" class="tweet">
+		{contenu du tweet (140 caractères max)}
+		<button class="delete btn btn-danger btn-xs">Supprimer X</button>
+	</div>
+	<!-- faire apparaitre les tweets dans cette DIV les uns en dessous des autres. Le tweet le plus récent apparaît en tête de liste.
+
+	Structure html d'un tweet :
+	<div class="tweet">
+		{contenu du tweet (140 caractères max)}
+		<button class="delete btn btn-danger btn-xs">Supprimer X</button>
+	</div>
+
+
+	-->
+
+	</div>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="twitter.js"></script>
+
+	</body>
+</html>

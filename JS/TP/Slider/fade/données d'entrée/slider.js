@@ -1,6 +1,10 @@
 "use strict";
 $(function(){
 
+/* A travers ce TP nous allons découvrir:
+>>> La méthode index http://api.jquery.com/index/ (l'équivalent de indexOf en JS pur mais applicable à une collection d'objet jQuery)
+>>> La méthode trigger http://api.jquery.com/trigger/ (qui permet notaement de simuler une action sur un élément html tel qu'un clic sur un bouton)
+
 // NB: Dans ce TP quand on parlera de slide on fera régérence à une des 4 images contenu dans la div "slider".
 // NB²: A titre d'exemple la formulation div "pagination" signifie "élément HTML div ayant pour id = "pagination".
 
