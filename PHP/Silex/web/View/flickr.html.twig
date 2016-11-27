@@ -1,0 +1,45 @@
+{% extends 'layout.html.twig' %}
+
+{% block main_body %}
+    <form class="generic-form" action="{{ path('flickr_list') }}" method="POST">
+        <fieldset>
+            <legend>Recherche Flickr</legend>
+            <ul>
+                <li>
+                    <label for="tagList" title="Séparés par des virgules">Tags :</label>
+                    <input id="tagList" name="tagList" type="text">
+                </li>
+                <li>
+                    <button class="button button-primary" type="submit">Rechercher</button>
+                </li>
+            </ul>
+        </fieldset>
+    </form>
+
+    {% if flickrPhotos is defined %}
+        <hr>
+        {% if flickrPhotos is empty %}
+            <p>Aucune photo n'a été trouvée :-(</p>
+        {% else %}
+            <ul class="link-list photos">
+                {# Boucle Twig parcourant un tableau associatif d'objets de la classe FlickrPhoto #}
+                {% for flickrPhoto in flickrPhotos %}
+                    <li>
+                        <img src="{{ flickrPhoto.thumbnailUrl }}" alt="{{ flickrPhoto.title }}">
+                        {# Twig va automatiquement appeler la méthode getThumbnailUrl() de la classe FlickrPhoto #}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endif %}
+{% endblock %}
+
+{% block footer %}
+    <footer>
+        <hr>
+        <ul class="link-list">
+            {# Exemple d'hyperlien utilisant la fonction path() faisant un routing inversé #}
+            <li><a class="button button-primary" href="{{ path('homepage') }}">Accueil</a></li>
+        </ul>
+    </footer>
+{% endblock %}

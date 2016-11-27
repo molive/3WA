@@ -1,0 +1,32 @@
+{% extends 'layout.html.twig' %}
+
+{% block main_body %}
+    <main>
+        <p>Bienvenu(e) {{ firstName|upper }} !</p>
+
+        <ul>
+            {# Boucle Twig parcourant un tableau associatif de fruits et de couleurs #}
+            {% for fruit,color in fruits %}
+                <li>{{ fruit }} est de couleur {{ color }}</li>
+            {% endfor %}
+        </ul>
+    </main>
+{% endblock %}
+
+{% block footer %}
+    <footer>
+        <ul class="link-list">
+            {# Exemple d'hyperlien en écrivant l'URL en dur dans le code #}
+            <li><a class="button button-primary" href="{{ app.request.baseUrl }}/hello">Hello World</a></li>
+
+            {# Exemple d'hyperlien utilisant la fonction path() faisant un routing inversé #}
+            <li><a class="button button-primary" href="{{ path('customer_form') }}">Clients</a></li>
+
+            {# Exemple d'hyperlien utilisant la fonction path() faisant un routing inversé #}
+            <li><a class="button button-primary" href="{{ path('dire_bonjour', { firstName: 'isabelle' }) }}">Dire Bonjour !</a></li>
+
+            {# Exemple d'hyperlien utilisant la fonction path() faisant un routing inversé #}
+            <li><a class="button button-primary" href="{{ path('flickr_form') }}">Flickr</a></li>
+        </ul>
+    </footer>
+{% endblock %}

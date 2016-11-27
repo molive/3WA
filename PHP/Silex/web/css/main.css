@@ -1,0 +1,96 @@
+/*
+ * Styles des éléments HTML
+ */
+*
+{
+    box-sizing: border-box;
+}
+
+
+a
+{
+    color: #7F3734;
+    text-decoration: none;
+    transition: color 0.25s;
+}
+a:hover
+{
+    color: #00968B;
+}
+
+body
+{
+    /* structure */
+    margin: 0 auto;
+    padding: 1em;
+    min-height: 100%;
+    width: 80%;
+
+    /* presentation */
+    font-family: 'Open Sans', sans-serif;
+}
+
+fieldset
+{
+    /* structure */
+    margin-bottom: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+
+    /* presentation */
+    border-color: #00968B;
+    border-radius: 6px;
+}
+fieldset legend
+{
+    /* structure */
+    padding: 0 0.5em;
+
+    /* presentation */
+    color: #00968B;
+    font-weight: bold;
+}
+
+html
+{
+    /* structure */
+    height: 100%;
+
+    /* presentation */
+    background-color: #F8FFF2;
+}
+
+h1
+{
+    color: #00968B;
+    text-align: center;
+}
+
+hr
+{
+    border-color: #F8FFF2;
+    margin: 1.5em 0;
+}
+
+
+/*
+ * Classes génériques
+ */
+.link-list,
+.generic-form ul
+{
+    /* structure */
+    padding-left: 0;
+
+    /* presentation */
+    list-style-type: none;
+}
+.link-list li
+{
+    display: inline-block;
+}
+
+.photos li
+{
+    margin: 0.5em;
+}

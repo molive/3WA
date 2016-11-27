@@ -1,0 +1,60 @@
+{% extends 'layout.html.twig' %}
+
+{% block main_body %}
+    <form class="generic-form" action="{{ path('customer_list') }}" method="POST">
+        <fieldset>
+            <legend>Recherche de clients</legend>
+            <ul>
+                <li>
+                    <label for="country">Pays :</label>
+                    <input id="country" name="country" type="text">
+                </li>
+                <li>
+                    <button class="button button-primary" type="submit">Rechercher</button>
+                </li>
+            </ul>
+        </fieldset>
+    </form>
+
+    {% if customers is defined %}
+        <hr>
+        {% if customers is empty %}
+            <p>Aucun client n'a été trouvé dans ce pays !</p>
+        {% else %}
+            <table class="generic-table">
+                <caption>Liste des clients pour le pays {{ country|upper }}</caption>
+                <thead>
+                    <tr>
+                        <th>Société</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Adresse</th>
+                        <th>Ville</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {# Boucle Twig parcourant un tableau associatif de données SQL #}
+                    {% for customer in customers %}
+                        <tr>
+                            <td>{{ customer.customerName }}</td>
+                            <td>{{ customer.contactLastName|capitalize }}</td>
+                            <td>{{ customer.contactFirstName|capitalize }}</td>
+                            <td>{{ customer.addressLine1 }}<br>{{ customer.addressLine2 }}</td>
+                            <td>{{ customer.city|upper }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    {% endif %}
+{% endblock %}
+
+{% block footer %}
+    <footer>
+        <hr>
+        <ul class="link-list">
+            {# Exemple d'hyperlien utilisant la fonction path() faisant un routing inversé #}
+            <li><a class="button button-primary" href="{{ path('homepage') }}">Accueil</a></li>
+        </ul>
+    </footer>
+{% endblock %}
