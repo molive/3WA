@@ -7,10 +7,10 @@ class Point
     private $y;
 
 
-	public function __construct()
+	public function __construct($x=0,$y=0)
 	{
-		$this->x = 0;
-		$this->y = 0;
+		$this->x = $x;
+		$this->y = $y;
 	}
 
     public function getX()

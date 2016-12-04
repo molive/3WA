@@ -8,7 +8,8 @@ class SvgRenderer
     // Tableau d'objets géométriques de la classe Shape ou de ses dérivés (= ses enfants).
     private $shapes;
 
-
+    
+	
     public function __construct()
     {
         $this->results = array();
@@ -63,24 +64,34 @@ class SvgRenderer
 		);
 	}
 
-    public function drawTriangle(array $points, $color, $opacity)
-    {
-        /** @type Point[] $points */
+	static function renderPoint($point){
+	
+		return $point->getX()." ".$point->getY();
+	
+	}
+	
+	public function getSvgTag($type,Shape $shape){
+	
+	  
+		$points = implode(array_map('SELF::renderPoint', $shape->getPoints()),',');  // listera les coordonnées sous cette forme: "x1 y1, x2 y2, x3 y3"
 
-        // Création de variables intermédiaires.
-        $x1 = $points[0]->getX();
-        $y1 = $points[0]->getY();
-        $x2 = $points[1]->getX();
-        $y2 = $points[1]->getY();
-        $x3 = $points[2]->getX();
-        $y3 = $points[2]->getY();
+	
+		$opacity = $shape->getOpacity();
+		$color = $shape->getColor();
+		
+		return "<$type points='$points' fill='$color' opacity='$opacity' />";
+	
+	}
+	
+	
+    public function drawTriangle(Triangle $triangle)
+    {
 
         // Ajout d'une balise SVG <polygon>
-        array_push
-        (
-            $this->results,
-            "<polygon points='$x1 $y1,$x2 $y2,$x3 $y3' fill='$color' opacity='$opacity' />"
-        );
+		
+		$this->results[] = $this->getSvgTag('polygon',$triangle);
+		
+
     }
 
 	public function getResult()

@@ -44,7 +44,7 @@ $query->execute();
  * - la première dimension représente les différentes lignes de données
  * - la deuxième dimension représente les colonnes SQL de chaque ligne de données
  */
-$orders = $query->fetchAll(PDO::FETCH_ASSOC);
+$orders = $query->fetchAll();
 
 
 

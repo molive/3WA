@@ -1,295 +1,150 @@
 "use strict";
 
-var slider = {
+var Slider = function(slider) {
 
-	slides : "",	
-	currentSlide : null,
-	autoPlay: false,
-	timer : "",
-	onProcess : false,
-	init: function(slider){
+	this.slider = slider;
+	this.slides;	
+	this.currentSlide = null;
+	this.isActive = false,
+	this.timer = "",
+	this.controls;
+	this.nbSlides;
+	this.pages;
+	this.pagination;
+	
+	this.init = function(){
 		
 		this.slides = this.slider.find('img');
+		this.nbSlides = this.slides.length;
 		this.currentSlide = this.slides.first();
-		this.timer = setInterval(this.gotoNextSlide.bind(this),1000);	
+		this.controls = slider.next();
+		this.pagination = this.controls.find('.pagination');
+	    
+		this.playButton = this.controls.find('.play i');
+		
+		this.generatePagination();
+		
+		//Gestionnaire d'événements:
+		this.controls.find('.next').click(this.gotoNextSlide.bind(this));
+		this.controls.find('.prev').click(this.gotoPrevSlide.bind(this));
+		this.controls.find('.play').click(this.autoPlay.bind(this));
+		this.controls.find('.random').click(this.random.bind(this));	
+		
+		this.pages.click(this.clickOnPage.bind(this));
 	
-	},
-	gotoPrevSlide: function(){
+	
+	};
+
+
+	this.updatePagination = function() {
 		
-		if(this.currentSlide.prev().length != 1) return false;
+		this.pages.removeClass('active');
+		var index = this.currentSlide.index();
+		this.pages.eq(index).addClass('active');
+
+	};
+	
+	this.generatePagination = function(){
+
+
+		var html = '';
 		
-		if(this.onProcess == false){
+		for(var i = 1; i <= this.nbSlides; i++) {
+		
+			html += '<span>'+i+'</span>';	
+		
+		}
+		console.log(this.pagination);
+		this.pagination.html(html);
+		this.pages = this.pagination.find('span');
+		console.log(this.pages);
+		this.updatePagination();
+	};
+
+	this.clickOnPage = function(e){
+	
+		this.gotoSlide($(e.target).index());
+	
+	}
+	
+	this.gotoNextSlide = function(){
 			
-			this.onProcess = true;
-			this.container.animate({'left':'+='+this.slideWidth},1000,function(){   
-				
-				this.currentSlide = this.currentSlide.prev(); 
-				this.onProcess = false; 
-				
-			}.bind(this));
-		
-		}
+		var index = this.currentSlide.index() + 1;
+		if(this.nbSlides == index) index = 0;
+		this.gotoSlide(index);
 	
-	},
-	gotoNextSlide: function(){
-		
-		
-		if(this.currentSlide.next().length != 1) this.rewind();
-		
-		if(this.onProcess == false){
+	};	
+	
+	this.gotoPrevSlide = function(){
 			
-			this.onProcess = true;
-			this.container.animate({'left':'-='+this.slideWidth},1000,function(){   
-				
-				this.currentSlide = this.currentSlide.next(); 
-				this.onProcess = false; 
-				
-			}.bind(this));
+		var index = this.currentSlide.index() - 1;
+		if(index < 0) index = this.nbSlides - 1;
+		this.gotoSlide(index);
+
+	};	
+	
+	this.gotoSlide = function(index){
+	
+		var slideToShow = this.slides.eq(index);
+		this.currentSlide.fadeOut(1000);
+		slideToShow.fadeIn(1000);
+		this.currentSlide = slideToShow;
+		this.updatePagination();
+	
+	};
+	
+	this.autoPlay = function(e){
 		
+		console.log(this.isActive);
+		this.playButton.removeClass();
+		if(this.isActive == false){ 
+			this.play();
+			this.playButton.addClass('fa fa-stop');
 		}
-	
-	},
-	rewind : function(){
-	
-		var slides = this.slides.not(this.currentSlide);
+		else {
+			this.stop();
+			this.playButton.addClass('fa fa-play');
+		}
+		// changement de class
 		
-		if(this.currentSlide.next().length != 1)
+		
+		
+	
+	};
+	
+	this.random = function(){
+	
+		var currentActiveSlidePosition = this.currentSlide.index();
+
+		do  // Cette boucle sert à vérifier que l'image générer aléatorement n'est pas égale à celle déjà visible
 		{
-			this.currentSlide.after(slides);	
-		}
-		else
-		{
-			this.currentSlide.before(slides);
-		}
-		this.container.css("left",0);
+			var max = this.nbSlides - 1;
+			var random = rand(0,max);
+			
+		} while (random == currentActiveSlidePosition)
+		
+		this.gotoSlide(random);
+	
+	};
+	
+	this.play = function(){
+	
+		this.timer = setInterval(this.gotoNextSlide.bind(this),2000);	
+		this.isActive = true;
+	
+	}
+	
+	this.stop = function(){
+	
+		clearInterval(this.timer);
+		this.isActive = false;
+	
 	}
 	
 }
 
+var slider = new Slider($('#slider'));
+slider.init();
 
-
-var onProcess = false;
-var autoPlay = false;
-var $images = $('#slider img');
-var $activeImage = $('#slider img:first');
-//var currentSlide = $('#slider .slide:first');
-
-var interval;
-
-// Codes des touches du clavier.
-const TOUCHE_ESPACE = 32;
-const TOUCHE_GAUCHE = 37;
-const TOUCHE_DROITE = 39;
-
-
-function play(){
-	
-	if(autoPlay == true)
-	interval = setInterval(gotoNextSlide, 2000);
-
-}
-
-function stop(){
-
-	if(autoPlay == true)
-	clearInterval(interval);
-
-}
-
-function generatePagination(){
-
-	var nbSlides = $images.length;
-	var html = '';
-	
-	for(var i = 1; i <= nbSlides; i++) {
-	
-		html += '<span>'+i+'</span>';
-		
-	
-	}
-	
-	$('.pagination').html(html);
-	
-	
-}
-
-function updatePagination() {
-	
-	var $pagination = $('.pagination span');
-	
-	$pagination.removeClass('active');
-	var index = $images.index($activeImage);
-	console.log(index);
-	$pagination.eq(index).addClass('active');
-
-}
-
-
-
-function gotoNextSlide() {
-
-	var $nextImage = $activeImage.next();
-	
-	console.log($images.index($nextImage));
-	
-	
-	if(onProcess == false){
-		
-		onProcess = true;
-		$activeImage.fadeOut();
-		
-		if($nextImage.length != 1) {
-		// if($images.index($nextImage) != -1)
-		
-			console.log($images.first().length);
-			$activeImage = $images.first();
-		
-		}
-		else
-		{
-		
-			$activeImage = $nextImage;
-		
-		}
-		
-		
-		$activeImage.fadeIn(function(){  onProcess = false; updatePagination();  });
-		
-	}
-
-}
-
-
-function gotoPrevSlide(){
-
-	var $prevImage = $activeImage.prev();
-	
-	if(onProcess == false){
-		
-		onProcess = true;
-		$activeImage.fadeOut();
-		
-		if($prevImage.length != 1) {
-		
-			$activeImage = $images.last();
-		
-		}
-		else
-		{
-
-			$activeImage = $prevImage;
-		
-		}
-		
-		displayActiveImage()
-		
-	}
-
-}
-
-function displayActiveImage() {
-
-	$activeImage.fadeIn(function(){  onProcess = false; updatePagination();  });
-
-}
-
-function gotoSlide(index){
-
-	$activeImage.fadeOut();
-	$activeImage = $images.eq(index);
-	displayActiveImage();
-
-}
-
-jQuery('#slider').mouseover(function(){
-
-	//hoverSlide = true;
-	stop();
-
-});
-
-
-jQuery('#slider').mouseleave(function(){
-
-	//hoverSlide = false;
-	play();
-
-});
-
-jQuery('.prev').click(gotoPrevSlide);
-
-jQuery('.next').click(gotoNextSlide);
-
-
-generatePagination();
-
-jQuery('.pagination span').click(function(){
-
-	onProcess = true; 
-	var index = $('.pagination span').index($(this));
-	gotoSlide(index);
-	
-});
-
-
-$('.play').click(function(){
-
-	var $status = $(this).find('i');
-	if($status.hasClass('fa-play')) {
-		
-		autoPlay = true;
-		play();
-		$status.removeClass();
-		$status.addClass('fa fa-stop');
-	
-	}
-	else
-	{
-	
-		
-		stop();
-		autoPlay = false;
-		$status.removeClass();
-		$status.addClass('fa fa-play');
-	
-	}
-
-});
-   
-
-$('.random').click(function(){
-
-	var indexActiveImage = $images.index($activeImage);
-	
-	do  // Cette boucle sert à vérifier que l'image générer aléatorement n'est pas égale à celle déjà visible
-	{
-		var max = $images.length - 1;
-		var random = rand(0,max);
-		
-	} while (random == indexActiveImage)
-	
-	
-	gotoSlide(random);
-
-});
-   
-   
-$(document).keyup(function(event){
-
-	switch(event.keyCode)
-    {
-        case TOUCHE_DROITE:
-        // On passe à la slide suivante.
-        gotoNextSlide();
-        break;
-
-        case TOUCHE_GAUCHE:
-        // On passe à la slide précédente.
-        gotoPrevSlide();
-        break;
-	}
-
-});    
-       
-
-updatePagination();
+var slider2 = new Slider($('#slider2'));
+slider2.init();
