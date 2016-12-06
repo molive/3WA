@@ -1,0 +1,1 @@
+<?php // Supprimer la session "login" pour déconnecter l'utilisateur puis le rediriger sur la page connexion.php
