@@ -20,5 +20,5 @@
 
 */
 
-
-include('update.phtml');
+$template = 'update.phtml';
+include('layout.phtml');

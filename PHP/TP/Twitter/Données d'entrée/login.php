@@ -15,4 +15,5 @@
 
 */
 
-include('login.phtml');
+$template = 'login.phtml';
+include('layout.phtml');

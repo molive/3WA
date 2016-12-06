@@ -58,4 +58,5 @@ S'il y a des erreurs sauter l'étape 2, 3 et 4 et afficher les erreurs sur le fic
 */
 
 
-include('register.phtml');  // Formulaire d'inscription
+$template = 'register.phtml';
+include('layout.phtml');

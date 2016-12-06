@@ -64,5 +64,31 @@ if($hash == $password) echo 'connecté';
 
 $date = new DateTime($user['created_at']);
 echo $date->format('Y m d');
+
+
+        // Edition d'un article du blog.
+        $query =
+        '
+            UPDATE
+                posts
+            SET
+                content = ?,
+				updated_at = NOW()
+				
+            WHERE
+                id = ?
+        ';
+        $resultSet = $pdo->prepare($query);
+        $resultSet->execute(['lol', 1]);
 	
 	
+    // Suppression d'un article du blog.
+    $query =
+    '
+        DELETE FROM
+            posts
+        WHERE
+            id = ?
+    ';
+    $resultSet = $pdo->prepare($query);
+    $resultSet->execute([1]);
