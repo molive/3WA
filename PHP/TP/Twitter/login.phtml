@@ -1,16 +1,17 @@
 <h1>Login</h1>
 <!-- afficher cette div UNIQUEMENT si les identifiants de connexion rentrés sont erronés -->
+<?php if($error):  // si la variable $error est égal à true on affiche ce message d'erreur:?>
 <div class="alert alert-danger">
 
 	Mot de passe ou pseudo incorrect.
 
 </div>
-
+<?php endif ?>
 <form method="post">
 
-	<input type="username" class="form-control" placeholder="Nom d'utilisateur">
+	<input type="username" name="username" class="form-control" placeholder="Nom d'utilisateur">
 
-	<input type="text" name="password" class="form-control" placeholder="Mot de passe">
+	<input type="password" name="password" class="form-control" placeholder="Mot de passe">
 
 	<input type="submit" class="btn btn-default" value="Connexion">
 		

@@ -10,7 +10,12 @@
 	</head>
 
 	<body>
+		<!-- Si l'utilisateur n'est pas connecté affiché ce code: -->
+		<div style="float:right;" class="btn-group"><a class="btn btn-lg btn-default" href="register.php">Inscription</a><a class="btn btn-lg btn-default" href="login.php">Connexion</a></div>
+		<!-- Si l'utilisateur est connecté rempalcer le code HTML ci-dessus par:
 		
+		<a style="float:right;" class="btn btn-lg btn-default" href="logout.php"><i class="glyphicon glyphicon-off"></i></a>
+		-->
 		<?php include($template); ?>
 
 	</body>

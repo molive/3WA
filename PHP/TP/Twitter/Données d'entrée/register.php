@@ -2,17 +2,6 @@
 
 // Inclure les infos de connexion à la bdd
 
-
-function generateRandomString($length) {  // Servira à générer le SALT de 22 caractère pour crypter le mot de passe
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $charactersLength = strlen($characters);
-    $randomString = '';
-    for ($i = 0; $i < $length; $i++) {
-        $randomString .= $characters[rand(0, $charactersLength - 1)];
-    }
-    return $randomString;
-}
-
 $errors = []; // On initialise
 
 /* 1) On vérifie l'intégrité des données:

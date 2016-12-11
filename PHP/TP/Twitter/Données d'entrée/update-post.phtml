@@ -1,0 +1,11 @@
+<h1>Editer</h1>
+
+
+<form method="post">
+
+    <textarea class="form-control" name="content">{{ content }}</textarea>
+	<input name="csrf_token" type="hidden" value="{{ csrf_token }}">  <!-- Permet de se protéger des attaques csrf. La valeur de champs caché sera égale à celle contenu dans $_SESSION['csrf_token'] (généré depuis le fichier common.php) -->
+
+	<input type="submit" class="btn btn-default" value="Editer">
+		
+</form>

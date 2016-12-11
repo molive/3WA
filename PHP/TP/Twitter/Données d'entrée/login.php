@@ -5,7 +5,7 @@
 
 /*
 
-1)  Récupérer le mot de passe associé au nom d'utilisateur rentré dans le champs username
+1)  Récupérer le mot de passe et le grain de se (password,salt) associés au nom d'utilisateur rentré dans le champs username
 
 2) Vérifier si le mot de passe rentré dans le champs password est bien celui récupéré ci-dessus
 

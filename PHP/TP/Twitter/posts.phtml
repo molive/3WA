@@ -1,30 +1,31 @@
-		<div style="float:right;" class="btn-group"><a class="btn btn-lg btn-default" href="register.php">Inscription</a><a class="btn btn-lg btn-default" href="login.php">Connexion</a></div>
-		<!-- Si l'utilisateur est connecté rempalcer le code HTML ci-dessus par:
-		
-		<div style="float:right;" class="btn-group"><span class="btn btn-lg btn-default">{{ username }}</span><a class="btn btn-lg btn-default" href="logout.php"><i class="glyphicon glyphicon-off"></i></a></div>
-
-		-->
+	
 		<h1>TWITTER + !</h1>
 		<div class="jumbotron">
 
-
-			<form action="create.php" id="twitterForm" method="post">
+			<?php if(isset($_SESSION['user_id'])){ ?>
+			<form action="create-post.php" id="twitterForm" method="post">
 			  <textarea id="tweet"  class="form-control" name="content"></textarea>
 
 			  <p><input type="submit" class="btn btn-primary btn-lg" value="Tweet" role="button"></p>
 			</form>
-
-
+			<?php } else { ?>
+			
+			<div class="alert alert-info">Vous devez être connecté pour poster.</div>
+			
+			<?php } ?>
 		</div>
 
 		<div id="thread">
 
 			<!-- Afficher tous les posts de la tables "posts" ainsi que leur auteurs respectifs (tables users):  -->
-
+			<?php foreach($posts as $post): ?>
 			<div class="tweet">
-				<span class="author">{{ username }}</span> le {{ created_at }}:
-				<p>{{ content }}</p>
-				<a href="delete.php?post_id={{ id }}" class="delete btn btn-danger btn-xs">Supprimer X</a><a href="update.php?post_id={{ id }}" class="delete btn btn-info btn-xs">Editer</a>
+				<span class="author"><?= $post['username'] ?></span> le <?= $post['created_at'] ?>:
+				<p><?= htmlentities($post['content']) ?></p>
+				<?php if(isset($_SESSION['user_id']) && $_SESSION['user_id']  == $post['user_id']):?>
+				<a href="delete-post.php?post_id=<?= $post['id'] ?>&token=<?php echo isset($_SESSION['csrf_token'])?$_SESSION['csrf_token']:''; ?>" class="delete btn btn-danger btn-xs">Supprimer X</a>
+				<a href="update-post.php?post_id=<?= $post['id'] ?>" class="delete btn btn-info btn-xs">Editer</a>
+				<?php endif ?>
 			</div>
-
+			<?php endforeach ?>
 		</div>
