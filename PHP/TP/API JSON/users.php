@@ -1,4 +1,4 @@
-<?php $pdo = new PDO('mysql:host=localhost;dbname=blog', 'root', ''); 
+<?php $pdo = new PDO('mysql:host=mysql5-20.perso;dbname=maphrasedata', 'maphrasedata', 'YBsouwNo666');
 $query = $pdo->prepare('SELECT id, username , email FROM users WHERE username LIKE :keyword');
 $query->execute(['keyword' => "%".$_GET['keyword']."%"]);
 

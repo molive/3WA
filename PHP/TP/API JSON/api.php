@@ -40,7 +40,7 @@
 	/**** CONSIGNE ****/
 	
 	// 1)  Appliquer un écouteur d'événement sur le champs de recherche du formulaire qui déclenchera une fonction lorsqu'on tape du texte dedans.
-	// ASTUCE: http://api.jquery.com/keydown/
+	// ASTUCE: http://api.jquery.com/keyup/
 	
 	// 2) Dans cette fonction déclenché une requête AJAX (http://api.jquery.com/jquery.ajax/) qui charge l'url users.php?keyword={{ keyword }} où {{ keyword }} dépendra de ce qui a été tapé dans le champs de recherche
 	
@@ -62,7 +62,7 @@
 	
 	
 	
-	$('#searchForm [name=keyword]').keydown(function(){
+	$('#searchForm [name=keyword]').keyup(function(){
 	
 		
 		
