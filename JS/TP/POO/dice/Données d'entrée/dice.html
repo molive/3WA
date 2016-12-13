@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+	</head>
+
+	<style>
+	
+		.dice {
+		
+			width : 70px;
+			height: 70px;
+			border : #000 1px solid;
+			border-radius: 5px;
+			margin:5px;
+			display: inline-block;
+			cursor: pointer;
+		}
+	
+	</style>
+	
+	<body>
+		<div class="dice" id="dice1"></div>
+		<div class="dice" id="dice2"></div>
+		<div class="dice" id="dice3"></div>
+
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+		<script src="js/utilities.js"></script>		
+		<script src="js/Dice.class.js"></script>
+		<script>
+
+			// 1) Créer 3 instances de l'objet Dice (définit dans le fichier "js/Dice.class.js" qui seront respectivement stockés dans des variables dice1, dice2 et dice3
+			// Lien utile: https://developer.mozilla.org/fr/docs/JavaScript/Reference/R%C3%A9f%C3%A9rence_JavaScript/Op%C3%A9rateurs/Op%C3%A9rateurs_sp%C3%A9ciaux/L'op%C3%A9rateur_new
+
+			// 2) Changer aléatoirement la valeur d'un dé lorsque l'on clique dessus. La méthode "lancer" du dé cliqué devra être déclenchée à ce moment là
+			
+			// 3) dice3.lancer();  // Change la face du dé n°3
+			
+			
+		</script>
+	</body>
+</html>
+

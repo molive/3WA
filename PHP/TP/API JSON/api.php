@@ -61,36 +61,6 @@
 	// 4) Afficher le contenu de cette variable dans la div "results"
 	
 	
-	
-	$('#searchForm [name=keyword]').keyup(function(){
-	
-		
-		
-		$.ajax({ url : "users.php?keyword="+$(this).val(),
-				 dataType : "json",
-				 success : function(data){
-				 
-					console.log(data);
-					
-					// https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/forEach
-					
-					var list = "";
-					data.forEach(function(user){
-					
-						list += user.username+"<br>";
-					
-					});
-					
-					if(data.length == 0) list = "Aucun utilisateur trouvé.";
-					
-					
-					$('#results').html(list);
-				 
-				 }
-				 
-				 
-			   });
-	
-	});
+
 
 </script>

@@ -1,0 +1,63 @@
+h1 {
+
+	text-align:center;
+
+}
+
+
+.control {
+
+	width:960px;
+	margin:auto;
+	margin-top:15px;
+	margin-bottom: 15px;
+}
+
+.slider {
+
+	height: 420px;
+	width:960px;
+	max-width: 100%;
+	margin:auto;
+	border: 1px solid #000;
+	position:relative;
+	overflow: hidden;
+
+}
+
+.slider img {
+
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	display:none;
+	
+}
+
+.pagination {
+
+	float:right;
+
+}
+
+.pagination span {
+	
+	cursor: pointer;
+	border-radius: 10px;
+	width:20px;
+	height:20px;
+	border : #000 1px solid;
+	display: inline-block;
+	text-align:center;
+	margin-left:5px;
+	background : #fff;
+	color: #000;
+
+}
+
+.pagination span.active {
+
+	background : #000;
+	color: #fff;
+
+}

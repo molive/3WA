@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="styles.css">
+    <title>Diaporamas multiples avec effet Fade in / Fade out</title>
+</head>
+<body>
+  
+	<h1>Diaporamas multiples avec effet Fade in / Fade out</h1>
+	<!-- Diaporama -->
+	<div id="slider1" class="slider">
+		<!-- Images du diaporama: -->
+		<img style="display:block;" src="images/1.jpg">
+		<img  src="images/2.jpg">
+		<img src="images/3.jpg">
+		<img src="images/4.jpg">
+
+	</div>
+	
+	
+	<div id="slider2" class="slider">
+		<!-- Images du diaporama: -->
+		<img style="display:block;" src="images/1.jpg">
+		<img  src="images/2.jpg">
+		<img src="images/3.jpg">
+		<img src="images/4.jpg">
+
+	</div>
+	
+</body>	
+	
+</html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="utilities.js"></script>  <!-- contient la fonction rand() -->
+<script src="Slider.class.js"></script>
+<script>
+$(function(){
+
+	var slider1 = new Slider($('#slider1'));
+	var slider2 = new Slider($('#slider2'));
+	
+});
+</script>
