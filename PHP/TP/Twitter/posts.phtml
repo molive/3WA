@@ -23,7 +23,7 @@
 				<span class="author"><?= $post['username'] ?></span> le <?= $post['created_at'] ?>:
 				<p><?= htmlentities($post['content']) ?></p>
 				<?php if(isset($_SESSION['user_id']) && $_SESSION['user_id']  == $post['user_id']):?>
-				<a href="delete-post.php?post_id=<?= $post['id'] ?>&token=<?php echo isset($_SESSION['csrf_token'])?$_SESSION['csrf_token']:''; ?>" class="delete btn btn-danger btn-xs">Supprimer X</a>
+				<a href="delete-post.php?post_id=<?= $post['id'] ?>&token=<?php echo $_SESSION['csrf_token']; ?>" class="btn btn-danger btn-xs">Supprimer X</a>
 				<a href="update-post.php?post_id=<?= $post['id'] ?>" class="delete btn btn-info btn-xs">Editer</a>
 				<?php endif ?>
 			</div>

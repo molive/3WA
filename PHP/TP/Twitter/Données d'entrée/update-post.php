@@ -5,8 +5,6 @@
 // Inclure les infos de connexion à la bdd
 
 
-// 1) Vérifier avant toute chose que la valeur du champs caché du formulaire "csrf_token" est bien égale à celui du jeton de session $_SESSION['csrf_token']
-
 // 2) Vérifier que l'auteur du post est bien celui qui cherche à l'éditer. Pour se faire comparer la valeur du champs de la clé étrangère "user_id" du post à éditer avec le contenu de la session "user_id".
 
 

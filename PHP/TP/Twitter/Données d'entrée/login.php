@@ -1,6 +1,6 @@
 <?php  // Connecter un utilisateur
 
-// Inclure les infos de connexion à la bdd
+// Inclure le fichier common.php pour avoir accès à la base de données et aux sessions
 
 
 /*

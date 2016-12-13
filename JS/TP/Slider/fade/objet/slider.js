@@ -1,3 +1,5 @@
+"use strict";
+
 var Slider = function($slider) {  // La variable slider est un objet jQuery
 
 	this.slider = $slider;
@@ -6,11 +8,11 @@ var Slider = function($slider) {  // La variable slider est un objet jQuery
 	this.isActive = false;
 	this.timer = "";
 	this.nbSlides = this.slides.length;
+
 	
 	
 	this.init = function(){
 		
-	
 		this.controls;	// Sera défini une fois la méthode generateControls déclenchée.
 		this.generateControls();
 
@@ -38,11 +40,6 @@ var Slider = function($slider) {  // La variable slider est un objet jQuery
 		this.slider.mouseleave(this.onMouseLeave.bind(this));
 	
 		this.pages.click(this.clickOnPage.bind(this));
-		
-		var lastCurrentSlide = localStorage.getItem(this.slider.attr('id')+'_currentSlide');
-		if(lastCurrentSlide != null) this.gotoSlide(lastCurrentSlide);
-		
-		
 		
 	};
 
@@ -115,10 +112,6 @@ var Slider = function($slider) {  // La variable slider est un objet jQuery
 		slideToShow.fadeIn(1000);
 		this.currentSlide = slideToShow;
 		this.updatePagination();
-		
-		localStorage.setItem(this.slider.attr('id')+'_currentSlide', index);
-		
-		
 	
 	};
 	
@@ -184,3 +177,7 @@ var Slider = function($slider) {  // La variable slider est un objet jQuery
 	
 	
 }
+
+var slider1 = new Slider($('#slider'));  // On active le 1er slider
+
+var slider2 = new Slider($('#slider2')); // On active le 2ème slider

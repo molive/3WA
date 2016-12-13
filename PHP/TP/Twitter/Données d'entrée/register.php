@@ -1,6 +1,6 @@
 <?php  // On traite les données d'envoi du formulaire d'isncription pour ajouter un nouvel utilisateur dans la table users
 
-// Inclure les infos de connexion à la bdd
+// Inclure le fichier common.php pour avoir accès à la base de données et aux sessions
 
 $errors = []; // On initialise
 

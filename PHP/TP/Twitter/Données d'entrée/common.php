@@ -20,3 +20,6 @@ if(!isset($_SESSION['csrf_token'])) {
 	$_SESSION['csrf_token'] = generateRandomString(30); 
 
 }
+
+
+// Si un formulaire est envoyé vérifier si la valeur du champs caché "csrf_token" (<input type="hidden" name="csrf_token" value="'{{ csrf_token }}">) est bien égal à la session csrf_token

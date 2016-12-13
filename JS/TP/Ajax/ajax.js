@@ -1,7 +1,6 @@
-
-
 $(function(){
 
+  var okCity = false;
   var latArea = $('#lat');
   var lngArea = $('#lon');
   var formAjax = $('#ajaxForm');
@@ -72,31 +71,41 @@ alert(data['results'][0]['geometry']['location']['lat']);
 }
 });
 */
-$('#ajaxForm').submit(function(){
-$('#errorsArea').hide();
-	$.ajax({
-url : 'https://maps.googleapis.com/maps/api/geocode/json?address='+encodeURIComponent($('[name=request]').val()),
-setting : {async : false },
-dataType: "json",  // peut prendre html , json et bien d'autre format
-success : function(data) {
-if(data['results'][0] != undefined ) {
-var lat = data['results'][0]['geometry']['location']['lat'];
-var lon = data['results'][0]['geometry']['location']['lng'];
-$('#lat').html(lat);
-$('#lon').html(lon);
-jsonString = JSON.stringify(data, null, "\t");
-$('#json').html(jsonString);
-initMap(lat,lon);
-}
-else
-{
-$('#errorsArea').fadeIn();
-$('#lat').html('XXX');
-$('#lon').html('XXX');
-}
-}
-});
-return false;
+$('#ajaxForm').submit(function(e){
+
+	$('#errorsArea').hide();
+		$.ajax({
+	method : "get",
+	url : 'https://maps.googleapis.com/maps/api/geocode/json?address='+encodeURIComponent($('[name=request]').val())+'&key=AIzaSyB2iTzI18MN-a1gUC2DGHMVP47dcFWwKrI',
+	dataType: "json",  // peut prendre html , json et bien d'autre format
+	success : function(data) {
+	
+		if(data['results'][0] != undefined ) {
+		var lat = data['results'][0]['geometry']['location']['lat'];
+		var lon = data['results'][0]['geometry']['location']['lng'];
+		$('#lat').html(lat);
+		$('#lon').html(lon);
+		jsonString = JSON.stringify(data, null, "\t");
+		$('#json').html(jsonString);
+		initMap(lat,lon);
+		
+		
+	
+	}
+	else
+	{
+		$('#errorsArea').fadeIn();
+		$('#lat').html('XXX');
+		$('#lon').html('XXX');
+		
+
+	}
+	}
+	});
+	
+
+			return false;
+
 });
 
 

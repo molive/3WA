@@ -1,5 +1,5 @@
 <?php // Editer un post
-require_once('commmon.php');
+require_once('common.php');
 // Exemple: l'url "update.php?post_id=12" signifie qu'on souhaite éditer le post dont l'id est égal à 12
 
 // Inclure les infos de connexion à la bdd
@@ -25,9 +25,6 @@ require_once('commmon.php');
 
 // On vérifie que le formulaire n'est pas envoyé depuis un site malveillant:
 
-if($_SESSION['csrf_token'] != $_POST['csrf_token']) exit;  // Si le jeton de session ne correspond pas alors on stoppe l'exécution du code PHP.
-
-
 if(!empty($_POST)){  // Si le formulaire est envoyé
 	// On veille à ne modifier que le post dont l'id correspond à celui de la variable d'url "post_id" en tenant également compte de la valeur de la clé étrangère "user_id" pour s'assurer que la personne procédant à l"édition est bien l'auteur du post.
 	$query =
@@ -44,8 +41,8 @@ if(!empty($_POST)){  // Si le formulaire est envoyé
         $resultSet = $pdo->prepare($query);
         $resultSet->execute(['postContent' => $_POST['content'], 
 							 'postId' => $_GET['post_id'], 
-							 'authorId' => $_SESSIOn['user_id']
-							 ]);
+							 'authorId' => $_SESSION['user_id']
+							]);
 
 	header('location: index.php');
 	exit;
