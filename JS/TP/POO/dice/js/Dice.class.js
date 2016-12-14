@@ -4,6 +4,7 @@ var Dice = function($dice){
 	this.dice = $dice;
 	this.value = 1;
 
+
 	
 	this.changerFace();
 	this.init();
@@ -20,11 +21,25 @@ Dice.prototype.lancer = function(){
 };
 	
 Dice.prototype.changerFace = function(){
-	
+
 		this.dice.css('background-image','url("images/'+this.value+'.png")');
 		
 	
 };
+
+
+
+Dice.prototype.changer = function(v){
+	
+	
+		
+			this.value = v;
+			this.changerFace();
+		
+	
+	
+}
+
 
 Dice.prototype.init = function(){
 	
@@ -39,7 +54,6 @@ Dice.prototype.init = function(){
 };
 
 
-
 Array.prototype.add = function(val){
 
 	this.push(val);
@@ -47,7 +61,11 @@ Array.prototype.add = function(val){
 }
 
 
+
+
 var notes = [5];
+
+console.log(notes);
 
 
 notes.add(8);
