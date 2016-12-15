@@ -175,21 +175,21 @@ class User {
 		return '<p>'.$this->firstname.' n\'aime plus '.$user->firstname.'</p>';
 	}
 	
-	public function increaseLike(){
+	public function increaseLikes(){
 		
-		$this->nbLike ++;
+		$this->nbLikes ++;
 
 	}
 	
 	public function decreaseLike(){
 		
-		$this->nbLike --;
+		$this->nbLikes --;
 
 	}
 	
-	public function getNbLike(){
+	public function getNbLikes(){
 		
-		return $this->nbLike;
+		return $this->nbLikes;
 
 	}
 	public function getAvatar(){

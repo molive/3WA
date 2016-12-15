@@ -59,7 +59,7 @@ if($user->isVisible()) $statut = 'Visible'; else $statut = 'Exclu';
 echo '<li>Age : '.$user->getAge().' ans</li>';
 echo '<li>Genre : '.$user->getGender().'</li>';
 echo '<li>Date d\'enregistrement : '.$user->getCreateAt().'</li>';
-echo '<li>Mentions "J\'aime" : '.$user->getNbLike().'</li>';
+echo '<li>Mentions "J\'aime" : '.$user->getNbLikes().'</li>';
 echo '<li>Statut : '.$statut.'</li>';
 ?>
 </ul>
