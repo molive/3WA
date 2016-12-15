@@ -177,19 +177,19 @@ class User {
 	
 	public function increaseLikes(){
 		
-		$this->nbLike ++;
+		$this->nbLikes ++;
 
 	}
 	
 	public function decreaseLike(){
 		
-		$this->nbLike --;
+		$this->nbLikes --;
 
 	}
 	
 	public function getNbLikes(){
 		
-		return $this->nbLike;
+		return $this->nbLikes;
 
 	}
 	public function getAvatar(){
