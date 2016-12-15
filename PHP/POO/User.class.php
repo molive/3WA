@@ -164,7 +164,7 @@ class User {
 	
 	public function like(User $user){
 		
-		$user->increaseLike();
+		$user->increaseLikes();
 
 		return '<p><i class="glyphicon glyphicon-heart"></i> '.$this->firstname.' aime '.$user->firstname.'</p>';
 	}
@@ -177,19 +177,19 @@ class User {
 	
 	public function increaseLikes(){
 		
-		$this->nbLikes ++;
+		$this->nbLike ++;
 
 	}
 	
 	public function decreaseLike(){
 		
-		$this->nbLikes --;
+		$this->nbLike --;
 
 	}
 	
 	public function getNbLikes(){
 		
-		return $this->nbLikes;
+		return $this->nbLike;
 
 	}
 	public function getAvatar(){
