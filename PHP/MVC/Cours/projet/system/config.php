@@ -1,0 +1,1 @@
+<?php $config['autoload'] = array(); ?>
