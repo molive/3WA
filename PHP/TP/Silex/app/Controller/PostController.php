@@ -1,5 +1,7 @@
 <?php namespace Projet\Controller;
 
+
+
 class PostController {
 
 	public function index(){

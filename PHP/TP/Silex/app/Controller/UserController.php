@@ -1,5 +1,7 @@
 <?php namespace Projet\Controller;
 
+use Projet\Model\User;
+
 class UserController {
 
 	public function profile($id){
@@ -10,10 +12,11 @@ class UserController {
 	
 	public function create(){
 	
+		$user = new User;
+	
 		return $this->render('register');
 	
 	}
-	
 	
     function render($view,$data=null){
 		
