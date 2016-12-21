@@ -1,4 +1,10 @@
-<?php class User extends AbstractModel {
+<?php namespace Model;
+
+use Model\AbstractModel;
+use Utility\MagicalTrait;
+use Utility\Db;
+
+class User extends AbstractModel {
 
 	protected $id;
 	protected $username;

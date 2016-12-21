@@ -11,7 +11,7 @@ function generateRandomString($length) {  // Servira à générer le SALT de 22 
 
 function __autoload($class)
 {   
-    include('Classe/'.$class . '.php');
+    include('app/'.$class . '.php');
 }
 
 /*
@@ -30,6 +30,15 @@ echo $user->salt;
 
 
 */
+
+use Controller\UserController;
+use Model\User;
+
+
+$c = new UserController;
+
+$c->index();
+
 $user = User::find(2);
 
 echo $user->username;

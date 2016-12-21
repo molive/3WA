@@ -1,4 +1,5 @@
-<?php trait MagicalTrait {
+<?php namespace Utility;
+trait MagicalTrait {
 
 
     // Cette méthode sera appelée si on cherche à afficher le contenu d'une propriété en protected ou non existante.

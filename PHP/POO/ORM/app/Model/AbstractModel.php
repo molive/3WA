@@ -1,13 +1,23 @@
-<?php abstract class AbstractModel {
+<?php namespace Model;
+
+use Utility\Db;
+
+abstract class AbstractModel {
 
 	public abstract function save();
 
 	public static function find($id) {
 
 		$db = Db::getInstance();
-		
+	
 		$className = static::class;
+		
+		$tableName = explode('\\',$className);
+		$tableName = array_pop($className);
+		
 		$tableName = strtolower($className).'s';
+		
+		echo $className; exit;
 		
 		// we make sure $id is an integer
 		$id = intval($id);

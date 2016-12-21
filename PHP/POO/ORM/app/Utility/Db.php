@@ -1,4 +1,7 @@
-<?php
+<?php namespace Utility;
+
+use \PDO;
+
  class Db {
   
     private static $instance = NULL;
