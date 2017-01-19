@@ -22,9 +22,31 @@ function surface(a,b = a){
 	return a * b;
 
 }
-
-
 console.log(surface(10,20));
+
+// Faire une fontio nqui donne le montant TTC en fonction d'un montant HT
+
+function TTC(amountHT){
+
+	return amountHT * 1.2;
+
+}
+
+
+// Faire une fonction qui renvoie true si c'est le weekend et false si ce n'est pas le cas. Tester ensuite cette fonction en l'intégrant dans une condition pour afficher "Va t'amuser" si c'est le weekend ou alors "va travailler si ce n'est pas le cas.
+
+function isWeekend(){
+
+		var today = new Date;
+		var day = today.getDay();
+    if(day == 0 || day == 6) return true;
+    else return false;
+
+}
+
+
+if(!isWeekend()) alert("Va travailler");
+else alert("Va t'amuser");
 
 
 // Faire une fonction rand qui permet de générer un entier aléatorie compris entre 2 bornes
