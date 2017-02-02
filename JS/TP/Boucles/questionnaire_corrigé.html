@@ -1,0 +1,133 @@
+<script>
+
+var score = 0;  //  La variable score s'incrémentera chaque fois que le joueur donnera une bonne répif(onse
+var playerAnswer; //Cette varibale contiendra la réponse du joueur
+var isOkToPlay = confirm("Voulez-vous jouer?"); // la fonction confirm va générer une boite de dialogue qui va inviter l'utilisarteur à cliquer sur OK ou annuler
+// S'il clique sur OK isOkToPlay sera égale à true 
+//S'IL CLIQUE SUr annuler  isOkToPlay sera égale à false
+
+var data1 = {
+  
+  question : "Quel est le sens de la vie",
+  reponse : "42"
+  
+};
+
+var data2 = {
+  
+  question : "Combien font 0 + 0?",
+  reponse : ["0","zéro","zero","la tête à toto"] // penser à mettre toutes les réponse possible en minuscule
+  
+};
+
+var data3 = {
+  
+  question : "Quelle esl la couleur du cheval Blanc d'Henri IV",
+  reponse : "Bordeau"
+  
+}
+
+/*
+playerAnswer = prompt(data.question);  // On pose la question à l'utilisateur et on récupère sa réponse
+
+if(playerAnswer == data.reponse) {
+  
+  alert("Vous avez la bonne réponse");
+  score++;  // On incrémente de 1 la variable score car il a donné la bonne réponse
+}
+else{
+  alert("La réponse était:"+data.reponse);
+}
+*/
+
+
+// On va utiliser les tableaux et les boucles pour automatiser notre script à  poser la question, récupérer la réponse et la vérifier
+
+
+var datas = [data1,data2,data3];   // Je créé un tableau datas qui contient mes 3 objets litéraux relatifs à mes 3 questions
+
+
+// On va parcourir ce tableau datas pour traiter chacune des questions (exécution de la logique du code)
+
+
+if(!isOkToPlay) // si isOkToPlay égale false on ne lance pas le pogramme et on affiche un message quelconque
+// if(isOkToPlay == false)
+{
+  
+  document.write('Pffff');
+  
+}
+else  // Sinon c'est qu'il a cliqué sur OK et on lance le questionnaire
+{
+  
+
+for(let data of datas) { 
+  playerAnswer = prompt(data.question).toLowerCase(); // On pose la question à l'utilisateur et on récupère sa réponse
+  // On créé une condition qui vérifie si la réponse donnée est la bonne
+  
+  
+  // On vérifie s'il y a plusieurs réponses possibles
+  
+  if(typeof data.reponse   == "string")  // si le type de la réponse attendue est une chaine de caractère c'est qu'il n'y a qu'une réponse possible
+  {
+    
+    if(data.reponse.toLowerCase() == playerAnswer){
+      
+      alert('Bonne réponse');
+      score++;
+      
+    }
+    else
+    {
+      
+      alert("La réponse était:"+data.reponse);
+    
+      
+    }
+    
+  }
+  else   // Sinon c'est qu'il y a plusieurs réponses possibles
+    
+  {
+    
+    // On va utiliser la méthode indexOf() pour vérifier que la réponse de l'utilisateur figure bien parmis les réponses possible (docn les éléments listé dans le tableau de ma propriété reponse)
+    var verif = data.reponse.indexOf(playerAnswer);
+    /*
+    
+    Dans le cas de la réponse à la 2ème question si on rentre:
+    - 0 la variable verif sera égale à 0
+    - zéro la variable verif sera égale à 1
+    - zero la variable verif sera égale à 2
+    - "La tête à toto" la variable verif sera égale à 3
+    
+    eT SI ON TAPE UNE MAUVAISE RÉPONSE VERIF SERa égal à -1
+    
+    */
+    
+    if(verif != -1) {
+      // if(verif >= 0)  
+      alert('Bonne réponse');
+      score++;
+      
+      
+    }
+    else
+    {
+      
+       alert("L'une des réponses était :"+data.reponse.join(' ou '));
+      
+    }
+    
+    
+  }
+  
+  
+}
+
+
+document.write("Votre score est de "+score+" / "+datas.length+"");
+  
+  
+}
+
+</script>

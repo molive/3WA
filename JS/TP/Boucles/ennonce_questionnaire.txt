@@ -1,0 +1,53 @@
+/*
+Etape 0:
+
+1) Faire une variable data contenant un objet avec 2 propriétés:
+- question : la valeur de cette propriété sera la question qui sera posée à l'utilisateur
+- response : la valeur de cette propriété sera la bonne réponse attendu
+
+
+2) Créer une variable playerAnswer qui contiendra la réponse du joueur. 
+   Il faudra pour se faire utiliser la méthode window.prompt pour poser la question 
+  (qui sera égale à la valeur de la propriété response de l'objet data) à l'utilisateur et receuillir sa réponse.
+  
+3) Vérifier si la valeur de playerAnswer est égale à la bonne réponse (correspondant à la valeur de la propriété response de l'objet data)
+   Si la réponse est bonne afficher en alert bonne réponse, autrement afficher mauvaise réponse.
+   /!\ Attention à la sensibilité à la casse!
+   
+Etape 1:
+
+On va maintenant coder un script qui permettra de poser au moins 3 questions au joueur et d'afficher son score à la fin.
+
+Il va de soi qu'on ne va pas répéter 3 fois (ou plus) le code réalisé à l'étape 0. 
+
+Pour éviter cela nous allons avoir recours à une boucle qui parcourira un tableau "datas" contenant toutes les questions + réponses. 
+A vous de trouver comment constituer ce tableau en vous inspirant de ce qui a été fait en étape 0.
+
+La boucle devra automatiser ce processus:
+
+1) Poser la question au joueur
+2) Vérifier si sa réponse est bonne
+3) Augmenter son score de +1 si sa réponse est bonne
+
+Etape 2:
+
+Une fois toutes les questions posées afficher le score du joueur (exemple 2/3, 3 étant le nombre de questions posées (a afficher dynamiquement)).
+
+ETAPE BONUS:
+
+1) Avant de lancer une partie demander à l'utilisateur s'il veut jouer en utilisant la méthode window.confirm : 
+https://developer.mozilla.org/fr/docs/Web/API/Window/confirm
+
+S'il clique sur OK on lui pose les questions autrement on affiche un message quelconque (exemple Pffff).
+
+2) Permettre plusieurs réponses possibles
+
+Exemple: 
+Question: Combien font 0 + 0?
+Réponses possible: 0 , zéro, zero
+
+Astuce: Stocker pour chaque question toutes les réponses possibles dans un tableau
+        Vérifier si la réponse donnée par l'utilisateur figure dans le tableau contenant les réponses possibles grace à la méthode indexOf: 
+        https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/indexOf
+
+*/

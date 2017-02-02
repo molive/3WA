@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+	<!-- framework CSS bootstrap -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="styles.css">
+    <title>Chifoumi V2</title>
+</head>
+<body>
+  
+	<h1>Chifoumi V2</h1>
+	<!-- Image représentant le choix du joueur: -->
+	<img id="player" src="img/pierre.png">
+	<!-- Image représentant le choix du computeur: -->
+	<img id="computer" class="reverse" src="img/pierre.png">
+	 
+	<div id="choices">
+	
+		<!-- Images cliquables pour permettre au joueur de choisir entre pierre feuille ou ciseaux (remplacent le prompt de la V1)  -->
+		<img data-choice="pierre" src="img/pierre.png">
+		<img data-choice="feuille" src="img/feuille.png">
+		<img data-choice="ciseaux" src="img/ciseaux.png">
+	 
+	</div>
+	
+	<!-- Dans la div ci-dessous on affichera s'il y a égalité, victoire ou défaire du joueur en expliquant pourquoi
+	     Exemple: Vous perdez car la pierre ecrase les ciseaux -->
+	<div class="alert alert-info" id="message">
+	Cliquez sur une des 3 images ci-dessus pour commencer une partie.
+	</div>
+	<script src="utilities.js"></script><!-- contient notre focntion maison "rand" pour générer un entier aléatoire -->
+	<script src="chifoumi_correction.js"></script><!-- contient le script du jeu -->	
+	
+</body>
+</html>
